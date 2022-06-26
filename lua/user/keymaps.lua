@@ -100,17 +100,17 @@ keymap("n", "<F7>", "<cmd>TSHighlightCapturesUnderCursor<cr>", opts)
 keymap("n", "<F8>", "<cmd>TSPlaygroundToggle<cr>", opts)
 keymap("n", "<F11>", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 keymap("n", "<F12>", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-keymap("v", "//", [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], opts)
+keymap("v", "//", [[y/\v<c-r>=escape(@",'/\')<cr><cr>]], opts)
 keymap(
   "n",
-  "<C-p>",
+  "<c-p>",
   "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
   opts
 )
 keymap(
   "n",
   ";f",
-  "<cmd>lua require('telescope.builtin').git_files(require('telescope.themes').get_ivy{previewer = false})<cr>",
+  "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_ivy{previewer = false})<cr>",
   opts
 )
 keymap("n", ";r", "<cmd>lua require('spectre').open_file_search()<cr>", opts)

@@ -145,6 +145,7 @@ local mappings = {
     l = { '<cmd>lua require("user.functions").toggle_option("cursorline")<cr>', "Cursorline" },
     s = { '<cmd>lua require("user.functions").toggle_option("spell")<cr>', "Spell" },
     t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
+    c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
   },
 
   s = {
@@ -182,7 +183,6 @@ local mappings = {
   f = {
     name = "Find",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     f = {
       "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
       "Find files",
@@ -296,7 +296,7 @@ local mappings = {
     ["3"] = { ":3ToggleTerm<cr>", "3" },
     ["4"] = { ":4ToggleTerm<cr>", "4" },
     n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
-    u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
+    r = { "<cmd>lua _RANGER_TOGGLE()<cr>", "Ranger" },
     t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
     p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
     f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },

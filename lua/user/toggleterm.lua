@@ -51,10 +51,10 @@ function _NODE_TOGGLE()
 	node:toggle()
 end
 
-local ncdu = Terminal:new({ cmd = "ncdu", hidden = true })
+local ranger = Terminal:new({ cmd = "ranger", hidden = true })
 
-function _NCDU_TOGGLE()
-	ncdu:toggle()
+function _RANGER_TOGGLE()
+	ranger:toggle()
 end
 
 local htop = Terminal:new({ cmd = "htop", hidden = true })

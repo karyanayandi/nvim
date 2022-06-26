@@ -103,3 +103,19 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
     end
   end,
 })
+
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function()
+    local opts = {
+      focusable = false,
+      close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+      border = 'rounded',
+      source = 'always',
+      prefix = ' ',
+      scope = 'cursor',
+    }
+    vim.diagnostic.open_float(nil, opts)
+  end
+})
+
+-- vim.api.nvim_command [[autocmd BufWritePre * execute ":lua vim.lsp.buf.format( {async = true})"]]
