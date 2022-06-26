@@ -61,7 +61,7 @@ local diagnostics = {
   "diagnostics",
   sources = { "nvim_diagnostic" },
   sections = { "error", "warn" },
-  symbols = { error = icons.diagnostics.Error .. " ", warn = icons.diagnostics.Warning .. " " },
+  symbols = { error = icons.diagnostics.Error .. "", warn = icons.diagnostics.Warning .. "" },
   colored = false,
   update_in_insert = false,
   always_visible = true,
@@ -70,17 +70,17 @@ local diagnostics = {
 local diff = {
   "diff",
   colored = false,
-  symbols = { added = icons.git.Add .. " ", modified = icons.git.Mod .. " ", removed = icons.git.Remove .. " " }, -- changes diff symbols
+  symbols = { added = icons.git.Add .. "", modified = icons.git.Mod .. "", removed = icons.git.Remove .. "" }, -- changes diff symbols
   cond = hide_in_width,
-  separator = "%#SLSeparator#" .. "│ " .. "%*",
+  separator = "%#SLSeparator#" .. "" .. "%*",
 }
 
 local mode = {
   "mode",
-   fmt = function(str)
-     return "-- " .. str .. " --"
-   end,
- }
+  fmt = function(str)
+    return "-- " .. str .. " --"
+  end,
+}
 
 local filetype = {
   "filetype",
@@ -183,10 +183,10 @@ lualine.setup {
   },
   sections = {
     lualine_a = { branch },
-    lualine_b = { mode },
-    lualine_c = { diagnostics },
+    lualine_b = { diagnostics },
+    lualine_c = { },
     -- lualine_x = { diff, spaces, "encoding", filetype },
-    lualine_x = { diff, "encoding" },
+    lualine_x = { diff },
     lualine_y = { filename },
     lualine_z = { location },
   },

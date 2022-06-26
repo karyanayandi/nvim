@@ -40,16 +40,14 @@ packer.init {
 
 -- Install your plugins here
 return packer.startup(function(use)
-  -- My plugins here
+  -- Plugins
   use "wbthomason/packer.nvim" -- Have packer manage itself
-  -- use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
   use "numToStr/Comment.nvim"
   use "kyazdani42/nvim-web-devicons"
-  use { "kyazdani42/nvim-tree.lua" }
+  use "kyazdani42/nvim-tree.lua"
   use "tamago324/lir.nvim"
-  use "akinsho/bufferline.nvim"
   use "moll/vim-bbye"
   use "nvim-lualine/lualine.nvim"
   use "akinsho/toggleterm.nvim"
@@ -57,7 +55,6 @@ return packer.startup(function(use)
   use "lewis6991/impatient.nvim"
   use "lukas-reineke/indent-blankline.nvim"
   use "goolord/alpha-nvim"
-  -- use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
   use "folke/which-key.nvim"
   use "unblevable/quick-scope"
   use "phaazon/hop.nvim"
@@ -73,13 +70,13 @@ return packer.startup(function(use)
   use "ThePrimeagen/harpoon"
   use "MattesGroeger/vim-bookmarks"
   use "Mephistophiles/surround.nvim"
-  use "tpope/vim-repeat"
+  -- use "tpope/vim-repeat"
   -- use "Shatur/neovim-session-manager"
   use "rcarriga/nvim-notify"
   use "tversteeg/registers.nvim"
   -- use "metakirby5/codi.vim"
-  use { "nyngwang/NeoZoom.lua", branch = "neo-zoom-original" }
-  use { "christianchiarulli/nvim-gps", branch = "text_hl" }
+  -- use { "nyngwang/NeoZoom.lua", branch = "neo-zoom-original" }
+  use "SmiteshP/nvim-gps"
   use { "michaelb/sniprun", run = "bash ./install.sh" }
   use {
 
@@ -87,29 +84,15 @@ return packer.startup(function(use)
     run = "cd app && npm install",
     ft = "markdown",
   }
-  use {"mg979/vim-visual-multi", branch = "master"}
-  use {
-    "christianchiarulli/JABS.nvim",
-    requires = { "kyazdani42/nvim-web-devicons" }, --optional
-  }
 
-  use {
-    "ghillb/cybu.nvim",
-    -- branch = "v1.x", -- won't receive breaking changes
-    -- branch = "main", -- timely updates
-    requires = { "kyazdani42/nvim-web-devicons" }, --optional
-  }
+  use "ghillb/cybu.nvim"
 
   -- Colorschemes
   use "navarasu/onedark.nvim"
-  use "yong1le/darkplus.nvim"
 
   -- cmp plugins
   -- use "hrsh7th/nvim-cmp" -- The completion plugin
-  use {
-    "hrsh7th/nvim-cmp",
-    -- commit = "dbc72290295cfc63075dab9ea635260d2b72f2e5",
-  }
+  use "hrsh7th/nvim-cmp"
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
@@ -117,7 +100,7 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-emoji"
   use "hrsh7th/cmp-nvim-lua"
-  use "rcarriga/cmp-dap"
+  -- use "rcarriga/cmp-dap"
   use {
     "tzachar/cmp-tabnine",
     config = function()
@@ -152,15 +135,26 @@ return packer.startup(function(use)
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
   -- use "filipdutescu/renamer.nvim"
   use "simrat39/symbols-outline.nvim"
-  use {"ray-x/lsp_signature.nvim",
-    commit = "4852d99f9511d090745d3cc1f09a75772b9e07e9"
-  }
+  use "ray-x/lsp_signature.nvim"
   use "b0o/SchemaStore.nvim"
   use {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
   }
-  use "github/copilot.vim"
+  -- use "github/copilot.vim"
+  use {
+    "zbirenbaum/copilot.lua",
+    event = { "VimEnter" },
+    config = function()
+      vim.defer_fn(function()
+        require("user.copilot")
+      end, 100)
+    end,
+  }
+  use {
+    "zbirenbaum/copilot-cmp",
+    module = "copilot_cmp",
+  }
   use "RRethy/vim-illuminate"
 
   -- Java
@@ -170,8 +164,8 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope.nvim"
   use "tom-anders/telescope-vim-bookmarks.nvim"
   use "nvim-telescope/telescope-media-files.nvim"
-  use "nvim-telescope/telescope-ui-select.nvim"
-  use "nvim-telescope/telescope-file-browser.nvim"
+  -- use "nvim-telescope/telescope-ui-select.nvim"
+  -- use "nvim-telescope/telescope-file-browser.nvim"
 
   -- Treesitter
   use {
@@ -182,8 +176,8 @@ return packer.startup(function(use)
   use { "p00f/nvim-ts-rainbow" }
   use "nvim-treesitter/playground"
   use "windwp/nvim-ts-autotag"
-  use "romgrk/nvim-treesitter-context"
-  use "mizlan/iswap.nvim"
+  -- use "romgrk/nvim-treesitter-context"
+  -- use "mizlan/iswap.nvim"
 
   -- Git
   use "lewis6991/gitsigns.nvim"
@@ -191,13 +185,13 @@ return packer.startup(function(use)
   use "ruifm/gitlinker.nvim"
   use "mattn/vim-gist"
   use "mattn/webapi-vim"
-  use "https://github.com/rhysd/conflict-marker.vim"
+  -- use "https://github.com/rhysd/conflict-marker.vim"
 
   -- DAP
-  use "mfussenegger/nvim-dap"
-  use "theHamsta/nvim-dap-virtual-text"
-  use "rcarriga/nvim-dap-ui"
-  use "Pocco81/DAPInstall.nvim"
+  -- use "mfussenegger/nvim-dap"
+  -- use "theHamsta/nvim-dap-virtual-text"
+  -- use "rcarriga/nvim-dap-ui"
+  -- use "Pocco81/DAPInstall.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

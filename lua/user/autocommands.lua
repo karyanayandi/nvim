@@ -7,7 +7,6 @@
 --   end,
 -- })
 
-
 vim.api.nvim_create_autocmd({ "User" }, {
   pattern = { "AlphaReady" },
   callback = function()
@@ -95,16 +94,12 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd("CursorHold", {
+vim.api.nvim_create_autocmd({ "InsertLeave" }, {
   callback = function()
-    local opts = {
-      focusable = false,
-      close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-      border = 'rounded',
-      source = 'always',
-      prefix = ' ',
-      scope = 'cursor',
-    }
-    vim.diagnostic.open_float(nil, opts)
-  end
+    local luasnip = require "luasnip"
+    if luasnip.expand_or_jumpable() then
+      -- ask maintainer for option to make this silent
+      luasnip.unlink_current()
+    end
+  end,
 })

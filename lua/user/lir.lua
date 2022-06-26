@@ -12,8 +12,8 @@ lir.setup {
   devicons_enable = true,
   mappings = {
     ["l"] = actions.edit,
-    ["<C-s>"] = actions.split,
-    ["v"] = actions.vsplit,
+    ["M"] = actions.split,
+    ["N"] = actions.vsplit,
     ["<C-t>"] = actions.tabedit,
 
     ["h"] = actions.up,

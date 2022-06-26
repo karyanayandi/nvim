@@ -61,6 +61,10 @@ indent_blankline.setup {
   -- show_end_of_line = true,
   -- space_char_blankline = " ",
   show_current_context = true,
+  -- buftype_exclude = { "terminal" },
+  -- show_trailing_blankline_indent = false,
+  -- show_first_indent_level = false,
+  -- show_current_context_start = true,
   -- show_current_context_start = true,
   -- char_highlight_list = {
   --   "IndentBlanklineIndent1",

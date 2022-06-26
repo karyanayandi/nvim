@@ -1,32 +1,18 @@
+-- TODO: scope open buffers to project
+
+require "split"
+
 local M = {}
 
-M.bopen = {}
+local config = require "user.bfs.config"
+local keymaps = require("user.bfs.keymaps")
 
-local ui = vim.api.nvim_list_uis()[1]
+M.bopen = {}
 
 M.current_buf = ""
 
 M.terminal_count = 0
 M.terminal_map = {}
-
-M.win_conf = {
-  width = 40,
-  height = 10,
-  style = "minimal",
-  border = "rounded",
-  -- anchor = "NW",
-  -- TODO: fine a good way to center in window later
-  -- relative = "win",
-  relative = "editor",
-  row = (ui.height / 2) - (10 / 2),
-  col = (ui.width / 2) - (40 / 2),
-}
-
-M.openOptions = {
-  window = "b %s",
-  vsplit = "vert sb %s",
-  hsplit = "sb %s",
-}
 
 local get_bufs = function()
   local bufs = {}
@@ -75,7 +61,7 @@ function M.selBufNum(win, opt, count)
   end
 
   vim.api.nvim_set_current_win(win)
-  vim.cmd(string.format(M.openOptions[opt], filename))
+  vim.cmd(string.format(config.openOptions[opt], filename))
 end
 
 -- Close buffer from line
@@ -90,7 +76,12 @@ function M.closeBufNum(win)
   local cur_buf_name = string.gsub(new_current_buf, cwd_path, "")
 
   if buf ~= cur_buf_name then
-    vim.cmd(string.format("bd %s", buf))
+    local modifier = ""
+    if buf:split("_", true)[1] == "Terminal" then
+      buf = M.terminal_map[buf]
+      modifier = "!"
+    end
+    vim.cmd(string.format("bd" .. modifier .. " %s", buf))
     local ln = vim.api.nvim_win_get_cursor(0)[1]
     table.remove(M.bopen, ln - 1)
 
@@ -104,63 +95,10 @@ function M.closeBufNum(win)
 end
 
 function M.close()
-  xpcall(function()
-    vim.api.nvim_win_close(M.main_win, false)
-    vim.api.nvim_buf_delete(M.main_buf, {})
-    M.main_win = nil
-    M.main_buf = nil
-  end, function()
-    M.main_win = nil
-    M.main_buf = nil
-    M.open()
-  end)
-end
-
--- Set floating window keymaps
-function M.setKeymaps(win, buf)
-  vim.api.nvim_buf_set_option(buf, "filetype", "bfs")
-  vim.api.nvim_buf_set_keymap(
-    buf,
-    "n",
-    "<CR>",
-    string.format([[:<C-U>lua require'user.bfs'.selBufNum(%s, 'window', vim.v.count)<CR>]], win),
-    { nowait = true, noremap = true, silent = true }
-  )
-  vim.api.nvim_buf_set_keymap(
-    buf,
-    "n",
-    "q",
-    ':lua require"user.bfs".close()<CR>',
-    { nowait = true, noremap = true, silent = true }
-  )
-  vim.api.nvim_buf_set_keymap(
-    buf,
-    "n",
-    "d",
-    string.format([[:lua require'user.bfs'.closeBufNum(%s)<CR>]], win),
-    { nowait = true, noremap = true, silent = true }
-  )
-  vim.api.nvim_buf_set_keymap(
-    buf,
-    "n",
-    "l",
-    string.format([[:<C-U>lua require'user.bfs'.selBufNum(%s, 'window', vim.v.count)<CR>]], win),
-    { nowait = true, noremap = true, silent = true }
-  )
-  vim.api.nvim_buf_set_keymap(
-    buf,
-    "n",
-    "s",
-    string.format([[:<C-U>lua require'user.bfs'.selBufNum(%s, 'hsplit', vim.v.count)<CR>]], win),
-    { nowait = true, noremap = true, silent = true }
-  )
-  vim.api.nvim_buf_set_keymap(
-    buf,
-    "n",
-    "v",
-    string.format([[:<C-U>lua require'user.bfs'.selBufNum(%s, 'vsplit', vim.v.count)<CR>]], win),
-    { nowait = true, noremap = true, silent = true }
-  )
+  vim.api.nvim_win_close(M.main_win, false)
+  vim.api.nvim_buf_delete(M.main_buf, {})
+  M.main_win = nil
+  M.main_buf = nil
 end
 
 M.set_buffers = function(buf)
@@ -218,7 +156,7 @@ M.set_buffers = function(buf)
     vim.api.nvim_set_hl(0, hl_group, { fg = file_icon_color })
     local line = " " .. file_icon .. " " .. filename .. " " .. changed_icon
 
-    local max_width = M.win_conf.width
+    local max_width = config.user_config.width
     local linenr = b.lnum
     local empty = {}
     empty[#empty + 1] = string.rep(" ", max_width)
@@ -253,9 +191,9 @@ M.open = function()
 
   if not M.main_buf and not M.main_win then
     M.main_buf = vim.api.nvim_create_buf(false, true)
-    M.main_win = vim.api.nvim_open_win(M.main_buf, 1, M.win_conf)
+    M.main_win = vim.api.nvim_open_win(M.main_buf, 1, config.user_config)
     M.refresh(M.main_buf)
-    M.setKeymaps(back_win, M.main_buf)
+    keymaps.setKeymaps(back_win, M.main_buf)
   end
 end
 
