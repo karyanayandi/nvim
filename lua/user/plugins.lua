@@ -70,12 +70,9 @@ return packer.startup(function(use)
   use "ThePrimeagen/harpoon"
   use "MattesGroeger/vim-bookmarks"
   use "Mephistophiles/surround.nvim"
-  -- use "tpope/vim-repeat"
-  -- use "Shatur/neovim-session-manager"
   use "rcarriga/nvim-notify"
   use "tversteeg/registers.nvim"
-  -- use "metakirby5/codi.vim"
-  -- use { "nyngwang/NeoZoom.lua", branch = "neo-zoom-original" }
+  use { "nyngwang/NeoZoom.lua", branch = "neo-zoom-original" }
   use "SmiteshP/nvim-gps"
   use { "michaelb/sniprun", run = "bash ./install.sh" }
   use {
@@ -84,15 +81,14 @@ return packer.startup(function(use)
     run = "cd app && npm install",
     ft = "markdown",
   }
-
   use "ghillb/cybu.nvim"
+  use { "yardnsm/vim-import-cost", run = "npm install --production" }
 
   -- Colorschemes
   use "navarasu/onedark.nvim"
 
   -- cmp plugins
-  -- use "hrsh7th/nvim-cmp" -- The completion plugin
-  use "hrsh7th/nvim-cmp"
+  use "hrsh7th/nvim-cmp" -- The completion plugin
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
@@ -100,7 +96,6 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-emoji"
   use "hrsh7th/cmp-nvim-lua"
-  -- use "rcarriga/cmp-dap"
   use {
     "tzachar/cmp-tabnine",
     config = function()
@@ -133,7 +128,6 @@ return packer.startup(function(use)
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-  -- use "filipdutescu/renamer.nvim"
   use "simrat39/symbols-outline.nvim"
   use "ray-x/lsp_signature.nvim"
   use "b0o/SchemaStore.nvim"
@@ -141,7 +135,6 @@ return packer.startup(function(use)
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
   }
-  -- use "github/copilot.vim"
   use {
     "zbirenbaum/copilot.lua",
     event = { "VimEnter" },
@@ -190,8 +183,7 @@ return packer.startup(function(use)
   -- DAP
   -- use "mfussenegger/nvim-dap"
   -- use "theHamsta/nvim-dap-virtual-text"
-  -- use "rcarriga/nvim-dap-ui"
-  -- use "Pocco81/DAPInstall.nvim"
+  -- use "rcarriga/nvim-dap-ui" use "Pocco81/DAPInstall.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
