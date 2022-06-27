@@ -82,7 +82,7 @@ return packer.startup(function(use)
     ft = "markdown",
   }
   use "ghillb/cybu.nvim"
-  use { "yardnsm/vim-import-cost", run = "npm install --production" }
+  -- use { "yardnsm/vim-import-cost", run = "npm install --production" }
 
   -- Colorschemes
   use "navarasu/onedark.nvim"

@@ -28,6 +28,6 @@ null_ls.setup {
     diagnostics.eslint.with({
       prefer_local = "node_modules/.bin",
     }),
-    code_actions.eslint
+    code_actions.eslint_d
   },
 }
