@@ -8,11 +8,7 @@ if not status_theme_ok then
   return
 end
 
-vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#E8AB53", bg = "#303030" })
-vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#D4D4D4", bg = "#303030", bold = false })
--- vim.api.nvim_set_hl(0, "SLProgress", { fg = "#D7BA7D", bg = "#252525" })
-vim.api.nvim_set_hl(0, "SLProgress", { fg = "#D4D4D4", bg = "#303030" })
-vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#808080", bg = "#252525" })
+
 local mode_color = {
   n = "#569cd6",
   i = "#6a9955",
@@ -38,24 +34,17 @@ local mode_color = {
   t = "#D7BA7D",
 }
 
-local mode = {
-  -- mode component
-  function()
-    return "▊"
-  end,
-  color = function()
-    -- auto change color according to neovims mode
-    return { fg = mode_color[vim.fn.mode()] }
-  end,
-  -- padding = { right = 1 },
-  padding = 0,
-}
-
 local hide_in_width = function()
   return vim.fn.winwidth(0) > 80
 end
 
 local icons = require "user.icons"
+
+vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#FFFFFF", bg = "#303030" })
+vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#D4D4D4", bg = "#303030", bold = false })
+-- vim.api.nvim_set_hl(0, "SLProgress", { fg = "#D7BA7D", bg = "#252525" })
+vim.api.nvim_set_hl(0, "SLProgress", { fg = "#D4D4D4", bg = "#303030" })
+vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#808080", bg = "#252525" })
 
 local diagnostics = {
   "diagnostics",
@@ -183,11 +172,10 @@ lualine.setup {
   },
   sections = {
     lualine_a = { branch },
-    lualine_b = { diagnostics },
-    lualine_c = { },
-    -- lualine_x = { diff, spaces, "encoding", filetype },
+    lualine_b = { filename },
+    lualine_c = { diagnostics },
     lualine_x = { diff },
-    lualine_y = { filename },
+    lualine_y = { filetype },
     lualine_z = { location },
   },
   inactive_sections = {
