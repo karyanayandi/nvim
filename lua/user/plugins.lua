@@ -72,7 +72,7 @@ return packer.startup(function(use)
   use "Mephistophiles/surround.nvim"
   use "rcarriga/nvim-notify"
   use "tversteeg/registers.nvim"
-  use { "nyngwang/NeoZoom.lua", branch = "neo-zoom-original" }
+  -- use { "nyngwang/NeoZoom.lua", branch = "neo-zoom-original" }
   use "SmiteshP/nvim-gps"
   use { "michaelb/sniprun", run = "bash ./install.sh" }
   use {
@@ -98,21 +98,6 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-nvim-lua"
   use {
     "tzachar/cmp-tabnine",
-    config = function()
-      local tabnine = require "cmp_tabnine.config"
-      tabnine:setup {
-        max_lines = 1000,
-        max_num_results = 20,
-        sort = true,
-        run_on_every_keystroke = true,
-        snippet_placeholder = "..",
-        ignored_file_types = { -- default is not to ignore
-          -- uncomment to ignore in lua:
-          -- lua = true
-        },
-      }
-    end,
-
     run = "./install.sh",
     requires = "hrsh7th/nvim-cmp",
   }
@@ -131,7 +116,6 @@ return packer.startup(function(use)
   use "simrat39/symbols-outline.nvim"
   use "ray-x/lsp_signature.nvim"
   use "b0o/SchemaStore.nvim"
-  use "simrat39/rust-tools.nvim"
   use {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
@@ -141,7 +125,7 @@ return packer.startup(function(use)
     event = { "VimEnter" },
     config = function()
       vim.defer_fn(function()
-        require("user.copilot")
+        require "user.copilot"
       end, 100)
     end,
   }
@@ -151,8 +135,9 @@ return packer.startup(function(use)
   }
   use "RRethy/vim-illuminate"
 
-  -- Java
+  -- Additonal Programming Language
   use "mfussenegger/nvim-jdtls"
+  use "simrat39/rust-tools.nvim"
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
@@ -162,16 +147,11 @@ return packer.startup(function(use)
   -- use "nvim-telescope/telescope-file-browser.nvim"
 
   -- Treesitter
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    -- run = ":TSUpdate",
-  }
+  use "nvim-treesitter/nvim-treesitter"
   use "JoosepAlviste/nvim-ts-context-commentstring"
   use { "p00f/nvim-ts-rainbow" }
   use "nvim-treesitter/playground"
   use "windwp/nvim-ts-autotag"
-  -- use "romgrk/nvim-treesitter-context"
-  -- use "mizlan/iswap.nvim"
 
   -- Git
   use "lewis6991/gitsigns.nvim"
@@ -179,15 +159,6 @@ return packer.startup(function(use)
   use "ruifm/gitlinker.nvim"
   use "mattn/vim-gist"
   use "mattn/webapi-vim"
-  -- use "https://github.com/rhysd/conflict-marker.vim"
-
-  -- DAP
-  -- use "mfussenegger/nvim-dap"
-  -- use "theHamsta/nvim-dap-virtual-text"
-  -- use "rcarriga/nvim-dap-ui" use "Pocco81/DAPInstall.nvim"
-  use { "mfussenegger/nvim-dap", commit = "014ebd53612cfd42ac8c131e6cec7c194572f21d" }
-  use { "rcarriga/nvim-dap-ui", commit = "d76d6594374fb54abf2d94d6a320f3fd6e9bb2f7" }
-  use { "ravenxrz/DAPInstall.nvim", commit = "8798b4c36d33723e7bba6ed6e2c202f84bb300de" }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
