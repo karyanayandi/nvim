@@ -13,7 +13,8 @@ local servers = {
   "sumneko_lua",
   "tflint",
   "tsserver",
-"rust_analyzer",
+  "rust_analyzer",
+  "taplo",
   "pyright",
   "yamlls",
   "bashls",
@@ -83,8 +84,12 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force", emmet_ls_opts, opts)
   end
 
-  lspconfig[server].setup(opts)
-end
+  if server == "rust_analyzer" then
+    local rust_opts = require "user.lsp.settings.rust"
+    opts = vim.tbl_deep_extend("force", rust_opts, opts)
+     goto continue
+  end
 
--- TODO: add something to installer later
--- require("lspconfig").motoko.setup {}
+  lspconfig[server].setup(opts)
+  ::continue::
+end
