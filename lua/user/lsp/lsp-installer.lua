@@ -8,10 +8,10 @@ local servers = {
   "cssmodules_ls",
   "emmet_ls",
   "html",
-  "jdtls",
+  -- "jdtls",
   "jsonls",
   "sumneko_lua",
-  "tflint",
+  -- "tflint",
   "tsserver",
   "rust_analyzer",
   "taplo",
@@ -67,6 +67,11 @@ for _, server in pairs(servers) do
   if server == "jsonls" then
     local jsonls_opts = require "user.lsp.settings.jsonls"
     opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
+  end
+
+  if server == "yamlls" then
+    local yamlls_opts = require "user.lsp.settings.yamlls"
+    opts = vim.tbl_deep_extend("force", yamlls_opts, opts)
   end
 
   if server == "sumneko_lua" then
