@@ -59,6 +59,11 @@ return packer.startup(function(use)
   use "unblevable/quick-scope"
   use "phaazon/hop.nvim"
   use "andymass/vim-matchup"
+  use "kylechui/nvim-surround"
+  use {
+    "abecodes/tabout.nvim",
+    wants = { "nvim-treesitter" }, -- or require if not used so far
+  }
   use "nacro90/numb.nvim"
   use "monaqa/dial.nvim"
   use "norcalli/nvim-colorizer.lua"
@@ -83,6 +88,10 @@ return packer.startup(function(use)
   }
   use "ghillb/cybu.nvim"
   -- use { "yardnsm/vim-import-cost", run = "npm install --production" }
+
+  -- UI
+  use "stevearc/dressing.nvim"
+  use "gbprod/cutlass.nvim"
 
   -- Colorschemes
   use "navarasu/onedark.nvim"
@@ -116,10 +125,7 @@ return packer.startup(function(use)
   use "simrat39/symbols-outline.nvim"
   use "ray-x/lsp_signature.nvim"
   use "b0o/SchemaStore.nvim"
-  use {
-    "folke/trouble.nvim",
-    cmd = "TroubleToggle",
-  }
+  use "folke/trouble.nvim"
   use {
     "zbirenbaum/copilot.lua",
     event = { "VimEnter" },
@@ -134,15 +140,21 @@ return packer.startup(function(use)
     module = "copilot_cmp",
   }
   use "RRethy/vim-illuminate"
+  use "stevearc/aerial.nvim"
+  use "j-hui/fidget.nvim"
+  use "rmagatti/goto-preview"
 
   -- Additonal Programming Language
+  use "jose-elias-alvarez/typescript.nvim"
   use "mfussenegger/nvim-jdtls"
   use "simrat39/rust-tools.nvim"
+  use "Saecki/crates.nvim"
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
   use "tom-anders/telescope-vim-bookmarks.nvim"
   use "nvim-telescope/telescope-media-files.nvim"
+  use "lalitmee/browse.nvim"
   -- use "nvim-telescope/telescope-ui-select.nvim"
   -- use "nvim-telescope/telescope-file-browser.nvim"
 
@@ -152,6 +164,7 @@ return packer.startup(function(use)
   use { "p00f/nvim-ts-rainbow" }
   use "nvim-treesitter/playground"
   use "windwp/nvim-ts-autotag"
+  use "drybalka/tree-climber.nvim"
 
   -- Git
   use "lewis6991/gitsigns.nvim"

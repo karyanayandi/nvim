@@ -84,10 +84,20 @@ _G.packer_plugins = {
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/SchemaStore.nvim",
     url = "https://github.com/b0o/SchemaStore.nvim"
   },
+  ["aerial.nvim"] = {
+    loaded = true,
+    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/aerial.nvim",
+    url = "https://github.com/stevearc/aerial.nvim"
+  },
   ["alpha-nvim"] = {
     loaded = true,
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/alpha-nvim",
     url = "https://github.com/goolord/alpha-nvim"
+  },
+  ["browse.nvim"] = {
+    loaded = true,
+    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/browse.nvim",
+    url = "https://github.com/lalitmee/browse.nvim"
   },
   ["cmp-buffer"] = {
     loaded = true,
@@ -144,6 +154,16 @@ _G.packer_plugins = {
     path = "/home/karyana/.local/share/nvim/site/pack/packer/opt/copilot.lua",
     url = "https://github.com/zbirenbaum/copilot.lua"
   },
+  ["crates.nvim"] = {
+    loaded = true,
+    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/crates.nvim",
+    url = "https://github.com/Saecki/crates.nvim"
+  },
+  ["cutlass.nvim"] = {
+    loaded = true,
+    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/cutlass.nvim",
+    url = "https://github.com/gbprod/cutlass.nvim"
+  },
   ["cybu.nvim"] = {
     loaded = true,
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/cybu.nvim",
@@ -153,6 +173,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/dial.nvim",
     url = "https://github.com/monaqa/dial.nvim"
+  },
+  ["dressing.nvim"] = {
+    loaded = true,
+    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/dressing.nvim",
+    url = "https://github.com/stevearc/dressing.nvim"
+  },
+  ["fidget.nvim"] = {
+    loaded = true,
+    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/fidget.nvim",
+    url = "https://github.com/j-hui/fidget.nvim"
   },
   ["friendly-snippets"] = {
     loaded = true,
@@ -173,6 +203,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
+  ["goto-preview"] = {
+    loaded = true,
+    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/goto-preview",
+    url = "https://github.com/rmagatti/goto-preview"
   },
   harpoon = {
     loaded = true,
@@ -286,6 +321,11 @@ _G.packer_plugins = {
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/nvim-spectre",
     url = "https://github.com/windwp/nvim-spectre"
   },
+  ["nvim-surround"] = {
+    loaded = true,
+    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/nvim-surround",
+    url = "https://github.com/kylechui/nvim-surround"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
@@ -371,6 +411,12 @@ _G.packer_plugins = {
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim",
     url = "https://github.com/simrat39/symbols-outline.nvim"
   },
+  ["tabout.nvim"] = {
+    loaded = true,
+    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/tabout.nvim",
+    url = "https://github.com/abecodes/tabout.nvim",
+    wants = { "nvim-treesitter" }
+  },
   ["telescope-media-files.nvim"] = {
     loaded = true,
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim",
@@ -396,13 +442,20 @@ _G.packer_plugins = {
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
   },
+  ["tree-climber.nvim"] = {
+    loaded = true,
+    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/tree-climber.nvim",
+    url = "https://github.com/drybalka/tree-climber.nvim"
+  },
   ["trouble.nvim"] = {
-    commands = { "TroubleToggle" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/karyana/.local/share/nvim/site/pack/packer/opt/trouble.nvim",
+    loaded = true,
+    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/trouble.nvim",
     url = "https://github.com/folke/trouble.nvim"
+  },
+  ["typescript.nvim"] = {
+    loaded = true,
+    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/typescript.nvim",
+    url = "https://github.com/jose-elias-alvarez/typescript.nvim"
   },
   ["vim-bbye"] = {
     loaded = true,
@@ -474,12 +527,6 @@ if not vim.g.packer_custom_loader_enabled then
   table.insert(package.loaders, 1, lazy_load_module)
   vim.g.packer_custom_loader_enabled = true
 end
-
-
--- Command lazy-loads
-time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file TroubleToggle lua require("packer.load")({'trouble.nvim'}, { cmd = "TroubleToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]

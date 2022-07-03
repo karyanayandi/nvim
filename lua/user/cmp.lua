@@ -34,6 +34,7 @@ local kind_icons = icons.kind
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
 vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
+vim.api.nvim_set_hl(0, "CmpItemKindCrate", { fg = "#F64D00" })
 
 cmp.setup {
   snippet = {
@@ -43,8 +44,8 @@ cmp.setup {
   },
 
   mapping = cmp.mapping.preset.insert {
-    ["<C-k>"] = cmp.mapping.select_prev_item(),
-    ["<C-j>"] = cmp.mapping.select_next_item(),
+    ['<C-k>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
+    ['<C-j>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
@@ -109,6 +110,11 @@ cmp.setup {
         vim_item.kind_hl_group = "CmpItemKindEmoji"
       end
 
+      if entry.source.name == "crates" then
+        vim_item.kind = icons.misc.Package
+        vim_item.kind_hl_group = "CmpItemKindCrate"
+      end
+
       -- NOTE: order matters
       vim_item.menu = ({
         nvim_lsp = "",
@@ -122,14 +128,15 @@ cmp.setup {
     end,
   },
   sources = {
-    { name = "nvim_lsp" },
-    { name = "nvim_lua" },
-    { name = "copilot" },
-    { name = "luasnip" },
-    { name = "buffer" },
-    { name = "cmp_tabnine" },
-    { name = "path" },
-    { name = "emoji" },
+    { name = "crates", group_index = 1 },
+    { name = "nvim_lsp", group_index = 2 },
+    { name = "nvim_lua", group_index = 2 },
+    { name = "copilot", group_index = 2 },
+    { name = "luasnip", group_index = 2 },
+    { name = "buffer", group_index = 2 },
+    { name = "cmp_tabnine", group_index = 2 },
+    { name = "path", group_index = 2 },
+    { name = "emoji", group_index = 2 },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
