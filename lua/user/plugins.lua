@@ -91,7 +91,6 @@ return packer.startup(function(use)
 
   -- UI
   use "stevearc/dressing.nvim"
-  use "gbprod/cutlass.nvim"
 
   -- Colorschemes
   use "navarasu/onedark.nvim"
