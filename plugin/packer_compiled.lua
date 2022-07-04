@@ -396,6 +396,11 @@ _G.packer_plugins = {
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/sniprun",
     url = "https://github.com/michaelb/sniprun"
   },
+  ["stickybuf.nvim"] = {
+    loaded = true,
+    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/stickybuf.nvim",
+    url = "https://github.com/stevearc/stickybuf.nvim"
+  },
   ["surround.nvim"] = {
     loaded = true,
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/surround.nvim",

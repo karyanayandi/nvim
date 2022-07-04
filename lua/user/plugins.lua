@@ -86,6 +86,7 @@ return packer.startup(function(use)
     run = "cd app && npm install",
     ft = "markdown",
   }
+use "stevearc/stickybuf.nvim"
   use "ghillb/cybu.nvim"
   -- use { "yardnsm/vim-import-cost", run = "npm install --production" }
 
