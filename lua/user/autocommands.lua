@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd({ "User" }, {
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
- pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir", "DressingSelect" },
+  pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir", "DressingSelect" },
   callback = function()
     vim.cmd [[
       nnoremap <silent> <buffer> q :close<CR> 
@@ -63,11 +63,19 @@ vim.api.nvim_create_autocmd({ "CmdWinEnter" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "CursorMoved", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost" }, {
-  callback = function()
-    require("user.winbar").get_winbar()
-  end,
-})
+-- vim.api.nvim_create_autocmd({ "CursorMoved", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost" }, {
+--   callback = function()
+--     require("user.winbar").get_winbar()
+--   end,
+-- })
+
+if vim.fn.has('nvim-0.8') == 1 then
+  vim.api.nvim_create_autocmd({ "CursorMoved", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost" }, {
+    callback = function()
+      require("user.winbar").get_winbar()
+    end,
+  })
+end
 
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   callback = function()
@@ -128,3 +136,4 @@ vim.api.nvim_create_autocmd("CursorHold", {
 -- ]]
 
 
+vim.cmd [[ au FocusGained,BufEnter * :checktime ]]

@@ -84,11 +84,6 @@ _G.packer_plugins = {
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/SchemaStore.nvim",
     url = "https://github.com/b0o/SchemaStore.nvim"
   },
-  ["aerial.nvim"] = {
-    loaded = true,
-    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/aerial.nvim",
-    url = "https://github.com/stevearc/aerial.nvim"
-  },
   ["alpha-nvim"] = {
     loaded = true,
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/alpha-nvim",
@@ -140,10 +135,8 @@ _G.packer_plugins = {
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["copilot-cmp"] = {
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/karyana/.local/share/nvim/site/pack/packer/opt/copilot-cmp",
+    loaded = true,
+    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/copilot-cmp",
     url = "https://github.com/zbirenbaum/copilot-cmp"
   },
   ["copilot.lua"] = {
@@ -199,11 +192,6 @@ _G.packer_plugins = {
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
-  ["goto-preview"] = {
-    loaded = true,
-    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/goto-preview",
-    url = "https://github.com/rmagatti/goto-preview"
-  },
   harpoon = {
     loaded = true,
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/harpoon",
@@ -228,6 +216,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/lir.nvim",
     url = "https://github.com/tamago324/lir.nvim"
+  },
+  ["lsp_extensions.nvim"] = {
+    loaded = true,
+    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/lsp_extensions.nvim",
+    url = "https://github.com/nvim-lua/lsp_extensions.nvim"
   },
   ["lsp_signature.nvim"] = {
     loaded = true,
@@ -356,6 +349,11 @@ _G.packer_plugins = {
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/onedark.nvim",
     url = "https://github.com/navarasu/onedark.nvim"
   },
+  ["onedarker.nvim"] = {
+    loaded = true,
+    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/onedarker.nvim",
+    url = "https://github.com/lunarvim/onedarker.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -395,11 +393,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/sniprun",
     url = "https://github.com/michaelb/sniprun"
-  },
-  ["stickybuf.nvim"] = {
-    loaded = true,
-    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/stickybuf.nvim",
-    url = "https://github.com/stevearc/stickybuf.nvim"
   },
   ["surround.nvim"] = {
     loaded = true,
@@ -500,34 +493,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
-local module_lazy_loads = {
-  ["^copilot_cmp"] = "copilot-cmp"
-}
-local lazy_load_called = {['packer.load'] = true}
-local function lazy_load_module(module_name)
-  local to_load = {}
-  if lazy_load_called[module_name] then return nil end
-  lazy_load_called[module_name] = true
-  for module_pat, plugin_name in pairs(module_lazy_loads) do
-    if not _G.packer_plugins[plugin_name].loaded and string.match(module_name, module_pat) then
-      to_load[#to_load + 1] = plugin_name
-    end
-  end
-
-  if #to_load > 0 then
-    require('packer.load')(to_load, {module = module_name}, _G.packer_plugins)
-    local loaded_mod = package.loaded[module_name]
-    if loaded_mod then
-      return function(modname) return loaded_mod end
-    end
-  end
-end
-
-if not vim.g.packer_custom_loader_enabled then
-  table.insert(package.loaders, 1, lazy_load_module)
-  vim.g.packer_custom_loader_enabled = true
-end
-
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads

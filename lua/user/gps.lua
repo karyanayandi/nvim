@@ -95,5 +95,5 @@ gps.setup {
 
   -- indicator used when context is hits depth limit
   depth_limit_indicator = "..",
-  text_hl = "LineNr",
+  text_hl = "Winbar",
 }

@@ -45,6 +45,7 @@ vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#D4D4D4", bg = "#303030", bold = 
 -- vim.api.nvim_set_hl(0, "SLProgress", { fg = "#D7BA7D", bg = "#252525" })
 vim.api.nvim_set_hl(0, "SLProgress", { fg = "#D4D4D4", bg = "#303030" })
 vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#808080", bg = "#252525" })
+vim.api.nvim_set_hl(0, "SLLSP", { fg = "#5e81ac", bg = "#282c34" })
 
 local diagnostics = {
   "diagnostics",
@@ -150,6 +151,52 @@ local spaces = {
   end,
   padding = 0,
   separator = "%#SLSeparator#" .. " │" .. "%*",
+}
+
+local language_server = {
+  function()
+    local clients = vim.lsp.buf_get_clients()
+
+    if clients == nil then
+      return
+    end
+
+    local client_names = {}
+
+    for _, client in ipairs(clients) do
+      if client.name ~= "copilot" and client.name ~= "null-ls" then
+        table.insert(client_names, client.name)
+      end
+    end
+
+    local buf_ft = vim.bo.filetype
+
+    local s = require "null-ls.sources"
+    local available_sources = s.get_available(buf_ft)
+    local registered = {}
+    for _, source in ipairs(available_sources) do
+      for method in pairs(source.methods) do
+        registered[method] = registered[method] or {}
+        table.insert(registered[method], source.name)
+      end
+    end
+
+    local formatter = registered["NULL_LS_FORMATTING"]
+    local linter = registered["NULL_LS_DIAGNOSTICS"]
+    if formatter ~= nil then
+      vim.list_extend(client_names, formatter)
+    end
+    if linter ~= nil then
+      vim.list_extend(client_names, linter)
+    end
+
+    local client_names_str = table.concat(client_names, ", ")
+
+    return "%#SLLSP#" .. " " .. client_names_str .. " " .. "%*"
+  end,
+  padding = 0,
+  cond = hide_in_width,
+  separator = "%#SLSeparator#" .. " │ " .. "%*",
 }
 
 local location = {

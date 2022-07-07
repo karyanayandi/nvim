@@ -25,6 +25,7 @@ null_ls.setup {
     diagnostics.eslint.with({
       prefer_local = "node_modules/.bin",
     }),
+    diagnostics.flake8,
     code_actions.eslint_d
   },
 }

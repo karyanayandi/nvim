@@ -86,7 +86,7 @@ return packer.startup(function(use)
     run = "cd app && npm install",
     ft = "markdown",
   }
-use "stevearc/stickybuf.nvim"
+  -- use "stevearc/stickybuf.nvim"
   use "ghillb/cybu.nvim"
   -- use { "yardnsm/vim-import-cost", run = "npm install --production" }
 
@@ -95,6 +95,7 @@ use "stevearc/stickybuf.nvim"
 
   -- Colorschemes
   use "navarasu/onedark.nvim"
+  use "lunarvim/onedarker.nvim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -135,14 +136,11 @@ use "stevearc/stickybuf.nvim"
       end, 100)
     end,
   }
-  use {
-    "zbirenbaum/copilot-cmp",
-    module = "copilot_cmp",
-  }
+  use "zbirenbaum/copilot-cmp"
   use "RRethy/vim-illuminate"
-  use "stevearc/aerial.nvim"
+  -- use "stevearc/aerial.nvim"
   use "j-hui/fidget.nvim"
-  use "rmagatti/goto-preview"
+  use "nvim-lua/lsp_extensions.nvim"
 
   -- Additonal Programming Language
   use "jose-elias-alvarez/typescript.nvim"
