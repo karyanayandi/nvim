@@ -21,7 +21,4 @@ M.openOptions = {
   hsplit = "sb %s",
 }
 
--- vim extend table
--- vim.tbl_extend(M.config, M.openOptions)
-
 return M

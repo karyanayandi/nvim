@@ -5,7 +5,6 @@ end
 
 crates.setup {
   popup = {
-    -- autofocus = true,
     style = "minimal",
     border = "rounded",
     show_version_date = false,

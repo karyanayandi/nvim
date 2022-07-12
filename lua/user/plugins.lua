@@ -56,7 +56,6 @@ return packer.startup(function(use)
   use "lukas-reineke/indent-blankline.nvim"
   use "goolord/alpha-nvim"
   use "folke/which-key.nvim"
-  use "unblevable/quick-scope"
   use "phaazon/hop.nvim"
   use "andymass/vim-matchup"
   use "kylechui/nvim-surround"
@@ -77,7 +76,6 @@ return packer.startup(function(use)
   use "Mephistophiles/surround.nvim"
   use "rcarriga/nvim-notify"
   use "tversteeg/registers.nvim"
-  -- use { "nyngwang/NeoZoom.lua", branch = "neo-zoom-original" }
   use "SmiteshP/nvim-gps"
   use { "michaelb/sniprun", run = "bash ./install.sh" }
   use {
@@ -86,7 +84,6 @@ return packer.startup(function(use)
     run = "cd app && npm install",
     ft = "markdown",
   }
-  -- use "stevearc/stickybuf.nvim"
   use "ghillb/cybu.nvim"
   -- use { "yardnsm/vim-import-cost", run = "npm install --production" }
 
@@ -94,8 +91,7 @@ return packer.startup(function(use)
   use "stevearc/dressing.nvim"
 
   -- Colorschemes
-  use "navarasu/onedark.nvim"
-  use "lunarvim/onedarker.nvim"
+  use "shaunsingh/nord.nvim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -138,7 +134,6 @@ return packer.startup(function(use)
   }
   use "zbirenbaum/copilot-cmp"
   use "RRethy/vim-illuminate"
-  -- use "stevearc/aerial.nvim"
   use "j-hui/fidget.nvim"
   use "nvim-lua/lsp_extensions.nvim"
 
@@ -153,13 +148,11 @@ return packer.startup(function(use)
   use "tom-anders/telescope-vim-bookmarks.nvim"
   use "nvim-telescope/telescope-media-files.nvim"
   use "lalitmee/browse.nvim"
-  -- use "nvim-telescope/telescope-ui-select.nvim"
-  -- use "nvim-telescope/telescope-file-browser.nvim"
 
   -- Treesitter
   use "nvim-treesitter/nvim-treesitter"
   use "JoosepAlviste/nvim-ts-context-commentstring"
-  use { "p00f/nvim-ts-rainbow" }
+  use "p00f/nvim-ts-rainbow"
   use "nvim-treesitter/playground"
   use "windwp/nvim-ts-autotag"
   use "drybalka/tree-climber.nvim"

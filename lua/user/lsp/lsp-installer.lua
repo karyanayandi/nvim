@@ -8,10 +8,9 @@ local servers = {
   "cssmodules_ls",
   "emmet_ls",
   "html",
-  -- "jdtls",
+  "jdtls",
   "jsonls",
   "sumneko_lua",
-  -- "tflint",
   "tsserver",
   "rust_analyzer",
   "taplo",
@@ -45,8 +44,6 @@ local settings = {
   },
 
   log_level = vim.log.levels.INFO,
-  -- max_concurrent_installers = 4,
-  -- install_root_dir = path.concat { vim.fn.stdpath "data", "lsp_servers" },
 }
 
 lsp_installer.setup(settings)

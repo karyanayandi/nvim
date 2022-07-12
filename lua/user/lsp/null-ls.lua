@@ -11,18 +11,14 @@ local code_actions = null_ls.builtins.code_actions
 null_ls.setup {
   debug = false,
   sources = {
-    -- formatting.prettier.with {
-    --   extra_filetypes = { "toml" },
-    --   extra_args = { "--no-semi", "--no-single-quote", "--no-jsx-single-quote", "--bracket-spacing", "--print-width 80",
-    --     "--prose-wrap always", "--tab-width 2", "--trailing-comma all", "--end-of-line auto" },
-    -- },
     formatting.stylua,
     formatting.google_java_format,
     formatting.black.with { extra_args = { "--fast" } },
     formatting.prettier.with({
       prefer_local = "node_modules/.bin",
+      extra_filetypes = { "toml" },
     }),
-    diagnostics.eslint.with({
+    diagnostics.eslint_d.with({
       prefer_local = "node_modules/.bin",
     }),
     diagnostics.flake8,

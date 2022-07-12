@@ -5,10 +5,6 @@ end
 
 local icons = require "user.icons"
 
--- vim.api.nvim_set_hl(0, "WinBarSeparator", { fg = "#111fff" })
--- local fg = vim.api.nvim_get_hl_by_name('DiffAdd', 0).background
--- local bg = vim.api.nvim_get_hl_by_name('DiffAdd', 0).foreground
-
 local space = ""
 
 if vim.fn.has "mac" == 1 then
@@ -43,47 +39,6 @@ gps.setup {
     ["time-name"] = "%#CmpItemKindValue#" .. icons.misc.Watch .. "%*" .. space,
     ["module-name"] = "%#CmpItemKindModule#" .. icons.kind.Module .. "%*" .. space,
   },
-
-  -- Add custom configuration per language or
-  -- Disable the plugin for a language
-  -- Any language not disabled here is enabled by default
-  -- languages = {
-  -- 	-- Some languages have custom icons
-  -- 	["json"] = {
-  -- 		icons = {
-  -- 		}
-  -- 	},
-  -- 	["toml"] = {
-  -- 		icons = {
-  -- 		}
-  -- 	},
-  -- 	["verilog"] = {
-  -- 		icons = {
-  -- 		}
-  -- 	},
-  -- 	["yaml"] = {
-  -- 		icons = {
-  -- 		}
-  -- 	},
-
-  -- Disable for particular languages
-  -- ["bash"] = false, -- disables nvim-gps for bash
-  -- ["go"] = false,   -- disables nvim-gps for golang
-
-  -- Override default setting for particular languages
-  -- ["ruby"] = {
-  --	separator = '|', -- Overrides default separator with '|'
-  --	icons = {
-  --		-- Default icons not specified in the lang config
-  --		-- will fallback to the default value
-  --		-- "container-name" will fallback to default because it's not set
-  --		["function-name"] = '',    -- to ensure empty values, set an empty string
-  --		["tag-name"] = ''
-  --		["class-name"] = '::',
-  --		["method-name"] = '#',
-  --	}
-  --}
-  -- },
 
   separator = " " .. icons.ui.ChevronRight .. " ",
 

@@ -8,11 +8,8 @@ if vim.fn.has "mac" == 1 or vim.g.use_nerd_icons then
   return {
     kind = {
       Text = "",
-      -- Method = "m",
-      -- Function = "",
-      -- Constructor = "",
-      Method = "",
-      Function = "",
+      Method = "m",
+      Function = "",
       Constructor = "",
       Field = "",
       -- Variable = "",
@@ -27,8 +24,7 @@ if vim.fn.has "mac" == 1 or vim.g.use_nerd_icons then
       Enum = "",
       -- Keyword = "",
       Keyword = "",
-      -- Snippet = "",
-      Snippet = "",
+      Snippet = "",
       Color = "",
       File = "",
       Reference = "",

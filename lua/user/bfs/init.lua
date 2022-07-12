@@ -20,9 +20,6 @@ local get_bufs = function()
   for _, id in ipairs(vim.api.nvim_list_bufs()) do
     local buf_info = vim.fn.getbufinfo(id)[1]
     if buf_info.listed == 1 then
-      -- print(vim.inspect(buf_info.bufnr))
-      -- print(vim.inspect(buf_info))
-      -- TODO: this is unecessary
       table.insert(bufs, {
         id = id,
         name = string.gsub(buf_info.name, cwd_path, ""),

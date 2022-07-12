@@ -1,12 +1,3 @@
--- vim.api.nvim_create_autocmd({ "User" }, {
---   pattern = { "AlphaReady" },
---   callback = function()
---     vim.cmd [[
---       set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
---     ]]
---   end,
--- })
-
 vim.api.nvim_create_autocmd({ "User" }, {
   pattern = { "AlphaReady" },
   callback = function()
@@ -43,13 +34,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 vim.cmd "autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif"
--- vim.api.nvim_create_autocmd({ "BufEnter" }, {
---   callback = function()
---     vim.cmd [[
---       if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
---     ]]
---   end,
--- })
 
 vim.api.nvim_create_autocmd({ "VimResized" }, {
   callback = function()
@@ -63,13 +47,7 @@ vim.api.nvim_create_autocmd({ "CmdWinEnter" }, {
   end,
 })
 
--- vim.api.nvim_create_autocmd({ "CursorMoved", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost" }, {
---   callback = function()
---     require("user.winbar").get_winbar()
---   end,
--- })
-
-if vim.fn.has('nvim-0.8') == 1 then
+if vim.fn.has "nvim-0.8" == 1 then
   vim.api.nvim_create_autocmd({ "CursorMoved", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost" }, {
     callback = function()
       require("user.winbar").get_winbar()
@@ -102,16 +80,6 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
   end,
 })
 
--- vim.api.nvim_create_autocmd({ "ModeChanged" }, {
---   callback = function()
---     local luasnip = require "luasnip"
---     if luasnip.expand_or_jumpable() then
---       -- ask maintainer for option to make this silent
---       luasnip.unlink_current()
---     end
---   end,
--- })
-
 vim.api.nvim_create_autocmd("CursorHold", {
   callback = function()
     local opts = {
@@ -126,14 +94,13 @@ vim.api.nvim_create_autocmd("CursorHold", {
   end
 })
 
--- vim.cmd [[
--- augroup import_cost_auto_run
---   autocmd!
---   autocmd InsertLeave *.js,*.jsx,*.ts,*.tsx ImportCost
---   autocmd BufEnter *.js,*.jsx,*.ts,*.tsx ImportCost
---   autocmd CursorHold *.js,*.jsx,*.ts,*.tsx ImportCost
--- augroup END
--- ]]
-
-
 vim.cmd [[ au FocusGained,BufEnter * :checktime ]]
+
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  pattern = { "term://*" },
+  callback = function()
+    vim.cmd [[
+    set cmdheight=1 
+  ]]
+  end,
+})
