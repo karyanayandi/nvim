@@ -27,10 +27,10 @@ local icons = require "user.icons"
 
 local kind_icons = icons.kind
 
-vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
-vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
-vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
-vim.api.nvim_set_hl(0, "CmpItemKindCrate", { fg = "#F64D00" })
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#A3BE8C" })
+vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#B48EAD" })
+vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#EBCB8B" })
+vim.api.nvim_set_hl(0, "CmpItemKindCrate", { fg = "#D08770" })
 
 cmp.setup {
   snippet = {
@@ -49,8 +49,6 @@ cmp.setup {
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     },
-    -- Accept currently selected item. If none selected, `select` first item.
-    -- Set `select` to `false` to only confirm explicitly selected items.
     ["<CR>"] = cmp.mapping.confirm { select = true },
     ["<Right>"] = cmp.mapping.confirm { select = true },
     ["<Tab>"] = cmp.mapping(function(fallback)
@@ -63,7 +61,6 @@ cmp.setup {
       elseif luasnip.expandable() then
         luasnip.expand()
       elseif check_backspace() then
-        -- cmp.complete()
         fallback()
       else
         fallback()
@@ -88,7 +85,6 @@ cmp.setup {
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
-      -- Kind icons
       vim_item.kind = kind_icons[vim_item.kind]
 
       if entry.source.name == "cmp_tabnine" then

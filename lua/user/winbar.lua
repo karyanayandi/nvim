@@ -14,20 +14,26 @@ M.winbar_filetype_exclude = {
   "spectre_panel",
   "toggleterm",
   "DressingSelect",
+  "Jaq",
+  "harpoon",
+  "dapui_scopes",
+  "dapui_breakpoints",
+  "dapui_stacks",
+  "dapui_watches",
+  "dap-repl",
+  "dap-terminal",
+  "dapui_console",
   "",
 }
 
-local get_filename = function()
+M.get_filename = function()
   local filename = vim.fn.expand "%:t"
   local extension = vim.fn.expand "%:e"
   local f = require "user.functions"
 
   if not f.isempty(filename) then
-    local file_icon, file_icon_color = require("nvim-web-devicons").get_icon_color(
-      filename,
-      extension,
-      { default = true }
-    )
+    local file_icon, file_icon_color =
+      require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
 
     local hl_group = "FileIconColor" .. extension
 
@@ -36,31 +42,29 @@ local get_filename = function()
       file_icon = ""
       file_icon_color = ""
     end
+    vim.api.nvim_set_hl(0, "Winbar", { fg = "#616e88" })
 
-    vim.api.nvim_set_hl(0, "Winbar", { fg = "#6b737f" })
-
-    -- return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. "%#LineNr#" .. filename .. "%*"
     return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. "%#Winbar#" .. filename .. "%*"
   end
 end
 
-local get_gps = function()
-  local status_gps_ok, gps = pcall(require, "nvim-gps")
-  if not status_gps_ok then
+local get_navic = function()
+  local status_navic_ok, navic = pcall(require, "nvim-navic")
+  if not status_navic_ok then
     return ""
   end
 
-  local status_ok, gps_location = pcall(gps.get_location, {})
+  local status_ok, navic_location = pcall(navic.get_location, {})
   if not status_ok then
     return ""
   end
 
-  if not gps.is_available() or gps_location == "error" then
+  if not navic.is_available() or navic_location == "error" then
     return ""
   end
 
-  if not require("user.functions").isempty(gps_location) then
-    return require("user.icons").ui.ChevronRight .. " " .. gps_location
+  if not require("user.functions").isempty(navic_location) then
+    return require("user.icons").ui.ChevronRight .. " " .. navic_location
   else
     return ""
   end
@@ -79,25 +83,31 @@ M.get_winbar = function()
     return
   end
   local f = require "user.functions"
-  local value = get_filename()
+  local value = M.get_filename()
 
-  local gps_added = false
+  local navic_added = false
   if not f.isempty(value) then
-    local gps_value = get_gps()
-    value = value .. " " .. gps_value
-    if not f.isempty(gps_value) then
-      gps_added = true
+    local navic_value = get_navic()
+    value = value .. " " .. navic_value
+    if not f.isempty(navic_value) then
+      navic_added = true
     end
   end
 
   if not f.isempty(value) and f.get_buf_option "mod" then
-    -- local mod = "%#LineNr#" .. require("user.icons").ui.Circle .. "%*"
     local mod = "%#LspCodeLens#" .. require("user.icons").ui.Circle .. "%*"
-    if gps_added then
+    if navic_added then
       value = value .. " " .. mod
     else
       value = value .. mod
     end
+  end
+
+  local num_tabs = #vim.api.nvim_list_tabpages()
+
+  if num_tabs > 1 and not f.isempty(value) then
+    local tabpage_number = tostring(vim.api.nvim_tabpage_get_number(0))
+    value = value .. "%=" .. tabpage_number .. "/" .. tostring(num_tabs)
   end
 
   local status_ok, _ = pcall(vim.api.nvim_set_option_value, "winbar", value, { scope = "local" })

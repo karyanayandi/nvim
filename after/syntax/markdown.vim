@@ -3,8 +3,6 @@
 " Maintainer:	Ben Williams <benw@plasticboy.com>
 " URL:		http://plasticboy.com/markdown-vim-mode/
 " Remark:	Uses HTML syntax file
-" TODO: 	Handle stuff contained within stuff (e.g. headings within blockquotes)
-
 
 " Read the HTML syntax to start with
 if version < 600

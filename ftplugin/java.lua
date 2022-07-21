@@ -2,6 +2,15 @@ vim.opt_local.shiftwidth = 2
 vim.opt_local.tabstop = 2
 vim.opt_local.cmdheight = 2 -- more space in the neovim command line for displaying messages
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not status_cmp_ok then
+  return
+end
+capabilities.textDocument.completion.completionItem.snippetSupport = false
+capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+
 local status, jdtls = pcall(require, "jdtls")
 if not status then
   return
@@ -33,8 +42,6 @@ local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 
 local workspace_dir = WORKSPACE_PATH .. project_name
 
--- TODO: Testing
-
 JAVA_DAP_ACTIVE = true
 
 local bundles = {}
@@ -61,6 +68,7 @@ local config = {
     -- 💀
     "java", -- or '/path/to/java11_or_newer/bin/java'
     -- depends on if `java` is in your $PATH env variable and if it points to the right version.
+
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
     "-Dosgi.bundles.defaultStartLevel=4",
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -95,7 +103,7 @@ local config = {
   },
 
   on_attach = require("user.lsp.handlers").on_attach,
-  capabilities = require("user.lsp.handlers").capabilities,
+  capabilities = capabilities,
 
   -- 💀
   -- This is the default if not provided, you can remove it. Or adjust as needed.

@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/alpha-nvim",
     url = "https://github.com/goolord/alpha-nvim"
   },
+  ["auto-session"] = {
+    loaded = true,
+    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/auto-session",
+    url = "https://github.com/rmagatti/auto-session"
+  },
   ["browse.nvim"] = {
     loaded = true,
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/browse.nvim",
@@ -175,7 +180,7 @@ _G.packer_plugins = {
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/friendly-snippets",
-    url = "https://github.com/rafamadriz/friendly-snippets"
+    url = "https://github.com/karyanayandi/friendly-snippets"
   },
   ["git-blame.nvim"] = {
     loaded = true,
@@ -282,12 +287,17 @@ _G.packer_plugins = {
   ["nvim-colorizer.lua"] = {
     loaded = true,
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
-    url = "https://github.com/norcalli/nvim-colorizer.lua"
+    url = "https://github.com/NvChad/nvim-colorizer.lua"
   },
-  ["nvim-gps"] = {
+  ["nvim-dap"] = {
     loaded = true,
-    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/nvim-gps",
-    url = "https://github.com/SmiteshP/nvim-gps"
+    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/nvim-dap",
+    url = "https://github.com/mfussenegger/nvim-dap"
+  },
+  ["nvim-dap-ui"] = {
+    loaded = true,
+    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/nvim-dap-ui",
+    url = "https://github.com/rcarriga/nvim-dap-ui"
   },
   ["nvim-jdtls"] = {
     loaded = true,
@@ -303,6 +313,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-navic"] = {
+    loaded = true,
+    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/nvim-navic",
+    url = "https://github.com/SmiteshP/nvim-navic"
   },
   ["nvim-notify"] = {
     loaded = true,
@@ -374,6 +389,11 @@ _G.packer_plugins = {
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/registers.nvim",
     url = "https://github.com/tversteeg/registers.nvim"
   },
+  ["renamer.nvim"] = {
+    loaded = true,
+    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/renamer.nvim",
+    url = "https://github.com/filipdutescu/renamer.nvim"
+  },
   ["rust-tools.nvim"] = {
     loaded = true,
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
@@ -425,11 +445,6 @@ _G.packer_plugins = {
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
   },
-  ["tree-climber.nvim"] = {
-    loaded = true,
-    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/tree-climber.nvim",
-    url = "https://github.com/drybalka/tree-climber.nvim"
-  },
   ["trouble.nvim"] = {
     loaded = true,
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/trouble.nvim",
@@ -459,6 +474,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/karyana/.local/share/nvim/site/pack/packer/start/vim-illuminate",
     url = "https://github.com/RRethy/vim-illuminate"
+  },
+  ["vim-import-cost"] = {
+    loaded = true,
+    path = "/home/karyana/.local/share/nvim/site/pack/packer/start/vim-import-cost",
+    url = "https://github.com/yardnsm/vim-import-cost"
   },
   ["vim-matchup"] = {
     loaded = true,

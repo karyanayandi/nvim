@@ -65,8 +65,9 @@ return packer.startup(function(use)
   }
   use "nacro90/numb.nvim"
   use "monaqa/dial.nvim"
-  use "norcalli/nvim-colorizer.lua"
+  use "NvChad/nvim-colorizer.lua"
   use "windwp/nvim-spectre"
+  use "filipdutescu/renamer.nvim"
   use "folke/zen-mode.nvim"
   use "karb94/neoscroll.nvim"
   use "folke/todo-comments.nvim"
@@ -76,7 +77,7 @@ return packer.startup(function(use)
   use "Mephistophiles/surround.nvim"
   use "rcarriga/nvim-notify"
   use "tversteeg/registers.nvim"
-  use "SmiteshP/nvim-gps"
+  use "SmiteshP/nvim-navic"
   use { "michaelb/sniprun", run = "bash ./install.sh" }
   use {
 
@@ -85,7 +86,8 @@ return packer.startup(function(use)
     ft = "markdown",
   }
   use "ghillb/cybu.nvim"
-  -- use { "yardnsm/vim-import-cost", run = "npm install --production" }
+  use "rmagatti/auto-session"
+  use { "yardnsm/vim-import-cost", run = "npm install --production" }
 
   -- UI
   use "stevearc/dressing.nvim"
@@ -108,11 +110,9 @@ return packer.startup(function(use)
     requires = "hrsh7th/nvim-cmp",
   }
 
-  -- use 'David-Kunz/cmp-npm' -- doesn't seem to work
-
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
-  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+  use "karyanayandi/friendly-snippets" -- a bunch of snippets to use
 
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
@@ -123,6 +123,7 @@ return packer.startup(function(use)
   use "ray-x/lsp_signature.nvim"
   use "b0o/SchemaStore.nvim"
   use "folke/trouble.nvim"
+  -- use {"github/copilot.vim"}
   use {
     "zbirenbaum/copilot.lua",
     event = { "VimEnter" },
@@ -143,6 +144,10 @@ return packer.startup(function(use)
   use "simrat39/rust-tools.nvim"
   use "Saecki/crates.nvim"
 
+  -- DAP
+  use "mfussenegger/nvim-dap"
+  use "rcarriga/nvim-dap-ui"
+
   -- Telescope
   use "nvim-telescope/telescope.nvim"
   use "tom-anders/telescope-vim-bookmarks.nvim"
@@ -155,7 +160,6 @@ return packer.startup(function(use)
   use "p00f/nvim-ts-rainbow"
   use "nvim-treesitter/playground"
   use "windwp/nvim-ts-autotag"
-  use "drybalka/tree-climber.nvim"
 
   -- Git
   use "lewis6991/gitsigns.nvim"

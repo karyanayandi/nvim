@@ -1,5 +1,3 @@
--- TODO: scope open buffers to project
-
 require "split"
 
 local M = {}
@@ -140,7 +138,6 @@ M.set_buffers = function(buf)
       { default = true }
     )
 
-    -- TODO: refactor this
     if filename:split(" ", true)[1] == "Terminal:" then
       hl_group = hl_group .. "term"
       file_icon, file_icon_color = require("nvim-web-devicons").get_icon_color(

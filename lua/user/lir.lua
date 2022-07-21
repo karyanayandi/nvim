@@ -15,10 +15,8 @@ lir.setup {
     ["M"] = actions.split,
     ["N"] = actions.vsplit,
     ["<C-t>"] = actions.tabedit,
-
     ["h"] = actions.up,
     ["q"] = actions.quit,
-
     ["A"] = actions.mkdir,
     ["a"] = actions.newfile,
     ["r"] = actions.rename,
@@ -26,7 +24,6 @@ lir.setup {
     ["Y"] = actions.yank_path,
     ["i"] = actions.toggle_show_hidden,
     ["d"] = actions.delete,
-
     ["J"] = function()
       mark_actions.toggle_mark()
       vim.cmd "normal! j"
@@ -42,8 +39,6 @@ lir.setup {
       highlight_dirname = true,
     },
 
-    -- -- You can define a function that returns a table to be passed as the third
-    -- -- argument of nvim_open_win().
     win_opts = function()
       local width = math.floor(vim.o.columns * 0.7)
       local height = math.floor(vim.o.lines * 0.7)
@@ -51,14 +46,11 @@ lir.setup {
         border = "rounded",
         width = width,
         height = height,
-        -- row = 1,
-        -- col = math.floor((vim.o.columns - width) / 2),
       }
     end,
   },
   hide_cursor = false,
   on_init = function()
-    -- use visual mode
     vim.api.nvim_buf_set_keymap(
       0,
       "x",
@@ -66,18 +58,13 @@ lir.setup {
       ':<C-u>lua require"lir.mark.actions".toggle_mark("v")<CR>',
       { noremap = true, silent = true }
     )
-
-    -- echo cwd
-    -- vim.api.nvim_echo({ { vim.fn.expand "%:p", "Normal" } }, false, {})
   end,
 }
 
--- custom folder icon
 require("nvim-web-devicons").set_icon {
   lir_folder_icon = {
     icon = "",
-    -- color = "#7ebae4",
-    color = "#569CD6",
+    color = "#e5e9f0",
     name = "LirFolderNode",
   },
 }

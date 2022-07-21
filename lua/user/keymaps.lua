@@ -1,22 +1,11 @@
 M = {}
 local opts = { noremap = true, silent = true }
 
-
--- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
---Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
+keymap("n", "<Space>", "", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
 
 -- Normal --
 keymap("n", "<m-h>", "<C-w>h", opts)
@@ -27,6 +16,11 @@ keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
+
+-- Tabs --
+keymap("n", "<m-t>", ":tabnew %<cr>", opts)
+keymap("n", "<m-c>", ":tabclose<cr>", opts)
+keymap("n", [[c-\]], ":tabonly<cr>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
@@ -42,7 +36,7 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
---Other
+-- Other
 keymap("n", "<C-A>", "gg<S-v>G", opts)
 keymap("n", "<C-s>", ":w!<CR>", opts)
 
@@ -53,7 +47,7 @@ keymap("i", "jj", "<ESC>", opts)
 keymap("i", "kk", "<ESC>", opts)
 keymap("i", "<C-]>", "<ESC>", opts)
 
---Other
+-- Other
 keymap("i", "<C-s>", "<ESC>:w!<CR>", opts)
 
 -- Visual --
@@ -78,60 +72,32 @@ keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Custom
--- Comment
-keymap("n", "<m-/>", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
-keymap("x", "<m-/>", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', opts)
-
+keymap("n", "<C-/>", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
+keymap("x", "<C-/>", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', opts)
 keymap("n", "<esc><esc>", "<cmd>nohlsearch<cr>", opts)
--- NOTE: the fact that tab and ctrl-i are the same is stupid
--- keymap("n", "<TAB>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 keymap("n", "Q", "<cmd>Bdelete!<CR>", opts)
-keymap("n", "<F1>", ":e ~/Notes/<cr>", opts)
-keymap("n", "<F3>", ":e .<cr>", opts)
-keymap("n", "<F4>", "<cmd>Telescope resume<cr>", opts)
-keymap("n", "<F5>", "<cmd>Telescope commands<CR>", opts)
-keymap(
-  "n",
-  "<F6>",
-  [[:echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>]]
-  ,
-  opts
-)
-keymap("n", "<F7>", "<cmd>TSHighlightCapturesUnderCursor<cr>", opts)
-keymap("n", "<F8>", "<cmd>TSPlaygroundToggle<cr>", opts)
-keymap("n", "<F11>", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-keymap("n", "<F12>", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-keymap("v", "//", [[y/\v<c-r>=escape(@",'/\')<cr><cr>]], opts)
-keymap(
-  "n",
-  "<c-p>",
-  "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-  opts
-)
-keymap(
-  "n",
-  "<m-f>",
-  "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-  opts
-)
-keymap(
-  "n",
-  ";f",
-  "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_ivy{previewer = false})<cr>",
-  opts
-)
+keymap("n", ";f", "<cmd>Telescope find_files theme=ivy<cr>", opts)
 keymap("n", ";r", "<cmd>lua require('spectre').open_file_search()<cr>", opts)
 keymap("n", ";t", "<cmd>Telescope live_grep theme=ivy<cr>", opts)
-keymap("n", "\\", "<cmd>Telescope buffers theme=ivy<cr>", opts)
+keymap("n", ";b", "<cmd>Telescope buffers theme=ivy<cr>", opts)
 keymap("n", ";h", "<cmd>Telescope help_tags theme=ivy<cr>", opts)
 keymap("n", "<C-t>", "<cmd>lua vim.lsp.buf.document_symbol()<cr>", opts)
 keymap("n", "<S-n>", "<cmd>vsplit<cr>", opts)
 keymap("n", "<S-m>", "<cmd>split<cr>", opts)
 keymap("n", "<C-k-z>", "<cmd>ZenMode<cr>", opts)
 keymap("n", "<c-n>", ":e ~/Notes/<cr>", opts)
-
+keymap("n", "<F1>", ":e ~/Notes/<cr>", opts)
+keymap("n", "<F3>", ":e .<cr>", opts)
+keymap("n", "<F4>", "<cmd>Telescope resume<cr>", opts)
+keymap("n", "<F5>", "<cmd>Telescope commands<CR>", opts)
+keymap("n", "<F6>", "<cmd>TSHighlightCapturesUnderCursor<cr>", opts)
+keymap("n", "<F7>", "<cmd>TSPlaygroundToggle<cr>", opts)
+keymap("n", "<F8>", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+keymap("n", "<F9>", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+keymap("v", "//", [[y/\v<c-r>=escape(@",'/\')<cr><cr>]], opts)
 keymap("n", "-", ":lua require'lir.float'.toggle()<cr>", opts)
 keymap("n", "gx", [[:silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<CR>]], opts)
+keymap("n", "<m-q>", ":call QuickFixToggle()<cr>", opts)
 
 M.show_documentation = function()
   local filetype = vim.bo.filetype
@@ -147,5 +113,15 @@ M.show_documentation = function()
 end
 vim.api.nvim_set_keymap("n", "J", ":lua require('user.keymaps').show_documentation()<CR>", opts)
 vim.api.nvim_set_keymap("n", "<m-b>", "<cmd>lua require('user.bfs').open()<cr>", opts)
+vim.api.nvim_set_keymap("n", "<m-g>", "<cmd>Telescope git_branches<cr>", opts)
+vim.cmd [[
+  function! QuickFixToggle()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+      copen
+    else
+      cclose
+    endif
+  endfunction
+]]
 
 return M

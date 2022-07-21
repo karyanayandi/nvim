@@ -7,9 +7,6 @@ M.user_config = {
   height = 10,
   style = "minimal",
   border = "rounded",
-  -- anchor = "NW",
-  -- TODO: fine a good way to center in window later
-  -- relative = "win",
   relative = "editor",
   row = (ui.height / 2) - (10 / 2),
   col = (ui.width / 2) - (40 / 2),

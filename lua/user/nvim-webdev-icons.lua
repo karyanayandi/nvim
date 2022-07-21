@@ -6,7 +6,7 @@ end
 nvim_web_devicons.set_icon {
   sh = {
     icon = "",
-    color = "#1DC123",
+    color = "#A3BE8C",
     cterm_color = "59",
     name = "Sh",
   },

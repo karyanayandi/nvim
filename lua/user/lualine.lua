@@ -8,29 +8,26 @@ if not status_theme_ok then
   return
 end
 
-
 local mode_color = {
-  n = "#569cd6",
+  n = "#5E81AC",
   i = "#6a9955",
-  v = "#c586c0",
-  [""] = "#c586c0",
-  V = "#c586c0",
-  -- c = '#B5CEA8',
-  -- c = '#D7BA7D',
-  c = "#4EC9B0",
-  no = "#569cd6",
-  s = "#ce9178",
-  S = "#ce9178",
-  [""] = "#ce9178",
-  ic = "#dcdcaa",
-  R = "#d16969",
-  Rv = "#d16969",
-  cv = "#569cd6",
-  ce = "#569cd6",
-  r = "#d16969",
-  rm = "#4EC9B0",
-  ["r?"] = "#4EC9B0",
-  ["!"] = "#4EC9B0",
+  v = "#B48EAD",
+  [""] = "#B48EAD",
+  V = "#B48EAD",
+  c = "#8FBCBB",
+  no = "#5E81AC",
+  s = "#D08770",
+  S = "#D08770",
+  [""] = "#D08770",
+  ic = "#EBCB8B",
+  R = "#BF616A",
+  Rv = "#BF616A",
+  cv = "#5E81AC",
+  ce = "#5E81AC",
+  r = "#BF616A",
+  rm = "#8FBCBB",
+  ["r?"] = "#8FBCBB",
+  ["!"] = "#8FBCBB",
   t = "#D7BA7D",
 }
 
@@ -40,11 +37,10 @@ end
 
 local icons = require "user.icons"
 
-vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#FFFFFF", bg = "#303030" })
-vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#D4D4D4", bg = "#303030", bold = false })
-vim.api.nvim_set_hl(0, "SLProgress", { fg = "#D4D4D4", bg = "#303030" })
+vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#2e3440", bg = "#e5e9f0" })
+vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#2e3440", bg = "#e5e9f0", bold = false })
+vim.api.nvim_set_hl(0, "SLProgress", { fg = "#e5e9f0", bg = "#2E3440" })
 vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#808080", bg = "#252525" })
-vim.api.nvim_set_hl(0, "SLLSP", { fg = "#5e81ac", bg = "#282c34" })
 
 local diagnostics = {
   "diagnostics",
@@ -61,14 +57,7 @@ local diff = {
   colored = false,
   symbols = { added = icons.git.Add .. "", modified = icons.git.Mod .. "", removed = icons.git.Remove .. "" }, -- changes diff symbols
   cond = hide_in_width,
-  separator = "%#SLSeparator#" .. "" .. "%*",
-}
-
-local mode = {
-  "mode",
-  fmt = function(str)
-    return "-- " .. str .. " --"
-  end,
+  separator = "%#SLSeparator#" .. " " .. "%*",
 }
 
 local filetype = {
@@ -80,43 +69,20 @@ local branch = {
   "branch",
   icons_enabled = true,
   icon = "%#SLGitIcon#" .. "" .. "%*" .. "%#SLBranchName#",
-  -- color = "Constant",
   colored = false,
 }
-
 
 local filename = {
   "filename",
   file_status = false,
   path = 1,
-  shorting_target = 20
-}
-
-local progress = {
-  "progress",
-  color = "SLProgress",
-}
-
-local current_signature = function()
-  if not pcall(require, "lsp_signature") then
-    return
-  end
-  local sig = require("lsp_signature").status_line(30)
-  return "%#SLSeparator#" .. sig.hint .. "%*"
-end
-
-local spaces = {
-  function()
-    return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
-  end,
-  padding = 0,
-  separator = "%#SLSeparator#" .. " │" .. "%*",
+  shorting_target = 20,
 }
 
 local location = {
   "location",
   color = function()
-    return { fg = "#252525", bg = mode_color[vim.fn.mode()] }
+    return { fg = "#2e3440", bg = mode_color[vim.fn.mode()] }
   end,
 }
 

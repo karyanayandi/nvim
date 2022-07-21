@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd({ "User" }, {
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir", "DressingSelect" },
+  pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir", "DressingSelect", "tsplayground" },
   callback = function()
     vim.cmd [[
       nnoremap <silent> <buffer> q :close<CR> 
@@ -48,11 +48,14 @@ vim.api.nvim_create_autocmd({ "CmdWinEnter" }, {
 })
 
 if vim.fn.has "nvim-0.8" == 1 then
-  vim.api.nvim_create_autocmd({ "CursorMoved", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost" }, {
-    callback = function()
-      require("user.winbar").get_winbar()
-    end,
-  })
+  vim.api.nvim_create_autocmd(
+    { "CursorMoved", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost", "TabClosed" },
+    {
+      callback = function()
+        require("user.winbar").get_winbar()
+      end,
+    }
+  )
 end
 
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
@@ -85,16 +88,21 @@ vim.api.nvim_create_autocmd("CursorHold", {
     local opts = {
       focusable = false,
       close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-      border = 'rounded',
-      source = 'always',
-      prefix = ' ',
-      scope = 'cursor',
+      border = "rounded",
+      source = "always",
+      prefix = " ",
+      scope = "cursor",
     }
     vim.diagnostic.open_float(nil, opts)
-  end
+  end,
 })
 
-vim.cmd [[ au FocusGained,BufEnter * :checktime ]]
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+  pattern = { "*" },
+  callback = function()
+    vim.cmd "checktime"
+  end,
+})
 
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
   pattern = { "term://*" },
@@ -104,3 +112,12 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
   ]]
   end,
 })
+
+vim.cmd [[
+augroup import_cost_auto_run
+  autocmd!
+  autocmd InsertLeave *.js,*.jsx,*.ts,*.tsx ImportCost
+  autocmd BufEnter *.js,*.jsx,*.ts,*.tsx ImportCost
+  autocmd CursorHold *.js,*.jsx,*.ts,*.tsx ImportCost
+augroup END
+]]

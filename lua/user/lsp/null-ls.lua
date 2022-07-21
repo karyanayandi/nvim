@@ -13,15 +13,31 @@ null_ls.setup {
   sources = {
     formatting.stylua,
     formatting.google_java_format,
-    formatting.black.with { extra_args = { "--fast" } },
+    formatting.black.with({
+      extra_args = { "--fast" }
+    }),
+    formatting.fish_indent,
+    formatting.goimports,
+    formatting.eslint_d.with({
+      prefer_local = "node_modules/.bin",
+      extra_filetypes = { "svelte" }
+    }),
     formatting.prettier.with({
       prefer_local = "node_modules/.bin",
-      extra_filetypes = { "toml" },
+      disabled_filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
+      extra_filetypes = { "php", "toml", "svelte" }
     }),
+    formatting.shfmt,
+    diagnostics.actionlint,
+    diagnostics.fish,
     diagnostics.eslint_d.with({
       prefer_local = "node_modules/.bin",
+      extra_filetypes = { "svelte" }
     }),
     diagnostics.flake8,
+    diagnostics.golangci_lint,
+    diagnostics.php,
+    diagnostics.shellcheck,
     code_actions.eslint_d
   },
 }

@@ -1,6 +1,6 @@
 local function is_match_empty(pat, plain)
     return not not string.find("", pat, nil, plain)
-end
+                  end
 
 --- String split into table
 function string:split(sep, plain)

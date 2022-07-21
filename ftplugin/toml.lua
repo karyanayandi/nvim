@@ -18,13 +18,10 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
       R = {
         name = "Cargo",
         t = { "<cmd>lua require('crates').toggle()<CR>", "Toggle Hints" },
-
         u = { "<cmd>lua require('crates').update_crate()<CR>", "Update" },
         U = { "<cmd>lua require('crates').upgrade_crate()<CR>", "Upgrade" },
-
         a = { "<cmd>lua require('crates').update_all_crates()<CR>", "Update All" },
         A = { "<cmd>lua require('crates').upgrade_all_crates()<CR>", "Upgrade All" },
-
         h = { "<cmd>lua require('crates').open_homepage()<CR>", "Open Home" },
         r = { "<cmd>lua require('crates').open_repository()<CR>", "Open Repo" },
         d = { "<cmd>lua require('crates').open_documentation()<CR>", "Open Doc" },

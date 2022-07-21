@@ -8,16 +8,16 @@ local icons = require "user.icons"
 local dashboard = require "alpha.themes.dashboard"
 dashboard.section.header.val = {
 
-[[ ███▄    █  ▒█████  ▄▄▄█████▓    ██▒   █▓  ██████  ▄████▄   ▒█████  ▓█████▄ ▓█████ ]],
-[[ ██ ▀█   █ ▒██▒  ██▒▓  ██▒ ▓▒   ▓██░   █▒▒██    ▒ ▒██▀ ▀█  ▒██▒  ██▒▒██▀ ██▌▓█   ▀ ]],
-[[▓██  ▀█ ██▒▒██░  ██▒▒ ▓██░ ▒░    ▓██  █▒░░ ▓██▄   ▒▓█    ▄ ▒██░  ██▒░██   █▌▒███   ]],
-[[▓██▒  ▐▌██▒▒██   ██░░ ▓██▓ ░      ▒██ █░░  ▒   ██▒▒▓▓▄ ▄██▒▒██   ██░░▓█▄   ▌▒▓█  ▄ ]],
-[[▒██░   ▓██░░ ████▓▒░  ▒██▒ ░       ▒▀█░  ▒██████▒▒▒ ▓███▀ ░░ ████▓▒░░▒████▓ ░▒████▒]],
-[[░ ▒░   ▒ ▒ ░ ▒░▒░▒░   ▒ ░░         ░ ▐░  ▒ ▒▓▒ ▒ ░░ ░▒ ▒  ░░ ▒░▒░▒░  ▒▒▓  ▒ ░░ ▒░ ░]],
-[[░ ░░   ░ ▒░  ░ ▒ ▒░     ░          ░ ░░  ░ ░▒  ░ ░  ░  ▒     ░ ▒ ▒░  ░ ▒  ▒  ░ ░  ░]],
-[[   ░   ░ ░ ░ ░ ░ ▒    ░              ░░  ░  ░  ░  ░        ░ ░ ░ ▒   ░ ░  ░    ░   ]],
-[[         ░     ░ ░                    ░        ░  ░ ░          ░ ░     ░       ░  ░]],
-[[                                     ░            ░                  ░             ]],
+  [[ ███▄    █  ▒█████  ▄▄▄█████▓    ██▒   █▓  ██████  ▄████▄   ▒█████  ▓█████▄ ▓█████ ]],
+  [[ ██ ▀█   █ ▒██▒  ██▒▓  ██▒ ▓▒   ▓██░   █▒▒██    ▒ ▒██▀ ▀█  ▒██▒  ██▒▒██▀ ██▌▓█   ▀ ]],
+  [[▓██  ▀█ ██▒▒██░  ██▒▒ ▓██░ ▒░    ▓██  █▒░░ ▓██▄   ▒▓█    ▄ ▒██░  ██▒░██   █▌▒███   ]],
+  [[▓██▒  ▐▌██▒▒██   ██░░ ▓██▓ ░      ▒██ █░░  ▒   ██▒▒▓▓▄ ▄██▒▒██   ██░░▓█▄   ▌▒▓█  ▄ ]],
+  [[▒██░   ▓██░░ ████▓▒░  ▒██▒ ░       ▒▀█░  ▒██████▒▒▒ ▓███▀ ░░ ████▓▒░░▒████▓ ░▒████▒]],
+  [[░ ▒░   ▒ ▒ ░ ▒░▒░▒░   ▒ ░░         ░ ▐░  ▒ ▒▓▒ ▒ ░░ ░▒ ▒  ░░ ▒░▒░▒░  ▒▒▓  ▒ ░░ ▒░ ░]],
+  [[░ ░░   ░ ▒░  ░ ▒ ▒░     ░          ░ ░░  ░ ░▒  ░ ░  ░  ▒     ░ ▒ ▒░  ░ ▒  ▒  ░ ░  ░]],
+  [[   ░   ░ ░ ░ ░ ░ ▒    ░              ░░  ░  ░  ░  ░        ░ ░ ░ ▒   ░ ░  ░    ░   ]],
+  [[         ░     ░ ░                    ░        ░  ░ ░          ░ ░     ░       ░  ░]],
+  [[                                     ░            ░                  ░             ]],
 
 }
 dashboard.section.buttons.val = {
@@ -30,14 +30,15 @@ dashboard.section.buttons.val = {
   ),
   dashboard.button("r", icons.ui.History .. " Recent files", ":Telescope oldfiles <CR>"),
   dashboard.button("t", icons.ui.List .. " Find text", ":Telescope live_grep <CR>"),
+  dashboard.button("s", icons.ui.SignIn .. " Find Session", ":silent Autosession search <CR>"),
   dashboard.button("c", icons.ui.Gear .. " Config", ":e ~/.config/nvim/init.lua <CR>"),
   dashboard.button("u", icons.ui.CloudDownload .. " Update", ":PackerSync<CR>"),
   dashboard.button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),
 }
 
-dashboard.section.footer.opts.hl = "Type"
-dashboard.section.header.opts.hl = "Include"
-dashboard.section.buttons.opts.hl = "Keyword"
+dashboard.section.footer.opts.hl = "Constant"
+dashboard.section.header.opts.hl = "Macro"
+dashboard.section.buttons.opts.hl = "Macro"
 
 dashboard.opts.opts.noautocmd = true
 alpha.setup(dashboard.opts)
