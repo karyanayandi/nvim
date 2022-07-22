@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-local status_theme_ok, theme = pcall(require, "lualine.themes.nord")
+local status_theme_ok, theme = pcall(require, "lualine.themes.onenord")
 if not status_theme_ok then
   return
 end

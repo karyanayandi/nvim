@@ -93,7 +93,7 @@ return packer.startup(function(use)
   use "stevearc/dressing.nvim"
 
   -- Colorschemes
-  use "shaunsingh/nord.nvim"
+  use { "karyanayandi/onenord.nvim", branch = "custom" }
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
