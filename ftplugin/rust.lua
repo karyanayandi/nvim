@@ -16,7 +16,6 @@ local mappings = {
   R = {
     name = "Rust",
     h = { "<cmd>RustToggleInlayHints<Cr>", "Toggle Hints" },
-    r = { "<cmd>RustRunnables<Cr>", "Runnables" },
     r = { "<cmd>lua _CARGO_RUN()<cr>", "Cargo Run" },
     t = { "<cmd>lua _CARGO_TEST()<cr>", "Cargo Test" },
     m = { "<cmd>RustExpandMacro<Cr>", "Expand Macro" },
