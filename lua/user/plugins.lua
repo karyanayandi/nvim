@@ -1,0 +1,176 @@
+local fn = vim.fn
+
+-- Automatically install packer
+local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+if fn.empty(fn.glob(install_path)) > 0 then
+  PACKER_BOOTSTRAP = fn.system {
+    "git",
+    "clone",
+    "--depth",
+    "1",
+    "https://github.com/wbthomason/packer.nvim",
+    install_path,
+  }
+  print "Installing packer close and reopen Neovim..."
+  vim.cmd [[packadd packer.nvim]]
+end
+
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+vim.cmd [[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]]
+
+-- Use a protected call so we don't error out on first use
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+  return
+end
+
+-- Have packer use a popup window
+packer.init {
+  display = {
+    open_fn = function()
+      return require("packer.util").float { border = "rounded" }
+    end,
+  },
+}
+
+-- Install your plugins here
+return packer.startup(function(use)
+  -- Plugins
+  use "wbthomason/packer.nvim" -- Have packer manage itself
+  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
+  use "numToStr/Comment.nvim"
+  use "kyazdani42/nvim-web-devicons"
+  use "kyazdani42/nvim-tree.lua"
+  use "tamago324/lir.nvim"
+  use "moll/vim-bbye"
+  use "nvim-lualine/lualine.nvim"
+  use "akinsho/toggleterm.nvim"
+  use "ahmedkhalf/project.nvim"
+  use "lewis6991/impatient.nvim"
+  use "lukas-reineke/indent-blankline.nvim"
+  use "goolord/alpha-nvim"
+  use "folke/which-key.nvim"
+  use "phaazon/hop.nvim"
+  use "andymass/vim-matchup"
+  use "kylechui/nvim-surround"
+  use {
+    "abecodes/tabout.nvim",
+    wants = { "nvim-treesitter" }, -- or require if not used so far
+  }
+  use "nacro90/numb.nvim"
+  use "monaqa/dial.nvim"
+  use "NvChad/nvim-colorizer.lua"
+  use "windwp/nvim-spectre"
+  use "filipdutescu/renamer.nvim"
+  use "folke/zen-mode.nvim"
+  use "karb94/neoscroll.nvim"
+  use "folke/todo-comments.nvim"
+  use "kevinhwang91/nvim-bqf"
+  use "ThePrimeagen/harpoon"
+  use "MattesGroeger/vim-bookmarks"
+  use "Mephistophiles/surround.nvim"
+  use "rcarriga/nvim-notify"
+  use "tversteeg/registers.nvim"
+  use "SmiteshP/nvim-navic"
+  use { "michaelb/sniprun", run = "bash ./install.sh" }
+  use {
+
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    ft = "markdown",
+  }
+  use "ghillb/cybu.nvim"
+  use "rmagatti/auto-session"
+  use { "yardnsm/vim-import-cost", run = "npm install --production" }
+
+  -- UI
+  use "stevearc/dressing.nvim"
+
+  -- Colorschemes
+  use { "karyanayandi/onenord.nvim", branch = "custom" }
+
+  -- cmp plugins
+  use "hrsh7th/nvim-cmp" -- The completion plugin
+  use "hrsh7th/cmp-buffer" -- buffer completions
+  use "hrsh7th/cmp-path" -- path completions
+  use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "saadparwaiz1/cmp_luasnip" -- snippet completions
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-emoji"
+  use "hrsh7th/cmp-nvim-lua"
+  use {
+    "tzachar/cmp-tabnine",
+    run = "./install.sh",
+    requires = "hrsh7th/nvim-cmp",
+  }
+
+  -- snippets
+  use "L3MON4D3/LuaSnip" --snippet engine
+  use "karyanayandi/friendly-snippets" -- a bunch of snippets to use
+
+  -- LSP
+  use "neovim/nvim-lspconfig" -- enable LSP
+  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
+  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use "simrat39/symbols-outline.nvim"
+  use "ray-x/lsp_signature.nvim"
+  use "b0o/SchemaStore.nvim"
+  use "folke/trouble.nvim"
+  -- use {"github/copilot.vim"}
+  use {
+    "zbirenbaum/copilot.lua",
+    event = { "VimEnter" },
+    config = function()
+      vim.defer_fn(function()
+        require "user.copilot"
+      end, 100)
+    end,
+  }
+  use "zbirenbaum/copilot-cmp"
+  use "RRethy/vim-illuminate"
+  use "j-hui/fidget.nvim"
+  use "nvim-lua/lsp_extensions.nvim"
+
+  -- Additonal Programming Language
+  use "jose-elias-alvarez/typescript.nvim"
+  use "mfussenegger/nvim-jdtls"
+  use "simrat39/rust-tools.nvim"
+  use "Saecki/crates.nvim"
+
+  -- DAP
+  use "mfussenegger/nvim-dap"
+  use "rcarriga/nvim-dap-ui"
+
+  -- Telescope
+  use "nvim-telescope/telescope.nvim"
+  use "tom-anders/telescope-vim-bookmarks.nvim"
+  use "nvim-telescope/telescope-media-files.nvim"
+  use "lalitmee/browse.nvim"
+
+  -- Treesitter
+  use "nvim-treesitter/nvim-treesitter"
+  use "JoosepAlviste/nvim-ts-context-commentstring"
+  use "p00f/nvim-ts-rainbow"
+  use "nvim-treesitter/playground"
+  use "windwp/nvim-ts-autotag"
+
+  -- Git
+  use "lewis6991/gitsigns.nvim"
+  use "f-person/git-blame.nvim"
+  use "ruifm/gitlinker.nvim"
+  use "mattn/vim-gist"
+  use "mattn/webapi-vim"
+
+  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if PACKER_BOOTSTRAP then
+    require("packer").sync()
+  end
+end)
