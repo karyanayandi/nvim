@@ -87,7 +87,7 @@ return packer.startup(function(use)
   }
   use "ghillb/cybu.nvim"
   use "rmagatti/auto-session"
-  use { "yardnsm/vim-import-cost", run = "npm install --production" }
+  -- use { "yardnsm/vim-import-cost", run = "npm install --production" }
 
   -- UI
   use "stevearc/dressing.nvim"
