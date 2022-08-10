@@ -15,7 +15,6 @@ M.winbar_filetype_exclude = {
   "toggleterm",
   "DressingSelect",
   "Jaq",
-  "harpoon",
   "dapui_scopes",
   "dapui_breakpoints",
   "dapui_stacks",

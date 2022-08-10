@@ -71,27 +71,11 @@ local m_opts = {
   nowait = true,
 }
 
-local m_mappings = {
-  a = { "<cmd>silent BookmarkAnnotate<cr>", "Annotate" },
-  c = { "<cmd>silent BookmarkClear<cr>", "Clear" },
-  t = { "<cmd>silent BookmarkToggle<cr>", "Toggle" },
-  m = { '<cmd>lua require("harpoon.mark").add_file()<cr>', "Harpoon" },
-  ["."] = { '<cmd>lua require("harpoon.ui").nav_next()<cr>', "Harpoon Next" },
-  [","] = { '<cmd>lua require("harpoon.ui").nav_prev()<cr>', "Harpoon Prev" },
-  l = { "<cmd>lua require('user.bfs').open()<cr>", "Buffers" },
-  j = { "<cmd>silent BookmarkNext<cr>", "Next" },
-  s = { "<cmd>Telescope harpoon marks<cr>", "Search Files" },
-  k = { "<cmd>silent BookmarkPrev<cr>", "Prev" },
-  S = { "<cmd>silent BookmarkShowAll<cr>", "Prev" },
-  x = { "<cmd>BookmarkClearAll<cr>", "Clear All" },
-  [";"] = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon UI" },
-}
-
 local mappings = {
   ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
   b = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal'})<cr>",
-    "Find files",
+    "Buffer",
   },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["w"] = { "<cmd>w<CR>", "Write" },
@@ -102,15 +86,6 @@ local mappings = {
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
   ["z"] = { "<cmd>ZenMode<cr>", "Zen" },
   ["gy"] = "Link",
-
-  B = {
-    name = "Browse",
-    i = { "<cmd>BrowseInputSearch<cr>", "Input Search" },
-    b = { "<cmd>Browse<cr>", "Browse" },
-    d = { "<cmd>BrowseDevdocsSearch<cr>", "Devdocs" },
-    f = { "<cmd>BrowseDevdocsFiletypeSearch<cr>", "Devdocs Filetype" },
-    m = { "<cmd>BrowseMdnSearch<cr>", "Mdn" },
-  },
 
   p = {
     name = "Packer",
@@ -295,4 +270,3 @@ local vmappings = {
 which_key.setup(setup)
 which_key.register(mappings, opts)
 which_key.register(vmappings, vopts)
-which_key.register(m_mappings, m_opts)

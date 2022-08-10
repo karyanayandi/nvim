@@ -38,9 +38,8 @@ packer.init {
   },
 }
 
--- Install your plugins here
+-- Plugins
 return packer.startup(function(use)
-  -- Plugins
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
@@ -72,8 +71,6 @@ return packer.startup(function(use)
   use "karb94/neoscroll.nvim"
   use "folke/todo-comments.nvim"
   use "kevinhwang91/nvim-bqf"
-  use "ThePrimeagen/harpoon"
-  use "MattesGroeger/vim-bookmarks"
   use "Mephistophiles/surround.nvim"
   use "rcarriga/nvim-notify"
   use "tversteeg/registers.nvim"
@@ -86,8 +83,22 @@ return packer.startup(function(use)
     ft = "markdown",
   }
   use "ghillb/cybu.nvim"
-  use "rmagatti/auto-session"
+
+  -- Session
+  use { "rmagatti/auto-session", branch = "dir-changed-fixes" }
+  use "rmagatti/session-lens"
+
   -- use { "yardnsm/vim-import-cost", run = "npm install --production" }
+  -- use {"github/copilot.vim"}
+  use {
+    "zbirenbaum/copilot.lua",
+    event = { "VimEnter" },
+    config = function()
+      vim.defer_fn(function()
+        require "user.copilot"
+      end, 100)
+    end,
+  }
 
   -- UI
   use "stevearc/dressing.nvim"
@@ -109,6 +120,7 @@ return packer.startup(function(use)
     run = "./install.sh",
     requires = "hrsh7th/nvim-cmp",
   }
+  use "zbirenbaum/copilot-cmp"
 
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
@@ -123,26 +135,13 @@ return packer.startup(function(use)
   use "ray-x/lsp_signature.nvim"
   use "b0o/SchemaStore.nvim"
   use "folke/trouble.nvim"
-  -- use {"github/copilot.vim"}
-  use {
-    "zbirenbaum/copilot.lua",
-    event = { "VimEnter" },
-    config = function()
-      vim.defer_fn(function()
-        require "user.copilot"
-      end, 100)
-    end,
-  }
-  use "zbirenbaum/copilot-cmp"
+
   use "RRethy/vim-illuminate"
   use "j-hui/fidget.nvim"
-  use "nvim-lua/lsp_extensions.nvim"
+  -- use "nvim-lua/lsp_extensions.nvim"
 
-  -- Additonal Programming Language
+  -- Programming Language
   use "jose-elias-alvarez/typescript.nvim"
-  use "mfussenegger/nvim-jdtls"
-  use "simrat39/rust-tools.nvim"
-  use "Saecki/crates.nvim"
 
   -- DAP
   use "mfussenegger/nvim-dap"
@@ -152,7 +151,6 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope.nvim"
   use "tom-anders/telescope-vim-bookmarks.nvim"
   use "nvim-telescope/telescope-media-files.nvim"
-  use "lalitmee/browse.nvim"
 
   -- Treesitter
   use "nvim-treesitter/nvim-treesitter"
