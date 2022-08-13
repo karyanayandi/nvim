@@ -2,6 +2,7 @@ local ok, cybu = pcall(require, "cybu")
 if not ok then
   return
 end
+
 cybu.setup {
   position = {
     relative_to = "win", -- win, editor, cursor
@@ -21,5 +22,6 @@ cybu.setup {
     },
   },
 }
+
 vim.keymap.set("n", "H", "<Plug>(CybuPrev)")
 vim.keymap.set("n", "L", "<Plug>(CybuNext)")

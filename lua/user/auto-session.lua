@@ -21,12 +21,9 @@ local opts = {
   auto_save_enabled = nil,
   auto_restore_enabled = nil,
   auto_session_suppress_dirs = {
-    -- vim.fn.glob(vim.fn.stdpath "config" .. "/*"),
     os.getenv "HOME",
-    -- os.getenv "HOME" .. "/Machfiles",
   },
   auto_session_use_git_branch = nil,
-  -- the configs below are lua only
   bypass_session_save_file_types = { "alpha" },
 }
 
@@ -36,7 +33,6 @@ telescope.load_extension "session-lens"
 
 session_lens.setup {
   path_display = { "shorten" },
-  -- theme_conf = { border = false },
   previewer = false,
   prompt_title = "Sessions",
 }

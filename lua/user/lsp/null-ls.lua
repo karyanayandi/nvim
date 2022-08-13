@@ -7,37 +7,42 @@ local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 local code_actions = null_ls.builtins.code_actions
 
-
 null_ls.setup {
   debug = false,
   sources = {
     formatting.stylua,
     formatting.google_java_format,
-    formatting.black.with({
-      extra_args = { "--fast" }
-    }),
+    formatting.black.with {
+      extra_args = { "--fast" },
+    },
     formatting.fish_indent,
     formatting.goimports,
-    formatting.eslint_d.with({
+    formatting.eslint_d.with {
       prefer_local = "node_modules/.bin",
-      extra_filetypes = { "svelte" }
-    }),
-    formatting.prettier.with({
+      extra_filetypes = { "svelte" },
+    },
+    formatting.prettier.with {
       prefer_local = "node_modules/.bin",
       disabled_filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
-      extra_filetypes = { "php", "toml", "svelte" }
-    }),
+      extra_filetypes = { "php", "toml", "svelte" },
+    },
+    formatting.deno_fmt.with {
+      filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+      condition = function(utils)
+        return utils.root_has_file { "import_map.json" }
+      end,
+    },
     formatting.shfmt,
     diagnostics.actionlint,
     diagnostics.fish,
-    diagnostics.eslint_d.with({
+    diagnostics.eslint_d.with {
       prefer_local = "node_modules/.bin",
-      extra_filetypes = { "svelte" }
-    }),
+      extra_filetypes = { "svelte" },
+    },
     diagnostics.flake8,
     diagnostics.golangci_lint,
     diagnostics.php,
     diagnostics.shellcheck,
-    code_actions.eslint_d
+    code_actions.eslint_d,
   },
 }

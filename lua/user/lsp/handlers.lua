@@ -90,15 +90,6 @@ M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
   attach_navic(client, bufnr)
-
-  if client.name == "jdt.ls" then
-    M.capabilities.textDocument.completion.completionItem.snippetSupport = false
-    vim.lsp.codelens.refresh()
-    if JAVA_DAP_ACTIVE then
-      require("jdtls").setup_dap { hotcodereplace = "auto" }
-      require("jdtls.dap").setup_dap_main_class_configs()
-    end
-  end
 end
 
 function M.enable_format_on_save()

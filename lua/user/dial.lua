@@ -53,11 +53,11 @@ dial_config.augends:register_group {
 
 local map = require "dial.map"
 
-vim.api.nvim_set_keymap("n", "<C-a>", map.inc_normal "mygroup", { noremap = true })
-vim.api.nvim_set_keymap("n", "<C-x>", map.dec_normal "mygroup", { noremap = true })
-vim.api.nvim_set_keymap("v", "<C-a>", map.inc_normal "visual", { noremap = true })
-vim.api.nvim_set_keymap("v", "<C-x>", map.dec_normal "visual", { noremap = true })
+vim.api.nvim_set_keymap("n", "+", map.inc_normal "mygroup", { noremap = false })
+vim.api.nvim_set_keymap("n", "-", map.dec_normal "mygroup", { noremap = true })
+vim.api.nvim_set_keymap("v", "+", map.inc_normal "visual", { noremap = true })
+vim.api.nvim_set_keymap("v", "-", map.dec_normal "visual", { noremap = true })
 
 vim.cmd [[
-  autocmd FileType typescript,javascript lua vim.api.nvim_buf_set_keymap(0, "n", "<C-a>", require("dial.map").inc_normal("typescript"), {noremap = true})
+  autocmd FileType typescript,javascript lua vim.api.nvim_buf_set_keymap(0, "n", "-", require("dial.map").inc_normal("typescript"), {noremap = true})
 ]]
