@@ -60,9 +60,9 @@ return packer.startup(function(use)
   use "folke/lua-dev.nvim"
   use "jose-elias-alvarez/typescript.nvim"
   -- use {"github/copilot.vim"}
-  use {
+   use {
     "zbirenbaum/copilot.lua",
-    event = { "VimEnter" },
+   event = { "VimEnter" },
     config = function()
       vim.defer_fn(function()
         require "user.copilot"
@@ -166,7 +166,6 @@ return packer.startup(function(use)
   use "kevinhwang91/nvim-bqf"
   use "Mephistophiles/surround.nvim"
   use "tversteeg/registers.nvim"
-  use { "michaelb/sniprun", run = "bash ./install.sh" }
   use {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",

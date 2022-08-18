@@ -6,6 +6,7 @@ local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_cmp_ok then
   return
 end
+
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 
@@ -96,7 +97,7 @@ function M.enable_format_on_save()
   vim.cmd [[
     augroup format_on_save
       autocmd! 
-      autocmd BufWritePre * lua vim.lsp.buf.format({ async = true }) 
+      autocmd BufWritePre * lua vim.lsp.buf.formatting_seq_sync() 
     augroup end
   ]]
   vim.notify "Enabled format on save"

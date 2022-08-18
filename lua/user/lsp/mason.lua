@@ -11,7 +11,7 @@ end
 local servers = {
   "cssls",
   "cssmodules_ls",
-  "deno",
+  --[[ "deno", ]]
   "emmet_ls",
   "html",
   "jsonls",
@@ -90,10 +90,10 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
   end
 
-  if server == "deno" then
-    local tsserver_opts = require "user.lsp.settings.deno"
-    opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
-  end
+  --[[ if server == "deno" then ]]
+  --[[   local tsserver_opts = require "user.lsp.settings.deno" ]]
+  --[[   opts = vim.tbl_deep_extend("force", tsserver_opts, opts) ]]
+  --[[ end ]]
 
   if server == "pyright" then
     local pyright_opts = require "user.lsp.settings.pyright"
@@ -120,4 +120,3 @@ for _, server in pairs(servers) do
   lspconfig[server].setup(opts)
   ::continue::
 end
-
