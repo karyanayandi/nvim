@@ -69,15 +69,14 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 
 -- Split Windows
-keymap("n", "<S-n>", "<cmd>vsplit<cr>", opts)
-keymap("n", "<S-m>", "<cmd>split<cr>", opts)
+keymap("n", ";v", "<cmd>vsplit<cr>", opts)
+keymap("n", ";s", "<cmd>split<cr>", opts)
 
 -- Comment
--- TODO: fix not work on neovim stable
--- keymap("n", "<C-/>", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
--- keymap("n", "<A-/>", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
--- keymap("x", "<C-/>", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', opts)
--- keymap("x", "<A-/>", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', opts)
+keymap("n", "<C-/>", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
+keymap("n", "<A-/>", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
+keymap("x", "<C-/>", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', opts)
+keymap("x", "<A-/>", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', opts)
 
 -- Close Buffer
 keymap("n", "Q", "<cmd>Bdelete!<CR>", opts)

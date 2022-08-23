@@ -24,7 +24,8 @@ configs.setup {
     disable = { "xml", "markdown" },
   },
   rainbow = {
-    enable = false,
+    enable = true,
+    extended_mode = false,
     colors = {
       "#68a0b0",
       "#946EaD",
