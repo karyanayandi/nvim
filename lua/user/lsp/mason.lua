@@ -71,29 +71,9 @@ for _, server in pairs(servers) do
   end
 
   if server == "sumneko_lua" then
-    local l_status_ok, lua_dev = pcall(require, "lua-dev")
-    if not l_status_ok then
-      return
-    end
-    local luadev = lua_dev.setup {
-      lspconfig = {
-        on_attach = opts.on_attach,
-        capabilities = opts.capabilities,
-      },
-    }
-    lspconfig.sumneko_lua.setup(luadev)
-    goto continue
+    local sumneko_opts = require "user.lsp.settings.sumneko_lua"
+    opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
   end
-
-  if server == "tsserver" then
-    local tsserver_opts = require "user.lsp.settings.tsserver"
-    opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
-  end
-
-  --[[ if server == "deno" then ]]
-  --[[   local tsserver_opts = require "user.lsp.settings.deno" ]]
-  --[[   opts = vim.tbl_deep_extend("force", tsserver_opts, opts) ]]
-  --[[ end ]]
 
   if server == "pyright" then
     local pyright_opts = require "user.lsp.settings.pyright"

@@ -3,13 +3,26 @@ if not status_ok then
   return
 end
 
+-- local ft_to_parser = require("nvim-treesitter.parsers").filetype_to_parsername
+-- ft_to_parser.motoko = "typescript"
+
 configs.setup {
-  ensure_installed = "all",
-  sync_install = false,
-  ignore_install = { "" },
+  ensure_installed = "all", -- one of "all" or a list of languages
+  sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+  ignore_install = { "" }, -- List of parsers to ignore installing
+  matchup = {
+    enable = true, -- mandatory, false will disable the whole extension
+    disable_virtual_text = true,
+    disable = { "html" }, -- optional, list of language that will be disabled
+    -- include_match_words = false
+  },
   highlight = {
-    enable = true,
-    disable = { "markdown" },
+    -- use_languagetree = true,
+    enable = true, -- false will disable the whole extension
+    -- disable = { "css", "html" }, -- list of language that will be disabled
+    -- disable = { "css", "markdown" }, -- list of language that will be disabled
+    disable = { "markdown" }, -- list of language that will be disabled
+    -- additional_vim_regex_highlighting = true,
   },
   autopairs = {
     enable = true,
@@ -27,9 +40,15 @@ configs.setup {
     enable = true,
     extended_mode = false,
     colors = {
-      "#68a0b0",
-      "#946EaD",
-      "#c7aA6D",
+      -- "#68a0b0",
+      -- "#946EaD",
+      -- "#c7aA6D",
+      "Gold",
+      "Orchid",
+      "DodgerBlue",
+      -- "Cornsilk",
+      -- "Salmon",
+      -- "LawnGreen",
     },
     disable = { "html" },
   },
@@ -39,8 +58,10 @@ configs.setup {
   textobjects = {
     select = {
       enable = true,
+      -- Automatically jump forward to textobj, similar to targets.vim
       lookahead = true,
       keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
         ["at"] = "@class.outer",
@@ -67,7 +88,7 @@ configs.setup {
     },
     move = {
       enable = true,
-      set_jumps = true,
+      set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {
         ["]m"] = "@function.outer",
         ["]]"] = "@class.outer",

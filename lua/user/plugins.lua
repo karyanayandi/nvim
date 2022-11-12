@@ -57,7 +57,6 @@ return packer.startup(function(use)
   use "j-hui/fidget.nvim"
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use "nvim-lua/popup.nvim"
-  use "folke/lua-dev.nvim"
   use "jose-elias-alvarez/typescript.nvim"
   -- use {"github/copilot.vim"}
    use {
