@@ -18,7 +18,6 @@ dashboard.section.header.val = {
   [[   ░   ░ ░ ░ ░ ░ ▒    ░              ░░  ░  ░  ░  ░        ░ ░ ░ ▒   ░ ░  ░    ░   ]],
   [[         ░     ░ ░                    ░        ░  ░ ░          ░ ░     ░       ░  ░]],
   [[                                     ░            ░                  ░             ]],
-
 }
 dashboard.section.buttons.val = {
   dashboard.button("f", icons.documents.Files .. " Find file", ":Telescope find_files <CR>"),

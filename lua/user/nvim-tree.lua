@@ -8,7 +8,7 @@ if not config_status_ok then
   return
 end
 
-local icons = require("user.icons")
+local icons = require "user.icons"
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
@@ -21,10 +21,10 @@ nvim_tree.setup {
     "dashboard",
     "alpha",
   },
-  --[[ filters = { ]]
-  --[[   custom = { ".git" }, ]]
-  --[[   exclude = { ".gitignore" }, ]]
-  --[[ }, ]]
+  filters = {
+    custom = { ".git" },
+    exclude = { ".gitignore", ".env" },
+  },
   update_cwd = true,
   renderer = {
     add_trailing = false,

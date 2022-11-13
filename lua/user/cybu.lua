@@ -5,20 +5,20 @@ end
 
 cybu.setup {
   position = {
-    relative_to = "win", -- win, editor, cursor
-    anchor = "topright", -- topleft, topcenter, topright,
+    relative_to = "win",
+    anchor = "topright",
   },
-  display_time = 1750, -- time the cybu window is displayed
+  display_time = 1750,
   style = {
-    path = "relative", -- absolute, relative, tail (filename only)
-    border = "rounded", -- single, double, rounded, none
-    separator = " ", -- string used as separator
-    prefix = "…", -- string used as prefix for truncated paths
-    padding = 1, -- left & right padding in number of spaces
+    path = "relative",
+    border = "rounded",
+    separator = " ",
+    prefix = "…",
+    padding = 1,
     hide_buffer_id = true,
     devicons = {
-      enabled = true, -- enable or disable web dev icons
-      colored = true, -- enable color for web dev icons
+      enabled = true,
+      colored = true,
     },
   },
 }

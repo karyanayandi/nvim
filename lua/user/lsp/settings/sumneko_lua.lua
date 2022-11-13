@@ -1,18 +1,17 @@
 return {
   settings = {
     Lua = {
-      type = {
-      },
+      type = {},
       format = {
         enable = false,
       },
       hint = {
         enable = true,
-        arrayIndex = "Enable", -- "Enable", "Auto", "Disable"
+        arrayIndex = "Enable",
         await = true,
-        paramName = "Disable", -- "All", "Literal", "Disable"
+        paramName = "Disable",
         paramType = false,
-        semicolon = "All", -- "All", "SameLine", "Disable"
+        semicolon = "All",
         setType = true,
       },
       runtime = {

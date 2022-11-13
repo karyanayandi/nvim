@@ -55,13 +55,13 @@ return packer.startup(function(use)
   use "SmiteshP/nvim-navic"
   use "RRethy/vim-illuminate"
   use "j-hui/fidget.nvim"
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  use "nvim-lua/plenary.nvim"
   use "nvim-lua/popup.nvim"
   use "jose-elias-alvarez/typescript.nvim"
   -- use {"github/copilot.vim"}
-   use {
+  use {
     "zbirenbaum/copilot.lua",
-   event = { "VimEnter" },
+    event = { "VimEnter" },
     config = function()
       vim.defer_fn(function()
         require "user.copilot"
@@ -70,7 +70,6 @@ return packer.startup(function(use)
   }
 
   -- Session
-  --[[ use { "rmagatti/auto-session", branch = "dir-changed-fixes" } ]]
   use "rmagatti/auto-session"
   use "rmagatti/session-lens"
 
@@ -125,9 +124,6 @@ return packer.startup(function(use)
   use "ruifm/gitlinker.nvim"
   use "mattn/vim-gist"
   use "mattn/webapi-vim"
-
-  -- Github
-  use "pwntester/octo.nvim"
 
   -- Editing Support
   use "windwp/nvim-autopairs"
