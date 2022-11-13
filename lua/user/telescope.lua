@@ -3,13 +3,17 @@ if not status_ok then
   return
 end
 
+
 local actions = require "telescope.actions"
-telescope.load_extension "media_files"
+local fb_actions = require("telescope").extensions.file_browser.actions
 local icons = require "user.icons"
+
+local function telescope_buffer_dir()
+  return vim.fn.expand "%:p:h"
+end
 
 telescope.setup {
   defaults = {
-
     prompt_prefix = icons.ui.Telescope .. " ",
     selection_caret = " ",
     path_display = { "smart" },
@@ -115,9 +119,49 @@ telescope.setup {
   },
   pickers = {},
   extensions = {
+    file_browser = {
+      theme = "ivy",
+      hijack_netrw = true,
+      mappings = {
+        ["i"] = {
+          ["<C-w>"] = function()
+            vim.cmd "normal vbd"
+          end,
+        },
+        ["n"] = {
+          ["a"] = fb_actions.create,
+          ["c"] = fb_actions.copy,
+          ["x"] = fb_actions.move,
+          ["d"] = fb_actions.remove,
+          ["r"] = fb_actions.rename,
+          ["H"] = fb_actions.toggle_hidden,
+          ["h"] = fb_actions.goto_parent_dir,
+          ["w"] = fb_actions.goto_cwd,
+          ["/"] = function()
+            vim.cmd "startinsert"
+          end,
+        },
+      },
+    },
     media_files = {
       filetypes = { "png", "webp", "jpg", "jpeg" },
       find_cmd = "rg",
     },
   },
 }
+
+vim.keymap.set("n", ";e", function()
+  telescope.extensions.file_browser.file_browser {
+    path = "%:p:h",
+    cwd = telescope_buffer_dir(),
+    respect_gitignore = false,
+    hidden = true,
+    grouped = true,
+    previewer = false,
+    initial_mode = "normal",
+  }
+end)
+
+
+telescope.load_extension "file_browser"
+telescope.load_extension "media_files"

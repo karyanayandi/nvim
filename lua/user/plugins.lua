@@ -108,8 +108,9 @@ return packer.startup(function(use)
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
-  use "tom-anders/telescope-vim-bookmarks.nvim"
+  use "nvim-telescope/telescope-file-browser.nvim"
   use "nvim-telescope/telescope-media-files.nvim"
+  use "tom-anders/telescope-vim-bookmarks.nvim"
 
   -- Treesitter
   use "nvim-treesitter/nvim-treesitter"
