@@ -3,6 +3,7 @@ if not status_ok then
   return
 end
 
+
 configs.setup {
   ensure_installed = "all",
   sync_install = false,
@@ -12,10 +13,10 @@ configs.setup {
     disable_virtual_text = true,
     disable = { "html" },
   },
-  highlight = {
-    enable = true,
-    disable = { "markdown" },
-  },
+  -- highlight = {
+  --   enable = true,
+  --   disable = { "markdown" },
+  -- },
   autopairs = {
     enable = true,
   },
@@ -32,9 +33,9 @@ configs.setup {
     enable = true,
     extended_mode = false,
     colors = {
-      -- "Gold",
-      -- "Orchid",
-      -- "DodgerBlue",
+      "Gold",
+      "Orchid",
+      "DodgerBlue",
     },
     disable = { "html" },
   },

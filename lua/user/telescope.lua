@@ -22,6 +22,7 @@ telescope.setup {
       "target/",
       "docs/",
       "vendor/*",
+      ".storybook/*",
       "%.lock",
       "__pycache__/*",
       "%.sqlite3",

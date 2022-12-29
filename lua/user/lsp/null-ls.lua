@@ -24,7 +24,7 @@ null_ls.setup {
     formatting.prettier.with {
       prefer_local = "node_modules/.bin",
       disabled_filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
-      extra_filetypes = { "php", "toml", "svelte" },
+      extra_filetypes = { "php", "toml", "svelte", "prisma", 'env', 'example' },
     },
     formatting.deno_fmt.with {
       filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
@@ -32,6 +32,10 @@ null_ls.setup {
         return utils.root_has_file { "deno.json" }
       end,
     },
+    formatting.gofmt,
+    formatting.goimports,
+    formatting.golines,
+    formatting.phpcsfixer,
     formatting.shfmt,
     diagnostics.actionlint,
     diagnostics.fish,
@@ -44,8 +48,9 @@ null_ls.setup {
     },
     diagnostics.flake8,
     diagnostics.golangci_lint,
-    diagnostics.php,
+    diagnostics.phpcs,
     diagnostics.shellcheck,
     code_actions.eslint_d,
+    code_actions.gitsigns,
   },
 }
