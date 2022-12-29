@@ -4,7 +4,7 @@
 
 ![preview](https://raw.githubusercontent.com/karyanayandi/nvim/main/screenshot.png) <br />
 
-##Requirements:
+### Requirements
 
 ```sh
   sudo pacman -S xsel
@@ -18,9 +18,8 @@
   npm i -g neovim
 ```
 
-##Fonts:
+### Fonts
 
 - [Nerd font](https://github.com/ryanoasis/nerd-fonts)
-
 - [Codicon](https://github.com/microsoft/vscode-codicons/raw/main/dist/codicon.ttf)
 - [Noto Color Emoji](https://github.com/googlefonts/noto-emoji/blob/main/fonts/NotoColorEmoji.ttf)
