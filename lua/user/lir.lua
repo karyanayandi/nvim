@@ -9,7 +9,9 @@ local clipboard_actions = require "lir.clipboard.actions"
 
 lir.setup {
   show_hidden_files = false,
-  enable = true,
+  devicons = {
+    enable = true,
+  },
   mappings = {
     ["l"] = actions.edit,
     ["M"] = actions.split,
