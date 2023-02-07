@@ -168,6 +168,7 @@ return packer.startup(function(use)
     ft = "markdown",
   }
   use "ghillb/cybu.nvim"
+  use "wakatime/vim-wakatime"
   -- use { "yardnsm/vim-import-cost", run = "npm install --production" }
 
   -- Automatically set up your configuration after cloning packer.nvim

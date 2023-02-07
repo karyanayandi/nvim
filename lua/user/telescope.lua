@@ -61,6 +61,9 @@ telescope.setup {
       "%.epub",
       "%.flac",
       "%.tar.gz",
+      ".config",
+      ".env",
+      ".local",
     },
     mappings = {
       i = {
