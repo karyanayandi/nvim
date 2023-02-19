@@ -88,12 +88,16 @@ local mappings = {
   ["gy"] = "Link",
 
   p = {
-    name = "Packer",
-    c = { "<cmd>PackerCompile<cr>", "Compile" },
-    i = { "<cmd>PackerInstall<cr>", "Install" },
-    s = { "<cmd>PackerSync<cr>", "Sync" },
-    S = { "<cmd>PackerStatus<cr>", "Status" },
-    u = { "<cmd>PackerUpdate<cr>", "Update" },
+    name = "Lazy Package Management",
+    i = { "<cmd>Lazy<cr>", "Install" },
+    l = { "<cmd>Lazy log<cr>", "Log" },
+    s = { "<cmd>Lazy sync<cr>", "Sync" },
+    c = { "<cmd>Lazy clean<cr>", "check" },
+    C = { "<cmd>Lazy clean<cr>", "Clean" },
+    u = { "<cmd>Lazy update<cr>", "Update" },
+    d = { "<cmd>Lazy debug<cr>", "Debug" },
+    p = { "<cmd>Lazy profile<cr>", "Profile" },
+    r = { "<cmd>Lazy restore<cr>", "Restore" },
   },
 
   o = {
@@ -272,3 +276,4 @@ local vmappings = {
 which_key.setup(setup)
 which_key.register(mappings, opts)
 which_key.register(vmappings, vopts)
+

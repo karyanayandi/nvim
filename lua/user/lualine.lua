@@ -83,6 +83,7 @@ local location = {
   "location",
   color = function()
     return { fg = "#2e3440", bg = mode_color[vim.fn.mode()] }
+
   end,
 }
 
@@ -115,3 +116,4 @@ lualine.setup {
   tabline = {},
   extensions = {},
 }
+

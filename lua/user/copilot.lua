@@ -13,4 +13,3 @@ copilot.setup {
   },
   ft_disable = { "markdown" },
 }
-

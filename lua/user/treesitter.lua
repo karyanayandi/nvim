@@ -29,16 +29,6 @@ configs.setup {
     enable = true,
     disable = { "xml", "markdown" },
   },
-  rainbow = {
-    enable = true,
-    extended_mode = false,
-    colors = {
-      "Gold",
-      "Orchid",
-      "DodgerBlue",
-    },
-    disable = { "html" },
-  },
   playground = {
     enable = true,
   },
@@ -102,3 +92,4 @@ configs.setup {
     },
   },
 }
+

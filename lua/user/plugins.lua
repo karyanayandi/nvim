@@ -1,65 +1,246 @@
-local fn = vim.fn
-
--- Automatically install packer
-local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
----@diagnostic disable-next-line: missing-parameter
-if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system {
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system {
     "git",
     "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
   }
-  print "Installing packer close and reopen Neovim..."
-  vim.cmd [[packadd packer.nvim]]
 end
+vim.opt.rtp:prepend(lazypath)
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]]
+-- example using a list of specs with the default options
+vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
 
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-  return
-end
-
--- Have packer use a popup window
-packer.init {
-  display = {
-    open_fn = function()
-      return require("packer.util").float { border = "rounded" }
+require("lazy").setup {
+  -- UI
+  {
+    "rmehri01/onenord.nvim",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      require "user.colorscheme"
     end,
   },
-}
+  {
+    "NvChad/nvim-colorizer.lua",
+    lazy = false,
+    config = function()
+      require "user.colorizer"
+    end,
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "BufReadPre",
+    config = function()
+      require "user.indentline"
+    end,
+  },
+  {
+    "kyazdani42/nvim-web-devicons",
+    config = function()
+      require "user.nvim-web-devicons"
+    end,
+  },
+  {
+    "akinsho/bufferline.nvim",
+    config = function()
+      require "user.bufferline"
+    end,
+  },
 
--- Plugins
-return packer.startup(function(use)
-  -- Plugin Manager
-  use "wbthomason/packer.nvim"
+  {
+    "nvim-lualine/lualine.nvim",
+    config = function()
+      require "user.lualine"
+    end,
+  },
+  {
+    "stevearc/dressing.nvim",
+    event = "VeryLazy",
+    config = function()
+      require "user.dressing"
+    end,
+  },
 
-  -- Language Server Protocol
-  use "neovim/nvim-lspconfig"
-  use "williamboman/mason.nvim"
-  use "williamboman/mason-lspconfig.nvim"
-  use "jose-elias-alvarez/null-ls.nvim"
-  use "simrat39/symbols-outline.nvim"
-  use "ray-x/lsp_signature.nvim"
-  use "b0o/SchemaStore.nvim"
-  use "SmiteshP/nvim-navic"
-  use "RRethy/vim-illuminate"
-  use "j-hui/fidget.nvim"
-  use "nvim-lua/plenary.nvim"
-  use "nvim-lua/popup.nvim"
-  use "jose-elias-alvarez/typescript.nvim"
-  -- use {"github/copilot.vim"}
-  use {
+  -- EDITING SUPPORT
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    config = function()
+      require "user.whichkey"
+    end,
+  },
+  { "nvim-lua/plenary.nvim", lazy = true },
+  { "nvim-lua/popup.nvim",   lazy = true },
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+      require "user.autopairs"
+    end,
+  },
+  {
+    "andymass/vim-matchup",
+    config = function()
+      require "user.matchup"
+    end,
+  },
+  {
+    "karb94/neoscroll.nvim",
+    config = function()
+      require "user.neoscroll"
+    end,
+  },
+  {
+    "nacro90/numb.nvim",
+    config = function()
+      require "user.numb"
+    end,
+  },
+  {
+    "SmiteshP/nvim-navic",
+    config = function()
+      require "user.navic"
+    end,
+  },
+  {
+    "j-hui/fidget.nvim",
+    config = function()
+      require "user.fidget"
+    end,
+  },
+  {
+    "RRethy/vim-illuminate",
+    event = "VeryLazy",
+    config = function()
+      require "user.illuminate"
+    end,
+  },
+  { "junegunn/vim-slash" },
+  {
+    "mfussenegger/nvim-dap",
+    event = "VeryLazy",
+    config = function()
+      require "user.dap"
+    end,
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    event = "VeryLazy",
+    config = function()
+      require "user.dapui"
+    end,
+  },
+  {
+    "ravenxrz/DAPInstall.nvim",
+    lazy = true,
+    config = function()
+      require("dap_install").setup {}
+      require("dap_install").config("python", {})
+    end,
+  },
+  {
+    "ghillb/cybu.nvim",
+    lazy = true,
+    config = function()
+      require "user.cybu"
+    end,
+  },
+  {
+    "folke/noice.nvim",
+    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
+    config = function()
+      require "user.noice"
+    end,
+  },
+  {
+    "rcarriga/nvim-notify",
+    config = function()
+      require "user.notify"
+    end,
+  },
+  {
+    "monaqa/dial.nvim",
+    config = function()
+      require "user.dial"
+    end,
+  },
+  {
+    "folke/zen-mode.nvim",
+    config = function()
+      require "user.zenmode"
+    end,
+  },
+  {
+    "numToStr/Comment.nvim",
+    event = "BufRead",
+    config = function()
+      require "user.comment"
+    end,
+  },
+  { "folke/todo-comments.nvim" },
+
+  -- TREESITTER
+  {
+    "nvim-treesitter/nvim-treesitter",
+    event = "BufReadPost",
+    dependencies = {
+      {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        event = "VeryLazy",
+        config = function()
+          require "user.ts-context"
+        end,
+      },
+      {
+        "nvim-treesitter/playground",
+      },
+      {
+        "windwp/nvim-ts-autotag",
+      },
+    },
+    config = function()
+      require "user.treesitter"
+    end,
+  },
+
+  -- COMPLETIONS
+  {
+    "hrsh7th/nvim-cmp",
+    event = {
+      "InsertEnter",
+      "CmdlineEnter",
+    },
+    dependencies = {
+      {
+        "hrsh7th/cmp-nvim-lsp",
+      },
+      {
+        "hrsh7th/cmp-buffer",
+      },
+      {
+        "hrsh7th/cmp-path",
+      },
+      {
+        "hrsh7th/cmp-cmdline",
+      },
+      {
+        "saadparwaiz1/cmp_luasnip",
+      },
+      {
+        "hrsh7th/cmp-nvim-lua",
+      },
+      { "hrsh7th/cmp-emoji" },
+      { "zbirenbaum/copilot-cmp" },
+    },
+    config = function()
+      require "user.cmp"
+    end,
+  },
+  {
     "zbirenbaum/copilot.lua",
     event = { "VimEnter" },
     config = function()
@@ -67,113 +248,178 @@ return packer.startup(function(use)
         require "user.copilot"
       end, 100)
     end,
-  }
+  },
 
-  -- Session
-  use "rmagatti/auto-session"
-  use "rmagatti/session-lens"
+  -- SNIPPETS
+  {
+    "L3MON4D3/LuaSnip",
+    event = "InsertEnter",
+    dependencies = {
+      "karyanayandi/friendly-snippets",
+    },
+  },
 
-  -- Completion
-  use "hrsh7th/nvim-cmp"
-  use "hrsh7th/cmp-buffer"
-  use "hrsh7th/cmp-path"
-  use "hrsh7th/cmp-cmdline"
-  use "saadparwaiz1/cmp_luasnip"
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-emoji"
-  use "hrsh7th/cmp-nvim-lua"
-  use {
-    "tzachar/cmp-tabnine",
-    run = "./install.sh",
-    requires = "hrsh7th/nvim-cmp",
-  }
-  use "zbirenbaum/copilot-cmp"
+  -- LANGUAGE SERVER PROTOCOL
+  {
+    "neovim/nvim-lspconfig",
+    lazy = true,
+  },
+  {
+    "williamboman/mason.nvim",
+    cmd = "Mason",
+    event = "BufReadPre",
+    config = function()
+      require "user.lsp.mason"
+    end,
+    dependencies = {
+      {
+        "williamboman/mason-lspconfig.nvim",
+        lazy = true,
+      },
+    },
+  },
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    event = "BufReadPre",
+    config = function()
+      require "user.lsp.null-ls"
+    end,
+  },
+  { "b0o/SchemaStore.nvim" },
+  { "jose-elias-alvarez/typescript.nvim" },
+  { "simrat39/symbols-outline.nvim" },
+  { "iamcco/markdown-preview.nvim",      build = "cd app && npm install", ft = "markdown" },
 
-  -- Snippets
-  use "L3MON4D3/LuaSnip"
-  use "karyanayandi/friendly-snippets"
+  -- GIT
+  {
+    "f-person/git-blame.nvim",
+    config = function()
+      require "user.gitblame"
+    end,
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require "user.gitsigns"
+    end,
+  },
 
-  -- UI
-  use { "karyanayandi/onenord.nvim", branch = "custom" }
-  use "stevearc/dressing.nvim"
-  use "NvChad/nvim-colorizer.lua"
-  use "kyazdani42/nvim-web-devicons"
-  use "nvim-lualine/lualine.nvim"
-  use "lukas-reineke/indent-blankline.nvim"
-  use "rcarriga/nvim-notify"
+  {
+    "ruifm/gitlinker.nvim",
+    config = function()
+      require "user.gitlinker"
+    end,
+  },
+  {
+    "mattn/vim-gist",
+    config = function()
+      require "user.gist"
+    end,
+  },
+  {
+    "mattn/webapi-vim",
+  },
 
-  -- DAP
-  use "mfussenegger/nvim-dap"
-  use "rcarriga/nvim-dap-ui"
+  -- MOTION
+  {
+    "phaazon/hop.nvim",
+    config = function()
+      require "user.hop"
+    end,
+  },
 
-  -- Telescope
-  use "nvim-telescope/telescope.nvim"
-  use "nvim-telescope/telescope-file-browser.nvim"
-  use "nvim-telescope/telescope-media-files.nvim"
-  use "tom-anders/telescope-vim-bookmarks.nvim"
+  --  TELESCOPE
+  {
+    "nvim-telescope/telescope.nvim",
+    event = "Bufenter",
+    cmd = { "Telescope" },
+    dependencies = {
+      {
+        "ahmedkhalf/project.nvim",
+        config = function()
+          require "user.project"
+        end,
+      },
+      { "nvim-telescope/telescope-file-browser.nvim" },
+      { "nvim-telescope/telescope-media-files.nvim" },
+      { "tom-anders/telescope-vim-bookmarks.nvim" },
+    },
+    config = function()
+      require "user.telescope"
+    end,
+  },
 
-  -- Treesitter
-  use "nvim-treesitter/nvim-treesitter"
-  use "JoosepAlviste/nvim-ts-context-commentstring"
-  use "p00f/nvim-ts-rainbow"
-  use "nvim-treesitter/playground"
-  use "windwp/nvim-ts-autotag"
-
-  -- Git
-  use "lewis6991/gitsigns.nvim"
-  use "f-person/git-blame.nvim"
-  use "ruifm/gitlinker.nvim"
-  use "mattn/vim-gist"
-  use "mattn/webapi-vim"
-
-  -- Editing Support
-  use "windwp/nvim-autopairs"
-  use "monaqa/dial.nvim"
-  use "nacro90/numb.nvim"
-  use "andymass/vim-matchup"
-  use "folke/zen-mode.nvim"
-  use "karb94/neoscroll.nvim"
-  use "junegunn/vim-slash"
-
-  -- Motion
-  use "phaazon/hop.nvim"
-
-  -- Keymapping
-  use "folke/which-key.nvim"
-
-  -- Utilities
-  use "folke/trouble.nvim"
-  use "numToStr/Comment.nvim"
-  use "folke/todo-comments.nvim"
-  use "kyazdani42/nvim-tree.lua"
-  use "tamago324/lir.nvim"
-  use "moll/vim-bbye"
-  use "akinsho/toggleterm.nvim"
-  use "ahmedkhalf/project.nvim"
-  use "lewis6991/impatient.nvim"
-  use "goolord/alpha-nvim"
-  use "kylechui/nvim-surround"
-  use {
+  -- UTILS
+  { "folke/trouble.nvim" },
+  {
     "abecodes/tabout.nvim",
-    wants = { "nvim-treesitter" },
-  }
-  use "nvim-pack/nvim-spectre"
-  use "filipdutescu/renamer.nvim"
-  use "kevinhwang91/nvim-bqf"
-  use "Mephistophiles/surround.nvim"
-  use "tversteeg/registers.nvim"
-  use {
-    "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    ft = "markdown",
-  }
-  use "ghillb/cybu.nvim"
-  use "wakatime/vim-wakatime"
-  -- use { "yardnsm/vim-import-cost", run = "npm install --production" }
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if PACKER_BOOTSTRAP then
-    require("packer").sync()
-  end
-end)
+    lazy = true,
+    dependencies = { "nvim-treesitter" },
+    config = function()
+      require "user.tabout"
+    end,
+  },
+  {
+    "kyazdani42/nvim-tree.lua",
+    config = function()
+      require "user.nvim-tree"
+    end,
+  },
+  {
+    "akinsho/toggleterm.nvim",
+    event = "VeryLazy",
+    config = function()
+      require "user.toggleterm"
+    end,
+  },
+  {
+    "goolord/alpha-nvim",
+    event = "VimEnter",
+    config = function()
+      require "user.alpha"
+    end,
+  },
+  {
+    "kylechui/nvim-surround",
+    config = function()
+      require "user.surround"
+    end,
+  },
+  {
+    "tversteeg/registers.nvim",
+    config = function()
+      require "user.registers"
+    end,
+  },
+  {
+    "filipdutescu/renamer.nvim",
+    config = function()
+      require "user.renamer"
+    end,
+  },
+  {
+    "nvim-pack/nvim-spectre",
+    config = function()
+      require "user.spectre"
+    end,
+  },
+  {
+    "cshuaimin/ssr.nvim",
+    init = function()
+      vim.keymap.set({ "n", "x" }, "<leader>cR", function()
+        require("ssr").open()
+      end, { desc = "Structural Replace" })
+    end,
+  },
+  {
+    "moll/vim-bbye",
+  },
+  { "kevinhwang91/nvim-bqf" },
+  {
+    "dstein64/vim-startuptime",
+    cmd = "StartupTime",
+  },
+  {
+    "wakatime/vim-wakatime",
+  },
+}

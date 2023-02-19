@@ -41,3 +41,4 @@ dashboard.section.buttons.opts.hl = "Macro"
 
 dashboard.opts.opts.noautocmd = true
 alpha.setup(dashboard.opts)
+

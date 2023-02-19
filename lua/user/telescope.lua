@@ -3,7 +3,6 @@ if not status_ok then
   return
 end
 
-
 local actions = require "telescope.actions"
 local fb_actions = require("telescope").extensions.file_browser.actions
 local icons = require "user.icons"
@@ -165,7 +164,6 @@ vim.keymap.set("n", ";e", function()
     initial_mode = "normal",
   }
 end)
-
 
 telescope.load_extension "file_browser"
 telescope.load_extension "media_files"
