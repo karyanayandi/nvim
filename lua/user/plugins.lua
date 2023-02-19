@@ -115,6 +115,7 @@ require("lazy").setup {
   {
     "RRethy/vim-illuminate",
     event = "VeryLazy",
+    dependencies = {"nvim-treesitter"},
     config = function()
       require "user.illuminate"
     end,
