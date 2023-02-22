@@ -3,6 +3,7 @@ local servers = {
   "cssmodules_ls",
   --[[ "deno", ]]
   "emmet_ls",
+  "prettierd",
   "html",
   "jsonls",
   "lua_ls",
