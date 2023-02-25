@@ -17,15 +17,11 @@ null_ls.setup {
     },
     formatting.fish_indent,
     formatting.goimports,
-    -- formatting.eslint_d.with {
-    --   prefer_local = "node_modules/.bin",
-    --   extra_filetypes = { "svelte" },
-    -- },
     formatting.prettierd.with {
       prefer_local = "node_modules/.bin",
-      -- disabled_filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
-      extra_filetypes = { "php", "toml", "svelte", "prisma", 'env', 'example' },
+      extra_filetypes = { "php", "toml", "svelte", "env", "example" },
     },
+    formatting.prismaFmt,
     formatting.deno_fmt.with {
       filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
       condition = function(utils)

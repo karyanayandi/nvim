@@ -188,7 +188,7 @@ require("lazy").setup {
   {
     "nvim-treesitter/nvim-treesitter",
     event = "BufReadPost",
-    build = "TSUpdate",
+    build = ":TSUpdate",
     dependencies = {
       {
         "JoosepAlviste/nvim-ts-context-commentstring",
@@ -289,6 +289,7 @@ require("lazy").setup {
   },
   { "b0o/SchemaStore.nvim" },
   { "jose-elias-alvarez/typescript.nvim" },
+  { "prisma/vim-prisma" },
   { "simrat39/symbols-outline.nvim" },
   { "iamcco/markdown-preview.nvim",      build = "cd app && npm install", ft = "markdown" },
 

@@ -11,7 +11,7 @@ configs.setup {
   matchup = {
     enable = true,
     disable_virtual_text = true,
-    disable = { "html", "smali" },
+    disable = { "html", "smali", "jsonc" },
   },
   highlight = {
     enable = true,
