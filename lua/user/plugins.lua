@@ -17,7 +17,7 @@ vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappin
 require("lazy").setup {
   -- UI
   {
-    "rmehri01/onenord.nvim",
+    "karyanayandi/onenord.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
@@ -115,7 +115,7 @@ require("lazy").setup {
   {
     "RRethy/vim-illuminate",
     event = "VeryLazy",
-    dependencies = {"nvim-treesitter"},
+    dependencies = { "nvim-treesitter" },
     config = function()
       require "user.illuminate"
     end,
@@ -188,10 +188,11 @@ require("lazy").setup {
   {
     "nvim-treesitter/nvim-treesitter",
     event = "BufReadPost",
+    build = "TSUpdate",
     dependencies = {
       {
         "JoosepAlviste/nvim-ts-context-commentstring",
-        event = "VeryLazy",
+        -- event = "VeryLazy",
         config = function()
           require "user.ts-context"
         end,
@@ -291,11 +292,18 @@ require("lazy").setup {
   { "simrat39/symbols-outline.nvim" },
   { "iamcco/markdown-preview.nvim",      build = "cd app && npm install", ft = "markdown" },
 
+  {
+    "ellisonleao/dotenv.nvim",
+    config = function()
+      require "user.dotenv"
+    end,
+  },
+
   -- GIT
   {
     "f-person/git-blame.nvim",
     config = function()
-      require "user.gitblame"
+      require "user.git-blame"
     end,
   },
   {

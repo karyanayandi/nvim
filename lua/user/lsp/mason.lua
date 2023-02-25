@@ -3,7 +3,6 @@ local servers = {
   "cssmodules_ls",
   --[[ "deno", ]]
   "emmet_ls",
-  "prettierd",
   "html",
   "jsonls",
   "lua_ls",
@@ -20,9 +19,9 @@ local settings = {
   ui = {
     border = "none",
     icons = {
-      package_installed = "◍",
-      package_pending = "◍",
-      package_uninstalled = "◍",
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗",
     },
   },
   log_level = vim.log.levels.INFO,

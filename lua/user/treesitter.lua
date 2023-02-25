@@ -11,12 +11,12 @@ configs.setup {
   matchup = {
     enable = true,
     disable_virtual_text = true,
-    disable = { "html" },
+    disable = { "html", "smali" },
   },
-  -- highlight = {
-  --   enable = true,
-  --   disable = { "markdown" },
-  -- },
+  highlight = {
+    enable = true,
+    disable = { "markdown" },
+  },
   autopairs = {
     enable = true,
   },

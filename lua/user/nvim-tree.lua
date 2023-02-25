@@ -18,7 +18,7 @@ nvim_tree.setup {
   },
   filters = {
     custom = { ".git" },
-    exclude = { ".gitignore", ".env" },
+    exclude = { ".gitignore", ".env", "git-blame.lua", "gitlinker.lua", "gitsigns.lua" },
   },
   update_cwd = true,
   renderer = {
