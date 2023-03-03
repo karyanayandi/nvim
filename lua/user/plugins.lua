@@ -18,7 +18,7 @@ require("lazy").setup {
   -- UI
   {
     "karyanayandi/onenord.nvim",
-    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       require "user.colorscheme"
@@ -87,7 +87,7 @@ require("lazy").setup {
     end,
   },
   { "nvim-lua/plenary.nvim", lazy = true },
-  { "nvim-lua/popup.nvim",   lazy = true },
+  { "nvim-lua/popup.nvim", lazy = true },
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
@@ -133,13 +133,6 @@ require("lazy").setup {
       require "user.illuminate"
     end,
   },
-  {
-    "echasnovski/mini.bufremove",
-    config = function()
-      require "user.bufremove"
-    end,
-  },
-  { "junegunn/vim-slash" },
   {
     "mfussenegger/nvim-dap",
     event = "VeryLazy",
@@ -291,8 +284,8 @@ require("lazy").setup {
     "neovim/nvim-lspconfig",
     dependencies = {
       { "jose-elias-alvarez/typescript.nvim" },
-      { "folke/neoconf.nvim",                cmd = "Neoconf",                                config = true },
-      { "folke/neodev.nvim",                 opts = { experimental = { pathStrict = true } } },
+      { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
+      { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
     },
     lazy = true,
   },
@@ -364,14 +357,6 @@ require("lazy").setup {
     "phaazon/hop.nvim",
     config = function()
       require "user.hop"
-    end,
-  },
-  {
-    "echasnovski/mini.ai",
-    event = "VeryLazy",
-    dependencies = { "nvim-treesitter-textobjects" },
-    config = function()
-      require "user.ai"
     end,
   },
 

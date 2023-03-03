@@ -62,34 +62,21 @@ local opts = {
   nowait = true,
 }
 
-local m_opts = {
-  mode = "n",
-  prefix = "m",
-  buffer = nil,
-  silent = true,
-  noremap = true,
-  nowait = true,
-}
-
 local mappings = {
-      ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
+  ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
   b = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal'})<cr>",
     "Buffer",
   },
-  x = {
-    "<cmd> lua require('mini.bufremove').delete(0, false)<cr>",
-    "Delete Buffer"
-  },
-      ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-      ["w"] = { "<cmd>w<CR>", "Write" },
-      ["h"] = { "<cmd>nohlsearch<CR>", "No HL" },
-      ["q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
-      ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
-      ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
-      ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-      ["z"] = { "<cmd>ZenMode<cr>", "Zen" },
-      ["gy"] = "Link",
+  ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+  ["w"] = { "<cmd>w<CR>", "Write" },
+  ["h"] = { "<cmd>nohlsearch<CR>", "No HL" },
+  ["q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
+  ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
+  ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+  ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
+  ["z"] = { "<cmd>ZenMode<cr>", "Zen" },
+  ["gy"] = "Link",
   p = {
     name = "Lazy Package Management",
     i = { "<cmd>Lazy<cr>", "Install" },
@@ -233,10 +220,10 @@ local mappings = {
   },
   t = {
     name = "Terminal",
-        ["1"] = { ":1ToggleTerm<cr>", "1" },
-        ["2"] = { ":2ToggleTerm<cr>", "2" },
-        ["3"] = { ":3ToggleTerm<cr>", "3" },
-        ["4"] = { ":4ToggleTerm<cr>", "4" },
+    ["1"] = { ":1ToggleTerm<cr>", "1" },
+    ["2"] = { ":2ToggleTerm<cr>", "2" },
+    ["3"] = { ":3ToggleTerm<cr>", "3" },
+    ["4"] = { ":4ToggleTerm<cr>", "4" },
     n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
     r = { "<cmd>lua _RANGER_TOGGLE()<cr>", "Ranger" },
     t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
@@ -261,8 +248,9 @@ local vopts = {
   noremap = true,
   nowait = true,
 }
+
 local vmappings = {
-      ["/"] = { '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', "Comment" },
+  ["/"] = { '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', "Comment" },
   s = { "<esc><cmd>'<,'>SnipRun<cr>", "Run range" },
 }
 
