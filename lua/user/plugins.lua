@@ -66,7 +66,6 @@ require("lazy").setup {
   },
   {
     "stevearc/dressing.nvim",
-    lazy = true,
     config = function()
       require "user.dressing"
     end,
