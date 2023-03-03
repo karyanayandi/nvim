@@ -10,9 +10,15 @@ notify.setup {
   on_open = nil,
   on_close = nil,
   render = "default",
-  timeout = 2000,
+  timeout = 3000,
   background_colour = "Normal",
   minimum_width = 10,
+  max_height = function()
+    return math.floor(vim.o.lines * 0.75)
+  end,
+  max_width = function()
+    return math.floor(vim.o.columns * 0.75)
+  end,
   icons = {
     ERROR = icons.diagnostics.Error,
     WARN = icons.diagnostics.Warning,
