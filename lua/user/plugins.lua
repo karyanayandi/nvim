@@ -46,12 +46,6 @@ require("lazy").setup {
     end,
   },
   {
-    "echasnovski/mini.animate",
-    config = function()
-      require "user.animate"
-    end,
-  },
-  {
     "nvim-lualine/lualine.nvim",
     config = function()
       require "user.lualine"
@@ -165,12 +159,6 @@ require("lazy").setup {
     "monaqa/dial.nvim",
     config = function()
       require "user.dial"
-    end,
-  },
-  {
-    "folke/zen-mode.nvim",
-    config = function()
-      require "user.zenmode"
     end,
   },
   {

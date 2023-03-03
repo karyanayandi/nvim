@@ -102,8 +102,8 @@ keymap("n", ";r", "<cmd>lua require('spectre').open_file_search()<cr>", opts)
 -- Show document symbol
 keymap("n", "<C-t>", "<cmd>lua vim.lsp.buf.document_symbol()<cr>", opts)
 
--- Enable zen mode
-keymap("n", ";z", "<cmd>ZenMode<cr>", opts)
+-- No HL
+keymap("n", ";z", "<cmd>nohlsearch<cr>", opts)
 
 -- Open File lists
 keymap("n", "<F1>", ":e .<cr>", opts)
