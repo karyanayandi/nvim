@@ -133,6 +133,12 @@ require("lazy").setup {
       require "user.illuminate"
     end,
   },
+  {
+    "echasnovski/mini.bufremove",
+    config = function()
+      require "user.bufremove"
+    end,
+  },
   { "junegunn/vim-slash" },
   {
     "mfussenegger/nvim-dap",
@@ -455,7 +461,6 @@ require("lazy").setup {
   {
     "moll/vim-bbye",
   },
-  { "kevinhwang91/nvim-bqf" },
   {
     "dstein64/vim-startuptime",
     cmd = "StartupTime",

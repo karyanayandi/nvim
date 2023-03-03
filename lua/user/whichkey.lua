@@ -72,21 +72,24 @@ local m_opts = {
 }
 
 local mappings = {
-  ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
+      ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
   b = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal'})<cr>",
     "Buffer",
   },
-  ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  ["w"] = { "<cmd>w<CR>", "Write" },
-  ["h"] = { "<cmd>nohlsearch<CR>", "No HL" },
-  ["q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
-  ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
-  ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
-  ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-  ["z"] = { "<cmd>ZenMode<cr>", "Zen" },
-  ["gy"] = "Link",
-
+  x = {
+    "<cmd> lua require('mini.bufremove').delete(0, false)<cr>",
+    "Delete Buffer"
+  },
+      ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+      ["w"] = { "<cmd>w<CR>", "Write" },
+      ["h"] = { "<cmd>nohlsearch<CR>", "No HL" },
+      ["q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
+      ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
+      ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+      ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
+      ["z"] = { "<cmd>ZenMode<cr>", "Zen" },
+      ["gy"] = "Link",
   p = {
     name = "Lazy Package Management",
     i = { "<cmd>Lazy<cr>", "Install" },
@@ -99,7 +102,6 @@ local mappings = {
     p = { "<cmd>Lazy profile<cr>", "Profile" },
     r = { "<cmd>Lazy restore<cr>", "Restore" },
   },
-
   o = {
     name = "Options",
     w = { '<cmd>lua require("user.functions").toggle_option("wrap")<cr>', "Wrap" },
@@ -109,7 +111,6 @@ local mappings = {
     t = { '<cmd>lua require("user.functions").toggle_tabline()<cr>', "Tabline" },
     c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
   },
-
   s = {
     name = "Session",
     s = { "<silent><cmd>SaveSession<cr>", "Save" },
@@ -118,14 +119,12 @@ local mappings = {
     f = { "<silent><cmd>Autosession search<cr>", "Find" },
     d = { "<silent><cmd>Autosession delete<cr>", "Find Delete" },
   },
-
   r = {
     name = "Replace",
     r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
     w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
     f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
   },
-
   d = {
     name = "Debug",
     b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
@@ -138,7 +137,6 @@ local mappings = {
     u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
     x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
   },
-
   f = {
     name = "Find",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -156,7 +154,6 @@ local mappings = {
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     C = { "<cmd>Telescope commands<cr>", "Commands" },
   },
-
   g = {
     name = "Git",
     g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
@@ -188,7 +185,6 @@ local mappings = {
       p = { "<cmd>Gist -b -p<cr>", "Create Private" },
     },
   },
-
   l = {
     name = "LSP",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
@@ -225,7 +221,6 @@ local mappings = {
     t = { '<cmd>lua require("user.functions").toggle_diagnostics()<cr>', "Toggle Diagnostics" },
     u = { "<cmd>LuaSnipUnlinkCurrent<cr>", "Unlink Snippet" },
   },
-
   S = {
     name = "SnipRun",
     c = { "<cmd>SnipClose<cr>", "Close" },
@@ -236,13 +231,12 @@ local mappings = {
     t = { "<cmd>SnipRunToggle<cr>", "Toggle" },
     x = { "<cmd>SnipTerminate<cr>", "Terminate" },
   },
-
   t = {
     name = "Terminal",
-    ["1"] = { ":1ToggleTerm<cr>", "1" },
-    ["2"] = { ":2ToggleTerm<cr>", "2" },
-    ["3"] = { ":3ToggleTerm<cr>", "3" },
-    ["4"] = { ":4ToggleTerm<cr>", "4" },
+        ["1"] = { ":1ToggleTerm<cr>", "1" },
+        ["2"] = { ":2ToggleTerm<cr>", "2" },
+        ["3"] = { ":3ToggleTerm<cr>", "3" },
+        ["4"] = { ":4ToggleTerm<cr>", "4" },
     n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
     r = { "<cmd>lua _RANGER_TOGGLE()<cr>", "Ranger" },
     t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
@@ -251,7 +245,6 @@ local mappings = {
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
-
   T = {
     name = "Treesitter",
     h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
@@ -269,11 +262,10 @@ local vopts = {
   nowait = true,
 }
 local vmappings = {
-  ["/"] = { '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', "Comment" },
+      ["/"] = { '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', "Comment" },
   s = { "<esc><cmd>'<,'>SnipRun<cr>", "Run range" },
 }
 
 which_key.setup(setup)
 which_key.register(mappings, opts)
 which_key.register(vmappings, vopts)
-
