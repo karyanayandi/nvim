@@ -32,13 +32,6 @@ require("lazy").setup {
     end,
   },
   {
-    "roobert/tailwindcss-colorizer-cmp.nvim",
-    -- optionally, override the default options:
-    config = function()
-      require "user.tailwind-colorizer"
-    end,
-  },
-  {
     "lukas-reineke/indent-blankline.nvim",
     event = { "BufReadPost", "BufNewFile" },
     config = function()
