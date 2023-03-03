@@ -17,7 +17,18 @@ vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "DressingSelect", "tsplayground", "notify", "startuptime", "PlenaryTestPopup" },
+  pattern = {
+    "qf",
+    "help",
+    "man",
+    "lspinfo",
+    "spectre_panel",
+    "DressingSelect",
+    "tsplayground",
+    "notify",
+    "startuptime",
+    "PlenaryTestPopup",
+  },
   callback = function()
     vim.cmd [[
       nnoremap <silent> <buffer> q :close<CR>

@@ -39,6 +39,16 @@ dashboard.section.footer.opts.hl = "Constant"
 dashboard.section.header.opts.hl = "Macro"
 dashboard.section.buttons.opts.hl = "Macro"
 
+vim.api.nvim_create_autocmd("User", {
+  pattern = "LazyVimStarted",
+  callback = function()
+    local stats = require("lazy").stats()
+    local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+    local pad_footer = string.rep(" ", 8)
+    dashboard.section.footer.val = pad_footer .. "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
+    pcall(dashboard.refresh)
+  end,
+})
+
 dashboard.opts.opts.noautocmd = true
 alpha.setup(dashboard.opts)
-
