@@ -63,13 +63,15 @@ local diff = {
 local filetype = {
   "filetype",
   icons_enabled = true,
+  color = function()
+    return { fg = "#e5e9f0" }
+  end,
 }
 
 local branch = {
   "branch",
   icons_enabled = true,
   icon = "%#SLGitIcon#" .. "" .. "%*" .. "%#SLBranchName#",
-  colored = false,
 }
 
 local filename = {
@@ -77,13 +79,15 @@ local filename = {
   file_status = false,
   path = 1,
   shorting_target = 20,
+  color = function()
+    return { fg = "#e5e9f0" }
+  end,
 }
 
 local location = {
   "location",
   color = function()
     return { fg = "#2e3440", bg = mode_color[vim.fn.mode()] }
-
   end,
 }
 
@@ -105,15 +109,6 @@ lualine.setup {
     lualine_y = { filetype },
     lualine_z = { location },
   },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = { "location" },
-    lualine_y = {},
-    lualine_z = {},
-  },
   tabline = {},
   extensions = {},
 }
-
