@@ -18,7 +18,7 @@ require("lazy").setup {
   -- UI
   {
     "karyanayandi/onenord.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       require "user.colorscheme"
@@ -40,7 +40,7 @@ require("lazy").setup {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
-    event = "BufReadPre",
+    event = { "BufReadPost", "BufNewFile" },
     config = function()
       require "user.indentline"
     end,
@@ -72,7 +72,7 @@ require("lazy").setup {
   },
   {
     "stevearc/dressing.nvim",
-    event = "VeryLazy",
+    lazy = true,
     config = function()
       require "user.dressing"
     end,
@@ -87,7 +87,7 @@ require("lazy").setup {
     end,
   },
   { "nvim-lua/plenary.nvim", lazy = true },
-  { "nvim-lua/popup.nvim", lazy = true },
+  { "nvim-lua/popup.nvim",   lazy = true },
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
@@ -291,8 +291,8 @@ require("lazy").setup {
     "neovim/nvim-lspconfig",
     dependencies = {
       { "jose-elias-alvarez/typescript.nvim" },
-      { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-      { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
+      { "folke/neoconf.nvim",                cmd = "Neoconf",                                config = true },
+      { "folke/neodev.nvim",                 opts = { experimental = { pathStrict = true } } },
     },
     lazy = true,
   },
