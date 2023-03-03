@@ -243,7 +243,7 @@ require("lazy").setup {
         "hrsh7th/cmp-nvim-lua",
       },
       { "hrsh7th/cmp-emoji" },
-      { "zbirenbaum/copilot-cmp" },
+      { "zbirenbaum/copilot-cmp", dependencies = "copilot.lua" },
     },
     config = function()
       require "user.cmp"
@@ -252,6 +252,8 @@ require("lazy").setup {
   {
     "zbirenbaum/copilot.lua",
     event = { "VimEnter" },
+    cmd = "Copilot",
+    build = ":Copilot auth",
     config = function()
       vim.defer_fn(function()
         require "user.copilot"
@@ -271,6 +273,7 @@ require("lazy").setup {
   -- LANGUAGE SERVER PROTOCOL
   {
     "neovim/nvim-lspconfig",
+    dependencies = { "jose-elias-alvarez/typescript.nvim" },
     lazy = true,
   },
   {
@@ -295,10 +298,9 @@ require("lazy").setup {
     end,
   },
   { "b0o/SchemaStore.nvim" },
-  { "jose-elias-alvarez/typescript.nvim" },
   { "prisma/vim-prisma" },
   { "simrat39/symbols-outline.nvim" },
-  { "iamcco/markdown-preview.nvim",      build = "cd app && npm install", ft = "markdown" },
+  { "iamcco/markdown-preview.nvim", build = "cd app && npm install", ft = "markdown" },
 
   {
     "ellisonleao/dotenv.nvim",
