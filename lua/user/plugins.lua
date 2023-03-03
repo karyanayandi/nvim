@@ -55,7 +55,7 @@ require("lazy").setup {
     "echasnovski/mini.animate",
     config = function()
       require "user.animate"
-    end
+    end,
   },
   -- {
   --   "akinsho/bufferline.nvim",
@@ -87,7 +87,7 @@ require("lazy").setup {
     end,
   },
   { "nvim-lua/plenary.nvim", lazy = true },
-  { "nvim-lua/popup.nvim",   lazy = true },
+  { "nvim-lua/popup.nvim", lazy = true },
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
@@ -205,7 +205,7 @@ require("lazy").setup {
     dependencies = {
       {
         "JoosepAlviste/nvim-ts-context-commentstring",
-        -- event = "VeryLazy",
+        lazy = true,
         config = function()
           require "user.ts-context"
         end,
@@ -279,7 +279,11 @@ require("lazy").setup {
   -- LANGUAGE SERVER PROTOCOL
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "jose-elias-alvarez/typescript.nvim" },
+    dependencies = {
+      { "jose-elias-alvarez/typescript.nvim" },
+      { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
+      { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
+    },
     lazy = true,
   },
   {
@@ -350,6 +354,12 @@ require("lazy").setup {
     "phaazon/hop.nvim",
     config = function()
       require "user.hop"
+    end,
+  },
+  {
+    "echasnovski/mini.ai",
+    config = function()
+      require "user.ai"
     end,
   },
 

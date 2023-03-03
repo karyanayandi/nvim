@@ -13,6 +13,10 @@ local servers = {
   "clangd",
   "rust_analyzer",
   "tailwindcss",
+  -- "stylua",
+  -- "shellcheck",
+  -- "shfmt",
+  -- "flake8",
 }
 
 local settings = {
