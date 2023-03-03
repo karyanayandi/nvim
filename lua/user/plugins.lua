@@ -51,6 +51,12 @@ require("lazy").setup {
       require "user.nvim-web-devicons"
     end,
   },
+  {
+    "echasnovski/mini.animate",
+    config = function()
+      require "user.animate"
+    end
+  },
   -- {
   --   "akinsho/bufferline.nvim",
   --   config = function()
