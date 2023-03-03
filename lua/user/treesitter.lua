@@ -3,10 +3,35 @@ if not status_ok then
   return
 end
 
-
 configs.setup {
-  ensure_installed = "all",
+  ensure_installed = {
+    "bash",
+    "c",
+    "help",
+    "html",
+    "javascript",
+    "json",
+    "lua",
+    "markdown",
+    "markdown_inline",
+    "python",
+    "query",
+    "regex",
+    "tsx",
+    "typescript",
+    "vim",
+    "yaml",
+  },
   sync_install = false,
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "<C-space>",
+      node_incremental = "<C-space>",
+      scope_incremental = "<nop>",
+      node_decremental = "<bs>",
+    },
+  },
   ignore_install = { "" },
   matchup = {
     enable = true,
@@ -20,7 +45,7 @@ configs.setup {
   autopairs = {
     enable = true,
   },
-  indent = { enable = true, disable = { "python", "css", "rust" } },
+  indent = { enable = true, disable = { "python" } },
   context_commentstring = {
     enable = true,
     enable_autocmd = false,
@@ -81,6 +106,10 @@ configs.setup {
         ["[]"] = "@class.outer",
       },
     },
+    keys = {
+      { "<c-space>", desc = "Increment selection" },
+      { "<bs>", desc = "Schrink selection", mode = "x" },
+    },
     swap = {
       enable = true,
       swap_next = {
@@ -92,4 +121,3 @@ configs.setup {
     },
   },
 }
-
