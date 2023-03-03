@@ -6,10 +6,17 @@ end
 copilot.setup {
   cmp = {
     enabled = true,
-    method = "getPanelCompletions",
+    method = "getCompletionsCycling",
   },
   panel = {
     enabled = true,
   },
   ft_disable = { "markdown" },
+  server_opts_overrides = {
+    settings = {
+      advanced = {
+        inlineSuggestCount = 3,
+      },
+    },
+  },
 }

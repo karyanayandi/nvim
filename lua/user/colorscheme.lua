@@ -9,7 +9,7 @@ end
 require("onenord").setup {
   theme = "dark",
   borders = true,
-  fade_nc = true,
+  fade_nc = false,
   styles = {
     comments = "NONE",
     strings = "NONE",
