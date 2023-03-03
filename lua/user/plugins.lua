@@ -302,16 +302,9 @@ require("lazy").setup {
     end,
   },
   { "b0o/SchemaStore.nvim" },
-  { "prisma/vim-prisma" },
+  -- { "prisma/vim-prisma" },
   { "simrat39/symbols-outline.nvim" },
   { "iamcco/markdown-preview.nvim", build = "cd app && npm install", ft = "markdown" },
-
-  {
-    "ellisonleao/dotenv.nvim",
-    config = function()
-      require "user.dotenv"
-    end,
-  },
 
   -- GIT
   {
@@ -332,15 +325,6 @@ require("lazy").setup {
     config = function()
       require "user.gitlinker"
     end,
-  },
-  {
-    "mattn/vim-gist",
-    config = function()
-      require "user.gist"
-    end,
-  },
-  {
-    "mattn/webapi-vim",
   },
 
   -- MOTION
@@ -425,17 +409,6 @@ require("lazy").setup {
     config = function()
       require "user.spectre"
     end,
-  },
-  {
-    "cshuaimin/ssr.nvim",
-    init = function()
-      vim.keymap.set({ "n", "x" }, "<leader>cR", function()
-        require("ssr").open()
-      end, { desc = "Structural Replace" })
-    end,
-  },
-  {
-    "moll/vim-bbye",
   },
   {
     "dstein64/vim-startuptime",

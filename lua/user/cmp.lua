@@ -8,11 +8,6 @@ if not snip_status_ok then
   return
 end
 
-local tailwind_colorizer_status_ok, _ = pcall(require, "user.tailwind-colorizer")
-if not tailwind_colorizer_status_ok then
-  return
-end
-
 local buffer_fts = {
   "markdown",
   "toml",
@@ -43,7 +38,6 @@ local icons = require "user.icons"
 local kind_icons = icons.kind
 
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#A3BE8C" })
-vim.api.nvim_set_hl(0, "CmpItemKindTailwindColorizer", { fg = "#CA42F0" })
 vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#EBCB8B" })
 vim.api.nvim_set_hl(0, "CmpItemKindCrate", { fg = "#F64D00" })
 
@@ -70,7 +64,6 @@ cmp.setup {
         ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
         ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
         ["<m-o>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-    -- ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
         ["<C-c>"] = cmp.mapping {
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
@@ -91,8 +84,6 @@ cmp.setup {
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     },
-    -- Accept currently selected item. If none selected, `select` first item.
-    -- Set `select` to `false` to only confirm explicitly selected items.
         ["<CR>"] = cmp.mapping.confirm { select = false },
         ["<Right>"] = cmp.mapping.confirm { select = true },
         ["<Tab>"] = cmp.mapping(function(fallback)
@@ -132,10 +123,6 @@ cmp.setup {
     format = function(entry, vim_item)
       vim_item.kind = kind_icons[vim_item.kind]
 
-      if entry.source.name == "tailwindcss-colorizer-cmp" then
-        vim_item.kind = icons.kind.Color
-        vim_item.kind_hl_group = "CmpItemKindTailwindColorizer"
-      end
       if entry.source.name == "copilot" then
         vim_item.kind = icons.git.Octoface
         vim_item.kind_hl_group = "CmpItemKindCopilot"
@@ -169,33 +156,9 @@ cmp.setup {
     end,
   },
   sources = {
-    { name = "crates",   group_index = 1 },
     {
       name = "copilot",
       max_item_count = 3,
-      trigger_characters = {
-        {
-          ".",
-          ":",
-          "(",
-          "'",
-          '"',
-          "[",
-          ",",
-          "#",
-          "*",
-          "@",
-          "|",
-          "=",
-          "-",
-          "{",
-          "/",
-          "\\",
-          "+",
-          "?",
-          " ",
-        },
-      },
       group_index = 2,
     },
     {
@@ -223,23 +186,19 @@ cmp.setup {
         end
       end,
     },
-    { name = "tailwindcss-colorizer-cmp", group_index = 2 },
     { name = "path",                      group_index = 2 },
+    { name = "crates",   group_index = 1 },
     { name = "emoji",                     group_index = 2 },
     { name = "lab.quick_data",            keyword_length = 4, group_index = 2 },
   },
   sorting = {
     priority_weight = 2,
     comparators = {
-      -- require("copilot_cmp.comparators").prioritize,
-      -- require("copilot_cmp.comparators").score,
       compare.offset,
       compare.exact,
-      -- compare.scopes,
       compare.score,
       compare.recently_used,
       compare.locality,
-      -- compare.kind,
       compare.sort_text,
       compare.length,
       compare.order,
