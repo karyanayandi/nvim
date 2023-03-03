@@ -4,7 +4,6 @@ if not status_ok then
 end
 
 ai.setup {
-  custom_textobjects = nil,
   mappings = {
     around = "a",
     inside = "i",
@@ -16,5 +15,13 @@ ai.setup {
     goto_right = "g]",
   },
   n_lines = 50,
+  custom_textobjects = {
+    o = ai.gen_spec.treesitter({
+      a = { "@block.outer", "@conditional.outer", "@loop.outer" },
+      i = { "@block.inner", "@conditional.inner", "@loop.inner" },
+    }, {}),
+    f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
+    c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
+  },
   search_method = "cover_or_next",
 }

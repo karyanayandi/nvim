@@ -358,6 +358,8 @@ require("lazy").setup {
   },
   {
     "echasnovski/mini.ai",
+    event = "VeryLazy",
+    dependencies = { "nvim-treesitter-textobjects" },
     config = function()
       require "user.ai"
     end,
