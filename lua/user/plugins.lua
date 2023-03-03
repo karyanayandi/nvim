@@ -47,6 +47,7 @@ require("lazy").setup {
   },
   {
     "kyazdani42/nvim-web-devicons",
+    lazy = true,
     config = function()
       require "user.nvim-web-devicons"
     end,
@@ -57,13 +58,6 @@ require("lazy").setup {
       require "user.animate"
     end,
   },
-  -- {
-  --   "akinsho/bufferline.nvim",
-  --   config = function()
-  --     require "user.bufferline"
-  --   end,
-  -- },
-
   {
     "nvim-lualine/lualine.nvim",
     config = function()
@@ -449,6 +443,9 @@ require("lazy").setup {
   {
     "dstein64/vim-startuptime",
     cmd = "StartupTime",
+    config = function()
+      vim.g.startuptime_tries = 10
+    end,
   },
   {
     "wakatime/vim-wakatime",
