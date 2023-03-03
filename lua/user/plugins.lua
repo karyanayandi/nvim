@@ -187,7 +187,12 @@ require("lazy").setup {
       require "user.comment"
     end,
   },
-  { "folke/todo-comments.nvim" },
+  {
+    "folke/todo-comments.nvim",
+    cmd = { "TodoTrouble", "TodoTelescope" },
+    event = { "BufReadPost", "BufNewFile" },
+    config = true,
+  },
 
   -- TREESITTER
   {
