@@ -174,6 +174,7 @@ require("lazy").setup {
     event = { "BufReadPost", "BufNewFile" },
     config = true,
   },
+  { "moll/vim-bbye" },
 
   -- TREESITTER
   {

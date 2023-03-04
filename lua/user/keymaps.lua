@@ -146,4 +146,3 @@ end
 vim.api.nvim_set_keymap("n", "J", ":lua require('user.keymaps').show_documentation()<CR>", opts)
 
 return M
-

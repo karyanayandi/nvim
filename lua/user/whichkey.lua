@@ -63,18 +63,19 @@ local opts = {
 }
 
 local mappings = {
-  ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
-  b = {
+      ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
+      ["b"] = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_ivy{previewer = false, initial_mode='normal'})<cr>",
     "Buffer",
   },
-  ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  ["w"] = { "<cmd>w<CR>", "Write" },
-  ["h"] = { "<cmd>nohlsearch<CR>", "No HL" },
-  ["q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
-  ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
-  ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-  ["gy"] = "Link",
+      ["c"] = { "<cmd>:Bdelete<cr>", "Close" },
+      ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+      ["w"] = { "<cmd>w<CR>", "Write" },
+      ["h"] = { "<cmd>nohlsearch<CR>", "No HL" },
+      ["q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
+      ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
+      ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
+      ["gy"] = "Link",
   p = {
     name = "Lazy",
     I = { "<cmd>Lazy<cr>", "Install" },
@@ -184,7 +185,7 @@ local mappings = {
       "Workspace Symbols",
     },
     t = { '<cmd>lua require("user.functions").toggle_diagnostics()<cr>', "Toggle Diagnostics" },
-    T = { '<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>', "Todo Diagnostics" },
+    T = { "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", "Todo Diagnostics" },
     u = { "<cmd>LuaSnipUnlinkCurrent<cr>", "Unlink Snippet" },
   },
   S = {
@@ -199,9 +200,9 @@ local mappings = {
   },
   t = {
     name = "Terminal",
-    ["1"] = { ":1ToggleTerm<cr>", "1" },
-    ["2"] = { ":2ToggleTerm<cr>", "2" },
-    ["3"] = { ":3ToggleTerm<cr>", "3" },
+        ["1"] = { ":1ToggleTerm<cr>", "1" },
+        ["2"] = { ":2ToggleTerm<cr>", "2" },
+        ["3"] = { ":3ToggleTerm<cr>", "3" },
     n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
     l = { "<cmd>lua _LF_TOGGLE()<cr>", "lf" },
     b = { "<cmd>lua _BOTTOM_TOGGLE()<cr>", "btm" },
@@ -228,7 +229,7 @@ local vopts = {
 }
 
 local vmappings = {
-  ["/"] = { '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', "Comment" },
+      ["/"] = { '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', "Comment" },
   s = { "<esc><cmd>'<,'>SnipRun<cr>", "Run range" },
 }
 
