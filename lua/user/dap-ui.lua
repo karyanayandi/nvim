@@ -2,7 +2,6 @@ require("dapui").setup({
 	expand_lines = true,
 	icons = { expanded = "", collapsed = "", circular = "" },
 	mappings = {
-		-- Use a table to apply multiple mappings
 		expand = { "<CR>", "<2-LeftMouse>" },
 		open = "o",
 		remove = "d",
@@ -32,8 +31,8 @@ require("dapui").setup({
 	},
 	floating = {
 		max_height = 0.9,
-		max_width = 0.5, -- Floats will be treated as percentage of your screen.
-		border = vim.g.border_chars, -- Border style. Can be 'single', 'double' or 'rounded'
+		max_width = 0.5,
+		border = vim.g.border_chars,
 		mappings = {
 			close = { "q", "<Esc>" },
 		},

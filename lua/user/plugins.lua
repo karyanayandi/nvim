@@ -57,6 +57,12 @@ require("lazy").setup {
       require "user.dressing"
     end,
   },
+  {
+    "echasnovski/mini.animate",
+    config = function()
+      require "user.animate"
+    end,
+  },
 
   -- EDITING SUPPORT
   {
@@ -124,7 +130,7 @@ require("lazy").setup {
     "rcarriga/nvim-dap-ui",
     event = "VeryLazy",
     config = function()
-      require "user.dapui"
+      require "user.dap-ui"
     end,
   },
   {

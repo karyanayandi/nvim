@@ -61,7 +61,7 @@ telescope.setup {
       "%.flac",
       "%.tar.gz",
       ".config",
-      ".env",
+      "%.env",
       ".local",
     },
     mappings = {

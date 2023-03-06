@@ -53,7 +53,7 @@ dial_config.augends:register_group {
 
 local map = require "dial.map"
 
-vim.api.nvim_set_keymap("n", "+", map.inc_normal "mygroup", { noremap = true })
+vim.api.nvim_set_keymap("n", "+", map.inc_normal "mygroup", { noremap = false })
 vim.api.nvim_set_keymap("n", "-", map.dec_normal "mygroup", { noremap = true })
 vim.api.nvim_set_keymap("v", "+", map.inc_normal "visual", { noremap = true })
 vim.api.nvim_set_keymap("v", "-", map.dec_normal "visual", { noremap = true })
