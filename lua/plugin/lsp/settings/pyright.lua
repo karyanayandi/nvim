@@ -3,7 +3,7 @@ return {
     python = {
       analysis = {
         typeCheckingMode = "basic",
-        diagnosticMode = "workspace"
+        diagnosticMode = "workspace",
       },
     },
   },

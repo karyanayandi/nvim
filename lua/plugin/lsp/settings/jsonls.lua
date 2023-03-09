@@ -1,12 +1,10 @@
-local schemastore = require "schemastore"
-
 return {
   init_options = {
     provideFormatter = false,
   },
   settings = {
     json = {
-      schamas = schemastore.json.schemas(),
+      schemas = require("b0o/SchemaStore.nvim").json.schemas(),
     },
   },
   setup = {},

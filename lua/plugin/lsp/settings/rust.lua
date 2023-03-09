@@ -31,7 +31,6 @@ return {
     cmd = { "rustup", "run", "nightly", os.getenv "HOME" .. "/.local/bin/rust-analyzer" },
     on_attach = require("plugin.lsp.handlers").on_attach,
     capabilities = require("plugin.lsp.handlers").capabilities,
-
     settings = {
       ["rust-analyzer"] = {
         lens = {
