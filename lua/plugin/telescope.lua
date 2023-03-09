@@ -22,8 +22,25 @@ return {
         require("telescope").load_extension "projects"
       end,
     },
-    { "nvim-telescope/telescope-file-browser.nvim" },
-    { "nvim-telescope/telescope-media-files.nvim" },
+    {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      config = function()
+        require("telescope").load_extension "fzf"
+      end,
+    },
+    {
+      "nvim-telescope/telescope-file-browser.nvim",
+      config = function()
+        require("telescope").load_extension "file_browser"
+      end,
+    },
+    {
+      "nvim-telescope/telescope-media-files.nvim",
+      config = function()
+        require("telescope").load_extension "media_files"
+      end,
+    },
     { "tom-anders/telescope-vim-bookmarks.nvim" },
   },
   config = function()
@@ -84,9 +101,7 @@ return {
           "%.epub",
           "%.flac",
           "%.tar.gz",
-          ".config",
           "%.env",
-          ".local",
         },
         mappings = {
           i = {
@@ -187,8 +202,5 @@ return {
         initial_mode = "normal",
       }
     end)
-
-    require("telescope").load_extension "file_browser"
-    require("telescope").load_extension "media_files"
   end,
 }
