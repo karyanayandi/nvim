@@ -1,7 +1,7 @@
+require "config.autocommands"
 require "config.options"
 require "config.keymaps"
 require "config.lazy"
-require "config.autocommands"
 require "plugin.lsp"
 require "config.winbar"
 vim.cmd "colorscheme onenord"

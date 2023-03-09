@@ -62,19 +62,19 @@ return {
     }
 
     local mappings = {
-          ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
-          ["b"] = {
+      ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
+      ["b"] = {
         "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_ivy{previewer = false, initial_mode='normal'})<cr>",
         "Buffer",
       },
-          ["c"] = { "<cmd>:Bdelete<cr>", "Close" },
-          ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-          ["w"] = { "<cmd>w<CR>", "Write" },
-          ["h"] = { "<cmd>nohlsearch<CR>", "No HL" },
-          ["q"] = { '<cmd>lua require("config.functions").smart_quit()<CR>', "Quit" },
-          ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
-          ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-          ["gy"] = "Link",
+      ["c"] = { "<cmd>:Bdelete<cr>", "Close" },
+      ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+      ["w"] = { "<cmd>w<CR>", "Write" },
+      ["h"] = { "<cmd>nohlsearch<CR>", "No HL" },
+      ["q"] = { '<cmd>lua require("config.functions").smart_quit()<CR>', "Quit" },
+      ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
+      ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
+      ["gy"] = "Link",
       p = {
         name = "Lazy",
         I = { "<cmd>Lazy<cr>", "Install" },
@@ -187,21 +187,11 @@ return {
         T = { "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", "Todo Diagnostics" },
         u = { "<cmd>LuaSnipUnlinkCurrent<cr>", "Unlink Snippet" },
       },
-      S = {
-        name = "SnipRun",
-        c = { "<cmd>SnipClose<cr>", "Close" },
-        f = { "<cmd>%SnipRun<cr>", "Run File" },
-        i = { "<cmd>SnipInfo<cr>", "Info" },
-        m = { "<cmd>SnipReplMemoryClean<cr>", "Mem Clean" },
-        r = { "<cmd>SnipReset<cr>", "Reset" },
-        t = { "<cmd>SnipRunToggle<cr>", "Toggle" },
-        x = { "<cmd>SnipTerminate<cr>", "Terminate" },
-      },
       t = {
         name = "Terminal",
-            ["1"] = { ":1ToggleTerm<cr>", "1" },
-            ["2"] = { ":2ToggleTerm<cr>", "2" },
-            ["3"] = { ":3ToggleTerm<cr>", "3" },
+        ["1"] = { ":1ToggleTerm<cr>", "1" },
+        ["2"] = { ":2ToggleTerm<cr>", "2" },
+        ["3"] = { ":3ToggleTerm<cr>", "3" },
         n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
         l = { "<cmd>lua _LF_TOGGLE()<cr>", "lf" },
         b = { "<cmd>lua _BOTTOM_TOGGLE()<cr>", "btm" },
@@ -228,8 +218,7 @@ return {
     }
 
     local vmappings = {
-          ["/"] = { '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', "Comment" },
-      s = { "<esc><cmd>'<,'>SnipRun<cr>", "Run range" },
+      ["/"] = { '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', "Comment" },
     }
 
     require("which-key").setup(setup)
