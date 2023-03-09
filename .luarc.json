@@ -1,0 +1,9 @@
+{
+    "diagnostics.globals": [
+        "vim",
+        "notify"
+    ],
+    "diagnostics.disable": [
+        "missing-return"
+    ]
+}
