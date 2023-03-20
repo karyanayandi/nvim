@@ -27,8 +27,9 @@ return {
       ),
       dashboard.button("r", icons.ui.History .. " Recent files", ":Telescope oldfiles <CR>"),
       dashboard.button("t", icons.ui.List .. " Find text", ":Telescope live_grep <CR>"),
+      dashboard.button("s", icons.ui.Note .. " Load Session", "<cmd>lua require('persistence').load({ last = true })<cr>"),
       dashboard.button("c", icons.ui.Gear .. " Config", ":e ~/.config/nvim/init.lua <CR>"),
-      dashboard.button("u", icons.ui.CloudDownload .. " Update", ":PackerSync<CR>"),
+      dashboard.button("u", icons.ui.CloudDownload .. " Update", ":Lazy update<CR>"),
       dashboard.button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),
     }
 

@@ -197,6 +197,11 @@ return {
         h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
         v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
       },
+      s = {
+        L = { "<cmd>lua require('persistence').load()<cr>", "Load Session" },
+        l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Load Last Session" },
+        s = { "<cmd>lua require('persistence').stop()<cr>", "Stop Session" },
+      },
       T = {
         name = "Treesitter",
         h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
@@ -213,7 +218,7 @@ return {
         o = { "<cmd>WorkspacesOpen<cr>", "Open" },
         r = { "<cmd>WorkspacesRename<cr>", "Rename" },
         s = { "<cmd>WorkspacesSyncDirscr>", "Sync" },
-      }
+      },
     }
 
     local vopts = {
