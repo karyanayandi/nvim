@@ -96,6 +96,9 @@ keymap("n", ";g", "<cmd>Telescope git_branches theme=ivy<cr>", opts)
 -- Find help tags
 keymap("n", ";h", "<cmd>Telescope help_tags theme=ivy<cr>", opts)
 
+-- Find workspaces
+keymap("n", ";w", "<cmd>WorkspacesOpen<cr>", opts)
+
 -- Search and replace
 keymap("n", ";r", "<cmd>lua require('spectre').open_file_search()<cr>", opts)
 
