@@ -3,9 +3,12 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       { "jose-elias-alvarez/typescript.nvim" },
-      dependencies = {
+      {
         "b0o/SchemaStore.nvim",
-        version = false, -- last release is way too old
+        version = false,
+        config = function()
+          require "plugin.lsp.settings.jsonls"
+        end,
       },
       {
         "folke/neoconf.nvim",
