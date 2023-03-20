@@ -69,7 +69,7 @@ return {
       },
       ["c"] = { "<cmd>:Bdelete<cr>", "Close" },
       ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-      ["w"] = { "<cmd>w<CR>", "Write" },
+      ["W"] = { "<cmd>w<CR>", "Write" },
       ["h"] = { "<cmd>nohlsearch<CR>", "No HL" },
       ["q"] = { '<cmd>lua require("config.functions").smart_quit()<CR>', "Quit" },
       ["/"] = { '<cmd>lua require("Comment.api").toggle.linewise.current()<CR>', "Comment" },
@@ -101,7 +101,6 @@ return {
         r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
         w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
         f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
-        s = { "<cmd>lua require('ssr').open()<cr>", "Structural Replace" },
       },
       d = {
         name = "Debug",
@@ -204,6 +203,17 @@ return {
         p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
         r = { "<cmd>TSToggle rainbow<cr>", "Rainbow" },
       },
+      w = {
+        name = "Workspaces",
+        a = { "<cmd>WorkspacesAdd<cr>", "Add" },
+        A = { "<cmd>WorkspacesAddDir<cr>", "Add Dir" },
+        d = { "<cmd>WorkspacesRemove<cr>", "Remove" },
+        D = { "<cmd>WorkspacesRemoveDir<cr>", "Remove Dir" },
+        l = { "<cmd>WorkspacesList<cr>", "List" },
+        o = { "<cmd>WorkspacesOpen<cr>", "Open" },
+        r = { "<cmd>WorkspacesRename<cr>", "Rename" },
+        s = { "<cmd>WorkspacesSyncDirscr>", "Sync" },
+      }
     }
 
     local vopts = {

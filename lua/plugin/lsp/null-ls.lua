@@ -6,6 +6,7 @@ local code_actions = null_ls.builtins.code_actions
 
 null_ls.setup {
   debug = true,
+  debounce = 150,
   sources = {
     formatting.stylua,
     formatting.fish_indent,

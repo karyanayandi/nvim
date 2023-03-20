@@ -42,6 +42,12 @@ return {
       end,
     },
     { "tom-anders/telescope-vim-bookmarks.nvim" },
+    {
+      "natecraddock/workspaces.nvim",
+      config = function()
+        require("telescope").load_extension "workspaces"
+      end,
+    },
   },
   config = function()
     local actions = require "telescope.actions"
@@ -160,6 +166,10 @@ return {
       },
       pickers = {},
       extensions = {
+        workspaces = {
+          keep_insert = true,
+          open = { "NvimTreeOpen", "Telescope find_files" },
+        },
         file_browser = {
           theme = "ivy",
           hijack_netrw = true,

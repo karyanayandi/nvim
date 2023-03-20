@@ -99,8 +99,6 @@ keymap("n", ";h", "<cmd>Telescope help_tags theme=ivy<cr>", opts)
 -- Search and replace
 keymap("n", ";r", "<cmd>lua require('spectre').open_file_search()<cr>", opts)
 
-keymap("n", ";d", "<cmd>lua require('ssr').open()<cr>", opts)
-
 -- Show document symbol
 keymap("n", "<C-t>", "<cmd>lua vim.lsp.buf.document_symbol()<cr>", opts)
 
