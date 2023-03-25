@@ -208,6 +208,16 @@ return {
         p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
         r = { "<cmd>TSToggle rainbow<cr>", "Rainbow" },
       },
+      p = {
+        name = "Package Info",
+        c = { "<cmd>lua require('package-info').change_version()<cr>", "Change Version" },
+        d = { "<cmd>lua require('package-info').delete()<cr>", "Delete" },
+        h = { "<cmd>lua require('package-info').hide()<cr>", "Hide" },
+        i = { "<cmd>lua require('package-info').install()<cr>", "Install" },
+        s = { "<cmd>lua require('package-info').show()<cr>", "Show" },
+        t = { "<cmd>lua require('package-info').toggle()<cr>", "Toggle" },
+        u = { "<cmd>lua require('package-info').update()<cr>", "Update" },
+      },
       w = {
         name = "Workspaces",
         a = { "<cmd>WorkspacesAdd<cr>", "Add" },
