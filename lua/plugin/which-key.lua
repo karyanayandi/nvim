@@ -149,7 +149,7 @@ return {
         o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
         b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
         c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-        d = { "<cmd>DiffviewOpen<cr>", "Diffview" },
+        d = { "<cmd>lua require 'gitsigns'.diffthis()<cr>", "Diffview" },
       },
       l = {
         name = "LSP",

@@ -11,7 +11,7 @@ return {
       },
       filters = {
         custom = { ".git" },
-        exclude = { ".gitignore", ".env" },
+        exclude = { ".gitignore", ".env", "~partytown" },
       },
       update_cwd = true,
       renderer = {
