@@ -96,6 +96,10 @@ keymap("n", ";g", "<cmd>Telescope git_branches theme=ivy<cr>", opts)
 -- Find help tags
 keymap("n", ";h", "<cmd>Telescope help_tags theme=ivy<cr>", opts)
 
+
+-- Markdown Preview
+keymap("n", ";m", "<cmd>Glow<cr>", opts)
+
 -- Find workspaces
 keymap("n", ";w", "<cmd>WorkspacesOpen<cr>", opts)
 
