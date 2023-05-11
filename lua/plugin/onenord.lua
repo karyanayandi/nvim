@@ -1,5 +1,6 @@
 return {
   "karyanayandi/onenord.nvim",
+  branch = "custom",
   lazy = false,
   priority = 1000,
   config = function()

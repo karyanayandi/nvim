@@ -68,7 +68,7 @@ return {
         "Buffer",
       },
       ["c"] = { "<cmd>:Bdelete<cr>", "Close" },
-      ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+      ["e"] = { "<cmd>Neotree toggle<cr>", "Explorer" },
       ["W"] = { "<cmd>w<CR>", "Write" },
       ["h"] = { "<cmd>nohlsearch<CR>", "No HL" },
       ["q"] = { '<cmd>lua require("config.functions").smart_quit()<CR>', "Quit" },
