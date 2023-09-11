@@ -2,11 +2,11 @@ return {
   "rcarriga/nvim-notify",
   config = function()
     local icons = require "config.icons"
+    local notify = require("notify")
 
-    require("notify").setup {
-      stages = "fade_in_slide_out",
-      render = "default",
-      timeout = 1000,
+    notify.setup {
+      stages = "fade",
+      timeout = 3000,
       background_colour = "Normal",
       minimum_width = 10,
       max_height = function()
@@ -27,9 +27,8 @@ return {
     vim.notify = notify
 
     local notify_filter = vim.notify
-    ---@diagnostic disable-next-line: duplicate-set-field
     vim.notify = function(msg, ...)
-      if msg:match "character_offset must be called with valid offset encoding" then
+      if type(msg) == "string" and msg:match("character_offset must be called with valid offset encoding") then
         return
       end
 
@@ -37,3 +36,4 @@ return {
     end
   end,
 }
+

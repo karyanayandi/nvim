@@ -21,7 +21,7 @@ return {
 
     require("nvim-tree").setup {
       on_attach = on_attach,
-      remove_keymaps = false,
+      -- remove_keymaps = false,
       hijack_directories = {
         enable = false,
       },
