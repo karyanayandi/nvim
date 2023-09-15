@@ -15,7 +15,7 @@ return {
           show_hidden = false,
           silent_chdir = true,
           ignore_lsp = {},
-          exclude_dirs = { "dist", "build", ".next", "node_modules" },
+          exclude_dirs = { "dist", "build", ".next", "node_modules", ".github" },
           datapath = vim.fn.stdpath "data",
         }
 

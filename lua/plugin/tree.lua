@@ -27,7 +27,7 @@ return {
       },
       filters = {
         custom = { ".git" },
-        exclude = { ".gitignore", ".env", "~partytown", ".contentlayer", "dist" },
+        exclude = { ".gitignore", ".env", "~partytown", ".contentlayer", "dist", ".github" },
       },
       update_cwd = true,
       renderer = {

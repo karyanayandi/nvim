@@ -2,10 +2,11 @@ return {
   "rcarriga/nvim-notify",
   config = function()
     local icons = require "config.icons"
-    local notify = require("notify")
+    local notify = require "notify"
 
     notify.setup {
       stages = "fade",
+      render = "minimal",
       timeout = 3000,
       background_colour = "Normal",
       minimum_width = 10,
@@ -28,7 +29,7 @@ return {
 
     local notify_filter = vim.notify
     vim.notify = function(msg, ...)
-      if type(msg) == "string" and msg:match("character_offset must be called with valid offset encoding") then
+      if type(msg) == "string" and msg:match "character_offset must be called with valid offset encoding" then
         return
       end
 
@@ -36,4 +37,3 @@ return {
     end
   end,
 }
-
