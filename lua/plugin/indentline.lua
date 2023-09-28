@@ -42,7 +42,7 @@ return {
       "import_statement",
       "operation_type",
     }
-    require("indent_blankline").setup {
+    require("ibl").setup {
       show_current_context = true,
     }
   end,
