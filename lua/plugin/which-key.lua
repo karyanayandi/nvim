@@ -102,6 +102,15 @@ return {
         w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Word" },
         f = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace Buffer" },
       },
+      R = {
+        name = "Refactoring",
+        r = { "<cmd>lua require('refactoring').select_refactor()<cr>", "Refactor" },
+        b = { "<cmd>lua require('refactoring').refactor('Extract Block')<cr>", "Extract Block" },
+        B = { "<cmd>lua require('refactoring').refactor('Extract Block To File')<cr>", "Extract Block To File" },
+        f = { "<cmd>lua require('refactoring').refactor('Extract Function')<cr>", "Extact Function" },
+        F = { "<cmd>lua require('refactoring').refactor('Extract Function To File')<cr>", "Extact Function To File" },
+        i = { "<cmd>lua require('refactoring').refactor('Inline Variable')<cr>", "Inline Variable" },
+      },
       d = {
         name = "Debug",
         b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
@@ -131,6 +140,7 @@ return {
         R = { "<cmd>Telescope registers<cr>", "Registers" },
         k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
         C = { "<cmd>Telescope commands<cr>", "Commands" },
+        u = { "<cmd>lua require('undotree').toggle()<cr>", "Undo Tree" },
       },
       g = {
         name = "Git",
@@ -207,6 +217,7 @@ return {
         h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight" },
         p = { "<cmd>TSPlaygroundToggle<cr>", "Playground" },
         r = { "<cmd>TSToggle rainbow<cr>", "Rainbow" },
+        s = { "<cmd>lua require('treesj').toggle({split = {recursive = true}})<CR>", "Split" },
       },
       p = {
         name = "Package Info",
