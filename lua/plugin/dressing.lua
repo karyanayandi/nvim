@@ -7,7 +7,6 @@ return {
         default_prompt = "Input:",
         prompt_align = "left",
         insert_only = true,
-        override = "SW",
         border = "rounded",
         relative = "cursor",
         prefer_width = 40,
@@ -41,7 +40,6 @@ return {
           min_height = 10,
         },
         builtin = {
-          -- anchor = "NW",
           border = "rounded",
           relative = "editor",
           width = nil,
