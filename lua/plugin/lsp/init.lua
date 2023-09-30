@@ -2,7 +2,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      { "jose-elias-alvarez/typescript.nvim" },
       {
         "b0o/SchemaStore.nvim",
         version = false,
@@ -64,11 +63,10 @@ return {
     end,
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     event = "BufReadPre",
-    dependencies = { "jose-elias-alvarez/typescript.nvim" },
     config = function()
-      require "plugin.lsp.null-ls"
+      require "plugin.lsp.none-ls"
     end,
   },
 }

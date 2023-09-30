@@ -35,6 +35,5 @@ null_ls.setup {
     diagnostics.shellcheck,
     code_actions.eslint_d,
     code_actions.gitsigns,
-    require "typescript.extensions.null-ls.code-actions",
   },
 }
