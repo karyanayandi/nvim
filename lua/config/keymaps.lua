@@ -78,9 +78,6 @@ keymap("n", "<A-/>", "<cmd>lua require('Comment.api').toggle.linewise.current()<
 keymap("x", "<C-/>", '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', opts)
 keymap("x", "<A-/>", '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>', opts)
 
--- Close Buffer
-keymap("n", "Q", "<cmd>Bdelete!<CR>", opts)
-
 -- Find files
 keymap("n", ";f", "<cmd>Telescope find_files theme=ivy<cr>", opts)
 
@@ -95,7 +92,6 @@ keymap("n", ";g", "<cmd>Telescope git_branches theme=ivy<cr>", opts)
 
 -- Find help tags
 keymap("n", ";h", "<cmd>Telescope help_tags theme=ivy<cr>", opts)
-
 
 -- Markdown Preview
 keymap("n", ";m", "<cmd>Glow<cr>", opts)
