@@ -180,7 +180,7 @@ return {
           "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>",
           "Prev Diagnostic",
         },
-        l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+        L = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
         o = { "<cmd>SymbolsOutline<cr>", "Outline" },
         q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
         r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },

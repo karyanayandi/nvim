@@ -1,3 +1,5 @@
+-- TODO: add formatting for deno
+
 return {
   "stevearc/conform.nvim",
   lazy = true,
@@ -7,11 +9,13 @@ return {
 
     conform.setup {
       formatters_by_ft = {
+        c = { "clang_format" },
         javascript = { "prettierd" },
         typescript = { "prettierd" },
         javascriptreact = { "prettierd" },
         typescriptreact = { "prettierd" },
         svelte = { "prettierd" },
+        php = { "phpcs_fixer", "prettierd" },
         css = { "prettierd" },
         html = { "prettierd" },
         json = { "prettierd" },
@@ -20,13 +24,15 @@ return {
         graphql = { "prettierd" },
         lua = { "stylua" },
         python = { "isort", "black" },
+        go = { "gofmt" },
+        sh = { "shfmt" },
+        fish = { "fish_indent" },
+        rust = { "rushfmt" },
       },
       format_on_save = function(bufnr)
         if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
           return
         end
-
-        vim.notify("Successfully formated!", "info")
         return { timeout_ms = 500, lsp_fallback = true, async = false }
       end,
     }
