@@ -11,6 +11,8 @@ return {
       sources = {
         code_actions.eslint_d,
         code_actions.gitsigns,
+        code_actions.shellcheck,
+        code_actions.refactoring,
       },
     }
   end,
