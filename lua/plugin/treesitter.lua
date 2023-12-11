@@ -6,25 +6,32 @@ return {
     {
       "JoosepAlviste/nvim-ts-context-commentstring",
       lazy = true,
-      'nvim-treesitter/nvim-treesitter',
-      build = ':TSUpdate',
+      "nvim-treesitter/nvim-treesitter",
+      build = ":TSUpdate",
       config = function()
-      require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'vim', 'lua' },
-        highlight = {
-          enable = true,
-        },
-      }
-     end,
+        require("nvim-treesitter.configs").setup {
+          ensure_installed = { "vim", "lua" },
+          highlight = {
+            enable = true,
+          },
+        }
+      end,
     },
     {
       "nvim-treesitter/nvim-treesitter-textobjects",
+      event = "VeryLazy",
     },
     {
       "nvim-treesitter/playground",
+      event = "VeryLazy",
     },
     {
       "windwp/nvim-ts-autotag",
+      event = "VeryLazy",
+    },
+    {
+      "windwp/nvim-autopairs",
+      event = "InsertEnter",
     },
   },
   config = function()
@@ -61,7 +68,7 @@ return {
       matchup = {
         enable = true,
         disable_virtual_text = true,
-        disable = { "html", "smali", "jsonc" },
+        disable = { "html", "smali", "jsonc", "lua" },
       },
       highlight = {
         enable = true,
@@ -80,6 +87,25 @@ return {
       -- },
       autotag = {
         enable = true,
+        filetypes = {
+          "html",
+          "javascript",
+          "typescript",
+          "javascriptreact",
+          "typescriptreact",
+          "svelte",
+          "vue",
+          "tsx",
+          "jsx",
+          "rescript",
+          "xml",
+          "php",
+          "markdown",
+          "astro",
+          "glimmer",
+          "handlebars",
+          "hbs",
+        },
         disable = { "xml", "markdown" },
       },
       playground = {
@@ -112,39 +138,6 @@ return {
             ["iA"] = "@attribute.inner",
             ["aF"] = "@frame.outer",
             ["iF"] = "@frame.inner",
-          },
-        },
-        move = {
-          enable = true,
-          set_jumps = true,
-          goto_next_start = {
-            ["]m"] = "@function.outer",
-            ["]]"] = "@class.outer",
-          },
-          goto_next_end = {
-            ["]M"] = "@function.outer",
-            ["]["] = "@class.outer",
-          },
-          goto_previous_start = {
-            ["[m"] = "@function.outer",
-            ["[["] = "@class.outer",
-          },
-          goto_previous_end = {
-            ["[M"] = "@function.outer",
-            ["[]"] = "@class.outer",
-          },
-        },
-        keys = {
-          { "<c-space>", desc = "Increment selection" },
-          { "<bs>", desc = "Schrink selection", mode = "x" },
-        },
-        swap = {
-          enable = true,
-          swap_next = {
-            ["<leader>."] = "@parameter.inner",
-          },
-          swap_previous = {
-            ["<leader>,"] = "@parameter.inner",
           },
         },
       },

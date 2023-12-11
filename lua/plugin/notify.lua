@@ -2,9 +2,8 @@ return {
   "rcarriga/nvim-notify",
   config = function()
     local icons = require "config.icons"
-    local notify = require "notify"
 
-    notify.setup {
+    require("notify").setup {
       stages = "fade",
       render = "minimal",
       timeout = 3000,
