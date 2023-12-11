@@ -25,6 +25,8 @@ return {
     },
     lazy = true,
     config = function()
+      local M = {}
+
       M.server_capabilities = function()
         local active_clients = vim.lsp.get_active_clients()
         local active_client_map = {}

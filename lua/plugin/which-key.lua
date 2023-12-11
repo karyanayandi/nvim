@@ -169,7 +169,6 @@ return {
         f = { "<cmd>AutoFormatDisable<cr>", "Disable autoformat-on-save" },
         F = { "<cmd>AutoFormatEnable<cr>", "Re-enable autoformat-on-save" },
         i = { "<cmd>LspInfo<cr>", "Info" },
-        h = { "<cmd>IlluminationToggle<cr>", "Toggle Doc HL" },
         H = { "<cmd>IlluminationToggle<cr>", "Toggle Doc HL" },
         I = { "<cmd>LspInstall<cr>", "Installer Info" },
         j = {
@@ -181,6 +180,7 @@ return {
           "Prev Diagnostic",
         },
         L = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+        m = { "<cmd>Mason<cr>", "Mason Info" },
         o = { "<cmd>SymbolsOutline<cr>", "Outline" },
         q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
         r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
