@@ -62,11 +62,4 @@ return {
       require "plugin.lsp.mason"
     end,
   },
-  {
-    "nvimtools/none-ls.nvim",
-    event = "BufReadPre",
-    config = function()
-      require "plugin.lsp.none-ls"
-    end,
-  },
 }

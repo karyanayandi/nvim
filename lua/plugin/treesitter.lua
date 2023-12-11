@@ -6,6 +6,16 @@ return {
     {
       "JoosepAlviste/nvim-ts-context-commentstring",
       lazy = true,
+      'nvim-treesitter/nvim-treesitter',
+      build = ':TSUpdate',
+      config = function()
+      require('nvim-treesitter.configs').setup {
+        ensure_installed = { 'vim', 'lua' },
+        highlight = {
+          enable = true,
+        },
+      }
+     end,
     },
     {
       "nvim-treesitter/nvim-treesitter-textobjects",
@@ -61,13 +71,13 @@ return {
         enable = true,
       },
       indent = { enable = true, disable = { "python" } },
-      context_commentstring = {
-        enable = true,
-        enable_autocmd = false,
-        throttle = true,
-        max_lines = 0,
-        patterns = {},
-      },
+      -- context_commentstring = {
+      --   enable = true,
+      --   enable_autocmd = false,
+      --   throttle = true,
+      --   max_lines = 0,
+      --   patterns = {},
+      -- },
       autotag = {
         enable = true,
         disable = { "xml", "markdown" },

@@ -118,6 +118,27 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
+vim.api.nvim_create_user_command("AutoFormatDisable", function(args)
+  if args.bang then
+    -- FormatDisable! will disable formatting just for this buffer
+    vim.b.disable_autoformat = true
+  else
+    vim.g.disable_autoformat = true
+  end
+  vim.notify("autoformat-on-save disabled", "info")
+end, {
+  desc = "Disable autoformat-on-save",
+  bang = true,
+})
+
+vim.api.nvim_create_user_command("AutoFormatEnable", function()
+  vim.b.disable_autoformat = false
+  vim.g.disable_autoformat = false
+  vim.notify("autoformat-on-save re-enabled", "info")
+end, {
+  desc = "Re-enable autoformat-on-save",
+})
+
 -- vim.cmd [[
 -- augroup import_cost_auto_run
 --   autocmd!
