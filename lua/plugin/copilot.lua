@@ -1,25 +1,29 @@
 return {
   "zbirenbaum/copilot.lua",
-  event = { "VimEnter" },
+  event = { "InsertEnter", "LspAttach" },
   cmd = "Copilot",
   build = ":Copilot auth",
   config = function()
     require("copilot").setup {
-      cmp = {
-        enabled = true,
-        method = "getCompletionsCycling",
-      },
       panel = {
-        enabled = true,
+        enabled = false,
       },
-      ft_disable = { "markdown" },
-      server_opts_overrides = {
-        settings = {
-          advanced = {
-            inlineSuggestCount = 3,
-          },
-        },
+      suggestion = {
+        enabled = false,
       },
+      filetypes = {
+        yaml = false,
+        markdown = false,
+        help = false,
+        gitcommit = false,
+        gitrebase = false,
+        hgcommit = false,
+        svn = false,
+        cvs = false,
+        ["."] = false,
+      },
+      copilot_node_command = "node",
+      server_opts_overrides = {},
     }
   end,
 }
