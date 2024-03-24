@@ -22,6 +22,7 @@ return {
       php = { "php", "phpcs" },
       sh = { "shellcheck" },
       json = { "jsonlint" },
+      vue = { "eslint_d" },
       yaml = { "yamllint" },
     }
 
